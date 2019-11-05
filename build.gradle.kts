@@ -5,11 +5,11 @@ plugins {
   id("org.openjfx.javafxplugin") version "0.0.8"
 }
 
-group = "xyz.kazuthecat.dogedice"
+group = "com.example.dogedice.dogedice"
 version = "1.0-SNAPSHOT"
 
 application {
-  mainClassName = "xyz.kazuthecat.Launcher"
+  mainClassName = "com.example.dogedice.Launcher"
 }
 
 repositories {
