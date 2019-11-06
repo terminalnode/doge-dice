@@ -19,35 +19,39 @@ public class Main extends Application {
     launch(args);
   }
 
+  private String getRes(String fileName) {
+    return Thread.currentThread().getContextClassLoader().getResource(fileName).toExternalForm();
+  }
+
   // Override the start() method.
   public void start(Stage mainWindow) throws FileNotFoundException{
     mainWindow.setResizable(false);
 
     // DogeSpin
-    Image image = new Image (new FileInputStream("res/dogespin.gif"));
-    ImageView dogeSpin = new ImageView(image);
-    ImageView dogeSpin2 = new ImageView(image);
+    Image imageDogespin = new Image(getRes("dogespin.gif"));
+    ImageView dogeSpin = new ImageView(imageDogespin);
+    ImageView dogeSpin2 = new ImageView(imageDogespin);
     dogeSpin.setPreserveRatio(true);
     dogeSpin2.setPreserveRatio(true);
     dogeSpin.setFitWidth(30);
     dogeSpin2.setFitWidth(30);
 
     //Dogelogo
-    Image image1 = new Image (new FileInputStream("res/dogelogo.png"));
-    ImageView dogeLogo = new ImageView(image1);
+    Image imageDogelogo = new Image(getRes("dogelogo.png"));
+    ImageView dogeLogo = new ImageView(imageDogelogo);
     dogeLogo.setPreserveRatio(true);
     dogeLogo.setFitWidth(365);
 
     //DogeCoin
-    Image image3 = new Image (new FileInputStream("res/dogecoin.png"));
-    ImageView dogeCoin = new ImageView(image3);
+    Image imageDogecoin = new Image(getRes("dogecoin.png"));
+    ImageView dogeCoin = new ImageView(imageDogecoin);
     dogeCoin.setPreserveRatio(true);
     dogeCoin.setFitWidth(25);
     dogeCoin.setLayoutX(440);
 
     //Help
-    Image image4 = new Image (new FileInputStream("res/help.png"));
-    ImageView help = new ImageView(image4);
+    Image imageHelp = new Image(getRes("help.png"));
+    ImageView help = new ImageView(imageHelp);
     help.setPreserveRatio(true);
     help.setFitWidth(25);
     help.setLayoutX(100);
