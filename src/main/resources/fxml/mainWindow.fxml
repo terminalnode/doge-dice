@@ -1,0 +1,48 @@
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+
+<BorderPane>
+  <padding>
+    <Insets bottom="5" top="5" left="5" right="5"/>
+  </padding>
+
+  <top>
+    <ImageView preserveRatio="true" fitWidth="365">
+      <Image url="@/dogelogo.png"/>
+    </ImageView>
+  </top>
+
+  <bottom>
+    <Group>
+      <ImageView preserveRatio="true" fitWidth="25">
+        <Image url="@/help.png"/>
+      </ImageView>
+      <ImageView preserveRatio="true" fitWidth="25" layoutX="340">
+        <Image url="@/dogecoin.png"/>
+      </ImageView>
+    </Group>
+  </bottom>
+
+  <center>
+    <Group>
+      <Button text="START"/>
+      <Button text="HIGHSCORE" layoutX="70"/>
+    </Group>
+  </center>
+
+  <left>
+    <ImageView preserveRatio="true" fitWidth="30">
+      <Image url="@/dogespin.gif"/>
+    </ImageView>
+  </left>
+
+  <right>
+    <ImageView preserveRatio="true" fitWidth="30">
+      <Image url="@/dogespin.gif"/>
+    </ImageView>
+  </right>
+</BorderPane>
