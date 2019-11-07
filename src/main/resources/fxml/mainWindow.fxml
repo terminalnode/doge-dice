@@ -11,18 +11,18 @@
   </padding>
 
   <top>
-    <ImageView preserveRatio="true" fitWidth="365">
-      <Image url="@/dogelogo.png"/>
+    <ImageView>
+      <Image url="@/images/dogelogo.png"/>
     </ImageView>
   </top>
 
   <bottom>
     <Group>
       <ImageView preserveRatio="true" fitWidth="25">
-        <Image url="@/help.png"/>
+        <Image url="@/images/help.png"/>
       </ImageView>
       <ImageView preserveRatio="true" fitWidth="25" layoutX="340">
-        <Image url="@/dogecoin.png"/>
+        <Image url="@/images/dogecoin.png"/>
       </ImageView>
     </Group>
   </bottom>
@@ -36,13 +36,13 @@
 
   <left>
     <ImageView preserveRatio="true" fitWidth="30">
-      <Image url="@/dogespin.gif"/>
+      <Image url="@/images/dogespin.gif"/>
     </ImageView>
   </left>
 
   <right>
     <ImageView preserveRatio="true" fitWidth="30">
-      <Image url="@/dogespin.gif"/>
+      <Image url="@/images/dogespin.gif"/>
     </ImageView>
   </right>
 </BorderPane>
