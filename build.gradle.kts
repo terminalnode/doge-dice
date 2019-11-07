@@ -9,6 +9,7 @@ group = "com.example.dogedice.dogedice"
 version = "1.0-SNAPSHOT"
 
 application {
+  applicationName = "Doge Dice"
   mainClassName = "com.example.dogedice.Launcher"
 }
 
