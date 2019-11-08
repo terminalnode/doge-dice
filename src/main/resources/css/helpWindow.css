@@ -1,11 +1,12 @@
 Label{
 	-fx-font: normal bold 20px 'arial';
+	-fx-text-fill: #2196F3;
 	-fx-padding: 0 0 0 165;
 }
 
 TextArea{
 	-fx-background-color: transparent;
-	-fx-outline: none;
+	-fx-outline: transparent;
 	-fx-faint-focus-color: transparent;
 	-fx-focus-color: transparent;
 	-fx-text-box-border: transparent;

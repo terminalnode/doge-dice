@@ -17,15 +17,15 @@
           alignment="TOP_CENTER"
           id="mainPane">
 
-  <Label id="header" text="Player Selection"/>
+  <Label id="header" text="Player Selection" layoutX="300"/>
 
   <FlowPane orientation="VERTICAL">
     <Label id="humPlayersLabel" text="Human players"/>
-    <Spinner editable="true"/>
+    <Spinner id="humSpinner" editable="true"/>
   </FlowPane>
 
   <FlowPane orientation="VERTICAL">
     <Label id="cpuPlayers" text="CPU players"/>
-    <Spinner editable="true"/>
+    <Spinner id="cpuSpinner" editable="true"/>
   </FlowPane>
 </FlowPane>

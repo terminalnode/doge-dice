@@ -1,3 +1,13 @@
 #header {
 	-fx-font: normal bold 30px 'serif';
 }
+
+#cpuSpinner{
+
+}
+
+#humSpinner{
+	-fx-color: red;
+
+}
+
