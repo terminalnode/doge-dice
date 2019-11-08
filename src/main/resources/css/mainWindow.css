@@ -19,20 +19,23 @@ Button:pressed {
 	-fx-color: #FFCB7A;
 }
 
-#help {
-	-fx-color: white;
-	-fx-background-image:url('../images/help.png');
-	-fx-background-size: 25px 25px;
+.spinningDoge {
+  -fx-image: url("../images/dogespin.gif");
+}
+
+#dogecoinButton {
+	-fx-color: transparent;
+  -fx-background-image: url("../images/dogecoin.png");
+	-fx-background-size: cover;
 	-fx-font-size: 13px;
 	-fx-pref-width: 25px;
 }
 
-#help:hover {
-	-fx-border-color: #2196F3;
+#helpButton {
+	-fx-color: transparent;
+	-fx-background-image: url('../images/help.png');
+	-fx-background-size: cover;
+	-fx-font-size: 13px;
+	-fx-pref-width: 25px;
 }
-
-#help:pressed{
-	-fx-color: #2196F3;
-}
-
 
