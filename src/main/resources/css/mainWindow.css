@@ -10,3 +10,29 @@ Button {
 Button:hover {
 	-fx-color: #2196F3;
 }
+
+Button:focused {
+	-fx-background-insets: 0, 0, 1, 2;
+}
+
+Button:pressed {
+	-fx-color: #FFCB7A;
+}
+
+#help {
+	-fx-color: white;
+	-fx-background-image:url('../images/help.png');
+	-fx-background-size: 25px 25px;
+	-fx-font-size: 13px;
+	-fx-pref-width: 25px;
+}
+
+#help:hover {
+	-fx-border-color: #2196F3;
+}
+
+#help:pressed{
+	-fx-color: #2196F3;
+}
+
+

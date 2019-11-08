@@ -18,9 +18,7 @@
 
   <bottom>
     <Group>
-      <ImageView preserveRatio="true" fitWidth="25">
-        <Image url="@/images/help.png"/>
-      </ImageView>
+      <Button id="help"/>
       <ImageView preserveRatio="true" fitWidth="25" layoutX="340">
         <Image url="@/images/dogecoin.png"/>
       </ImageView>
