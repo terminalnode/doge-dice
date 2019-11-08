@@ -18,7 +18,7 @@
   <bottom>
     <Group>
       <ImageView id="helpButton" onMouseClicked="#helpButtonClicked"/>
-      <ImageView id="dogecoinButton" onMouseClicked="#dogecoinButtonClicked" layoutX="330" preserveRatio="true" fitWidth="25"/>
+      <ImageView id="dogecoinButton" onMouseClicked="#dogecoinButtonClicked" layoutX="340" preserveRatio="true" fitWidth="25"/>
     </Group>
   </bottom>
 
