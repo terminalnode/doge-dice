@@ -1,4 +1,3 @@
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.control.*?>
@@ -17,8 +16,8 @@
 
   <bottom>
     <Group>
-      <Button id="helpButton" onMouseClicked="#helpButtonClicked"/>
-      <Button id="dogecoinButton" onMouseClicked="#dogecoinButtonClicked" layoutX="330"/>
+      <ImageView id="helpButton" onMouseClicked="#helpButtonClicked"/>
+      <ImageView id="dogecoinButton" onMouseClicked="#dogecoinButtonClicked" layoutX="330" preserveRatio="true" fitWidth="25"/>
     </Group>
   </bottom>
 

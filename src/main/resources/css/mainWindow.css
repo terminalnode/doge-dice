@@ -24,18 +24,10 @@ Button:pressed {
 }
 
 #dogecoinButton {
-	-fx-color: transparent;
-  -fx-background-image: url("../images/dogecoin.png");
-	-fx-background-size: cover;
-	-fx-font-size: 13px;
-	-fx-pref-width: 25px;
+  -fx-image: url("../images/dogecoin.png");
 }
 
 #helpButton {
-	-fx-color: transparent;
-	-fx-background-image: url('../images/help.png');
-	-fx-background-size: cover;
-	-fx-font-size: 13px;
-	-fx-pref-width: 25px;
+  -fx-image: url("../images/help.png");
 }
 
