@@ -1,0 +1,20 @@
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
+
+<!-- Help Window -->
+<FlowPane id="helpWindow" stylesheets="@/css/helpWindow.css">
+  <padding>
+    <Insets bottom="5" top="5" right="5" left="5"/>
+  </padding>
+  <Label wrapText="true">HOW TO PLAY</Label>
+  <TextArea editable="false" prefRowCount="30" wrapText="true">
+    1.Kill yourself111111111111111111222222222&#xD;22222222222222222222222222222222222222222222222222222222222222
+    2.Kill yourself
+  </TextArea>
+</FlowPane>
