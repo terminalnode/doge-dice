@@ -22,4 +22,6 @@
     <Label id="cpuPlayers" text="CPU players"/>
     <Spinner id="cpuPlayersSpinner" editable="true" min="0" max="10" initialValue="0"/>
   </FlowPane>
+
+  <Button id="confirmButton" text="Confirm player selection" onMouseClicked="#confirmButtonClicked"/>
 </FlowPane>
