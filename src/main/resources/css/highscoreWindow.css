@@ -1,0 +1,17 @@
+
+#rectangle {
+	-fx-image: url("../images/rectangle.png");
+}
+
+#CoolDoge {
+	-fx-image: url("../images/CoolDoge.jpg");
+	}
+
+#SadDoge {
+	-fx-image: url("../images/SadDoge.jpg");
+}
+
+.spinningDoge {
+  -fx-image: url("../images/dogespin.gif");
+}
+

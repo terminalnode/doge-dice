@@ -1,0 +1,40 @@
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.shape.*?>
+
+<BorderPane stylesheets="@/css/highscoreWindow.css"
+            xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.dogedice.controllers.MainWindow">
+  <padding>
+    <Insets bottom="5" top="5" left="5" right="5"/>
+  </padding>
+
+  <top>
+    <Group>
+      <ImageView>
+        <Image url="@/images/Highscore.png"/>
+      </ImageView>
+      <Label>
+        Wow Such Score
+      </Label>
+    </Group>
+  </top>
+
+  <center>
+    <Group>
+      <ImageView id ="CoolDoge"/>
+      <ImageView id ="rectangle"/>
+      <ImageView id ="rectangle"/>
+      <ImageView id ="rectangle"/>
+    </Group>
+  </center>
+
+</BorderPane>
