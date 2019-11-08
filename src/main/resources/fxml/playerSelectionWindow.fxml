@@ -15,11 +15,11 @@
 
   <FlowPane orientation="VERTICAL">
     <Label id="humPlayersLabel" text="Human players"/>
-    <Spinner editable="true"/>
+    <Spinner id="humPlayersSpinner" editable="true" min="1" max="10" initialValue="1"/>
   </FlowPane>
 
   <FlowPane orientation="VERTICAL">
     <Label id="cpuPlayers" text="CPU players"/>
-    <Spinner editable="true"/>
+    <Spinner id="cpuPlayersSpinner" editable="true" min="0" max="10" initialValue="0"/>
   </FlowPane>
 </FlowPane>
