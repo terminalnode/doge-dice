@@ -19,21 +19,21 @@
 
   <top>
     <Group>
-      <ImageView>
+      <ImageView layoutX="100" fitHeight="170" fitWidth="220">
         <Image url="@/images/Highscore.png"/>
       </ImageView>
-      <Label>
+      <Label layoutY="140" layoutX="120">
         Wow Such Score
       </Label>
+      <ImageView id ="CoolDoge" layoutY="100" layoutX="250" fitHeight="60" fitWidth="60"/>
     </Group>
   </top>
 
   <center>
     <Group>
-      <ImageView id ="CoolDoge"/>
-      <ImageView id ="rectangle"/>
-      <ImageView id ="rectangle"/>
-      <ImageView id ="rectangle"/>
+      <ImageView id ="rectangle" layoutY="150" fitHeight="150" fitWidth="220"/>
+      <ImageView id ="rectangle" layoutY="250" fitHeight="150" fitWidth="220"/>
+      <ImageView id ="rectangle" layoutY="350" fitHeight="150" fitWidth="220"/>
     </Group>
   </center>
 

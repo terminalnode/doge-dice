@@ -1,10 +1,16 @@
 
+Label{
+	-fx-font: normal bold 20px 'serif';
+	-fx-font-color:  #2196F3;
+}
+
 #rectangle {
 	-fx-image: url("../images/rectangle.png");
 }
 
 #CoolDoge {
 	-fx-image: url("../images/CoolDoge.jpg");
+
 	}
 
 #SadDoge {
