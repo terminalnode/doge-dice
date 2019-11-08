@@ -2,37 +2,43 @@ package com.example.dogedice;
 
 import javafx.application.*;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
 import javafx.scene.*;
-import javafx.scene.layout.*;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.*;
-import javafx.scene.control.*;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 
 public class Main extends Application {
   public static void main(String[] args) {
-    // Start the JavaFX application by calling launch().
     launch(args);
   }
 
-  private URL getRes(String fileName) {
-    return Thread.currentThread().getContextClassLoader().getResource(fileName);
-  }
-
-  // Override the start() method.
+  @Override
   public void start(Stage mainWindow) throws IOException {
-    mainWindow.setTitle("Dogedice");  // Give the stage a title.
-
-    BorderPane root = FXMLLoader.load(getRes("fxml/mainWindow.fxml"));
+    mainWindow.setTitle("Doge Dice");  // Give the stage a title.
+    Parent root = FXMLLoader.load(getRes("fxml/mainWindow.fxml"));
     Scene scene = new Scene(root);
     mainWindow.setScene(scene);
     mainWindow.show();
-    mainWindow.setResizable(false);
+  }
+
+  // Static helper methods used throughout the program
+  private static URL getRes(String fileName) {
+    return Thread.currentThread().getContextClassLoader().getResource(fileName);
+  }
+
+  public static void openWindow(String fxmlPath, String windowTitle) throws IOException {
+    Stage newWindow = new Stage();
+    Parent root = FXMLLoader.load(Main.getRes(fxmlPath));
+    Scene scene = new Scene(root);
+    newWindow.setTitle(windowTitle);
+    newWindow.setScene(scene);
+    newWindow.show();
+  }
+
+  public static void hideParentWindow(MouseEvent mouseEvent) {
+    ((Node)mouseEvent.getSource()).getScene().getWindow().hide();
   }
 }
 

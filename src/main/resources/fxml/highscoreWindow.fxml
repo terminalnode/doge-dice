@@ -1,18 +1,15 @@
-
-<?import java.lang.*?>
-<?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.shape.*?>
 
-<BorderPane stylesheets="@/css/highscoreWindow.css"
+<BorderPane id="highscoreWindow"
+            stylesheets="@/css/highscoreWindow.css"
             xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.dogedice.controllers.MainWindow">
+            fx:controller="com.example.dogedice.controllers.HighscoreWindow">
   <padding>
     <Insets bottom="5" top="5" left="5" right="5"/>
   </padding>

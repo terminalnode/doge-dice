@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<FlowPane id="playerSelectionWindow"
+          stylesheets="@/css/playerSelectionWindow.css"
+          prefHeight="600.0" prefWidth="400.0"
+          orientation="VERTICAL"
+          alignment="TOP_CENTER"
+          xmlns="http://javafx.com/javafx"
+          xmlns:fx="http://javafx.com/fxml"
+          fx:controller="com.example.dogedice.controllers.PlayerSelectionWindow">
+
+  <Label id="header" text="Player Selection"/>
+
+  <FlowPane orientation="VERTICAL">
+    <Label id="humPlayersLabel" text="Human players"/>
+    <Spinner editable="true"/>
+  </FlowPane>
+
+  <FlowPane orientation="VERTICAL">
+    <Label id="cpuPlayers" text="CPU players"/>
+    <Spinner editable="true"/>
+  </FlowPane>
+</FlowPane>
