@@ -15,12 +15,12 @@
 
   <FlowPane orientation="VERTICAL">
     <Label id="humPlayersLabel" text="Human players"/>
-    <Spinner id="humPlayersSpinner" editable="true" min="1" max="10" initialValue="1"/>
+    <Spinner id="humPlayersSpinner" fx:id="humPlayersSpinner" editable="true" min="1" max="10" initialValue="1"/>
   </FlowPane>
 
   <FlowPane orientation="VERTICAL">
     <Label id="cpuPlayers" text="CPU players"/>
-    <Spinner id="cpuPlayersSpinner" editable="true" min="0" max="10" initialValue="0"/>
+    <Spinner id="cpuPlayersSpinner" fx:id="cpuPlayersSpinner" editable="true" min="0" max="10" initialValue="0"/>
   </FlowPane>
 
   <Button id="confirmButton" text="Confirm player selection" onMouseClicked="#confirmButtonClicked"/>

@@ -37,6 +37,10 @@ public class Main extends Application {
     newWindow.show();
   }
 
+  public static FXMLLoader getLoader(String fxmlPath) {
+    return new FXMLLoader(getRes(fxmlPath));
+  }
+
   public static void hideParentWindow(MouseEvent mouseEvent) {
     ((Node)mouseEvent.getSource()).getScene().getWindow().hide();
   }
