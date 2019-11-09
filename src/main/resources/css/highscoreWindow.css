@@ -1,23 +1,27 @@
 
+
 Label{
-	-fx-font: normal bold 20px 'serif';
-	-fx-font-color:  #2196F3;
+	-fx-font: normal bold 16px 'arial';
+	-fx-text-fill: #2196F3;
 }
 
 #rectangle {
 	-fx-image: url("../images/rectangle.png");
 }
 
-#CoolDoge {
+#coolDoge {
 	-fx-image: url("../images/CoolDoge.jpg");
 
 	}
 
-#SadDoge {
+#sadDoge {
 	-fx-image: url("../images/SadDoge.jpg");
 }
 
-.spinningDoge {
+#spinningDoge {
   -fx-image: url("../images/dogespin.gif");
 }
 
+#backIcon {
+	-fx-image: url("../images/backIcon.png");
+}
