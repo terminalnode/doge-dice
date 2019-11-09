@@ -1,5 +1,20 @@
+#playerSelectionWindow {
+	-fx-spacing: 20;
+	-fx-alignment: center;
+	-fx-pref-height: 100px;
+	-fx-pref-width: 300px;
+}
+
 #header {
 	-fx-font: normal bold 30px 'serif';
+}
+
+.spinnerBox {
+  -fx-alignment: center;
+}
+
+.sublabel {
+	-fx-font: normal bold 15px 'serif';
 }
 
 Button {
@@ -11,8 +26,13 @@ Button {
 	-fx-faint-focus-color: transparent;
 }
 
-Button {
+Button:hover {
 	-fx-color: #2196F3;
+}
+
+Button:focused {
+	-fx-background-insets: 0, 0, 1, 2;
+	-fx-border-color: transparent;
 }
 
 Button:pressed {
