@@ -7,23 +7,19 @@ import java.io.IOException;
 
 public class MainWindow {
   public void startButtonClicked(MouseEvent mouseEvent) throws IOException {
-    Main.openWindow("fxml/playerSelectionWindow.fxml", "Player Selection");
-    Main.hideParentWindow(mouseEvent);
+    Main.replaceWindow("fxml/playerSelectionWindow.fxml", "Player Selection", mouseEvent);
   }
 
   public void highscoreButtonClicked(MouseEvent mouseEvent) throws IOException {
-    Main.openWindow("fxml/highscoreWindow.fxml", "Highscore");
-    Main.hideParentWindow(mouseEvent);
+    Main.replaceWindow("fxml/highscoreWindow.fxml", "Highscore", mouseEvent);
   }
 
   public void helpButtonClicked(MouseEvent mouseEvent) throws IOException {
-    Main.openWindow("fxml/helpWindow.fxml", "How to play");
-    // Do not hide parent window on close.
+    Main.replaceWindow("fxml/helpWindow.fxml", "How to play", mouseEvent);
   }
 
   public void dogecoinButtonClicked(MouseEvent mouseEvent) throws IOException {
-    Main.openWindow("fxml/dogeCoinWindow.fxml", "Donate!");
-    // Do not hide parent window on close.
+    Main.replaceWindow("fxml/dogeCoinWindow.fxml", "Donate!", mouseEvent);
   }
 
   public void spinningDogeClicked(MouseEvent mouseEvent) {

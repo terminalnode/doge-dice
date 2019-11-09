@@ -37,6 +37,14 @@ public class Main extends Application {
     newWindow.show();
   }
 
+  public static void replaceWindow(String fxmlPath, String windowTitle, MouseEvent mouseEvent) throws IOException {
+    Stage stage = (Stage) ((Node)mouseEvent.getSource()).getScene().getWindow();
+    stage.setTitle(windowTitle);
+    Parent root = FXMLLoader.load(Main.getRes(fxmlPath));
+    Scene scene = new Scene(root);
+    stage.setScene(scene);
+  }
+
   public static FXMLLoader getLoader(String fxmlPath) {
     return new FXMLLoader(getRes(fxmlPath));
   }
