@@ -23,8 +23,13 @@ public class PlayerSelectionWindow {
     NamePlayersWindow controller = loader.getController();
     Scene scene = new Scene(root);
     newWindow.setScene(scene);
-    controller.setHumPlayers(humPlayersSpinner.getValue());
-    controller.setCpuPlayers(cpuPlayersSpinner.getValue());
+    for (int i = 1; i <= humPlayersSpinner.getValue(); i++) {
+      controller.addHumPlayer(i);
+    }
+
+    for (int i = 1; i <= cpuPlayersSpinner.getValue(); i++) {
+      controller.addCpuPlayer(i);
+    }
 
     Main.hideParentWindow(mouseEvent);
     newWindow.show();
