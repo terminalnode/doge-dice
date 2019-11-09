@@ -17,23 +17,41 @@
 
   <bottom>
     <Group>
-      <ImageView id="helpButton" onMouseClicked="#helpButtonClicked"/>
-      <ImageView id="dogecoinButton" onMouseClicked="#dogecoinButtonClicked" layoutX="340" preserveRatio="true" fitWidth="25"/>
+      <ImageView id="helpButton"
+                 onMouseClicked="#helpButtonClicked"/>
+      <ImageView id="dogecoinButton"
+                 layoutX="340"
+                 preserveRatio="true"
+                 fitWidth="25"
+                 onMouseClicked="#dogecoinButtonClicked"/>
     </Group>
   </bottom>
 
   <center>
     <Group>
-      <Button id="startButton" text="START" onMouseClicked="#startButtonClicked"/>
-      <Button id="highscoreButton" text="HIGHSCORE" layoutX="100" onMouseClicked="#highscoreButtonClicked"/>
+      <Button id="startButton"
+              text="START"
+              focusTraversable="false"
+              onMouseClicked="#startButtonClicked"/>
+      <Button id="highscoreButton"
+              text="HIGHSCORE"
+              focusTraversable="false"
+              layoutX="100"
+              onMouseClicked="#highscoreButtonClicked"/>
     </Group>
   </center>
 
   <left>
-    <ImageView styleClass="spinningDoge" preserveRatio="true" fitWidth="45" onMouseClicked="#spinningDogeClicked"/>
+    <ImageView styleClass="spinningDoge"
+               preserveRatio="true"
+               fitWidth="45"
+               onMouseClicked="#spinningDogeClicked"/>
   </left>
 
   <right>
-    <ImageView styleClass="spinningDoge" preserveRatio="true" fitWidth="45" onMouseClicked="#spinningDogeClicked"/>
+    <ImageView styleClass="spinningDoge"
+               preserveRatio="true"
+               fitWidth="45"
+               onMouseClicked="#spinningDogeClicked"/>
   </right>
 </BorderPane>
