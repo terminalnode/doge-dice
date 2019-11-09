@@ -1,13 +1,13 @@
-Label{
-	-fx-font: normal bold 20px 'arial';
-	-fx-text-fill: #2196F3;
-	-fx-padding: 0 0 0 165;
+#helpWindow {
+	-fx-pref-width: 300;
 }
 
-TextArea{
-	-fx-background-color: transparent;
-	-fx-outline: transparent;
-	-fx-faint-focus-color: transparent;
-	-fx-focus-color: transparent;
-	-fx-text-box-border: transparent;
+#header {
+	-fx-font: normal bold 20px 'arial';
+	-fx-text-fill: #2196F3;
+	-fx-padding: 10 0 5 10;
+}
+
+#text {
+	-fx-padding: 0 10 10 10;
 }

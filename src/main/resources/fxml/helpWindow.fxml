@@ -1,19 +1,12 @@
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.control.*?>
 
-<FlowPane id="helpWindow"
-          stylesheets="@/css/helpWindow.css"
-          xmlns="http://javafx.com/javafx"
-          xmlns:fx="http://javafx.com/fxml"
-          fx:controller="com.example.dogedice.controllers.MainWindow">
-  <padding>
-    <Insets bottom="5" top="5" right="5" left="5"/>
-  </padding>
+<VBox id="helpWindow"
+      stylesheets="@/css/helpWindow.css"
+      xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.dogedice.controllers.HelpWindow">
 
-  <Label wrapText="true">HOW TO PLAY</Label>
-  <TextArea editable="false" prefRowCount="30" wrapText="true">
-    1. Happy wholesome fun for whole family! :-)
-    2. Enjoy! >:(
-  </TextArea>
-</FlowPane>
+  <Label id="header" text="HOW TO PLAY"/>
+  <Label fx:id="text" id="text" wrapText="true"/>
+</VBox>
