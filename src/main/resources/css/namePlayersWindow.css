@@ -1,6 +1,7 @@
 #namePlayersWindow {
   -fx-min-width: 280px;
   -fx-min-height: 400px;
+  -fx-background-color: white;
 }
 
 #header {
@@ -31,3 +32,11 @@ Button {
 Button:pressed {
 	-fx-color: #FFCB7A;
 }
+
+#spinningDoge {
+  -fx-image: url("../images/dogespin.gif");
+}
+
+#backIcon {
+ 	-fx-image: url("../images/backIcon.png");
+ }

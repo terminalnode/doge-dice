@@ -5,6 +5,7 @@
 <?import javafx.scene.image.ImageView?>
 
 <BorderPane id="mainWindow"
+            styleClass="mainWindow"
             stylesheets="@/css/mainWindow.css"
             xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"

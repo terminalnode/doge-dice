@@ -1,11 +1,15 @@
 package com.example.dogedice.controllers;
 
+import com.example.dogedice.Main;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+
+import java.io.IOException;
 
 public class NamePlayersWindow {
   @FXML
@@ -37,5 +41,14 @@ public class NamePlayersWindow {
   }
 
   public void confirmButtonClicked(MouseEvent mouseEvent) {
+  }
+
+  public void spinningDogeClicked(MouseEvent mouseEvent)  {
+    ImageView spinningDoge = (ImageView ) mouseEvent.getSource();
+    spinningDoge.setScaleX(spinningDoge.getScaleX() * -1);
+  }
+
+  public void backIconClicked(MouseEvent mouseEvent) throws IOException {
+    Main.replaceWindow("fxml/playerSelectionWindow.fxml", "Main Window", mouseEvent);
   }
 }
