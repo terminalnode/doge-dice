@@ -3,10 +3,13 @@
 	-fx-alignment: center;
 	-fx-pref-height: 100px;
 	-fx-pref-width: 300px;
+	padding: 5px;
+	-fx-background-color: white;
 }
 
 #header {
-	-fx-font: normal bold 30px 'serif';
+	-fx-font: normal bold 30px 'Arial';
+	-fx-text-fill: #2196F3;
 }
 
 .spinnerBox {
@@ -14,7 +17,8 @@
 }
 
 .sublabel {
-	-fx-font: normal bold 15px 'serif';
+	-fx-font: normal bold 16px 'Arial';
+	-fx-text-fill: #2196F3;
 }
 
 Button {
@@ -37,4 +41,20 @@ Button:focused {
 
 Button:pressed {
 	-fx-color: #FFCB7A;
+}
+
+#spinningDoge {
+  -fx-image: url("../images/dogespin.gif");
+}
+
+#backIcon {
+ 	-fx-image: url("../images/backIcon.png");
+ }
+
+#roboDoge {
+ 	-fx-image: url("../images/roboDoge.png");
+}
+
+#homanDoge {
+ 	-fx-image: url("../images/homanDoge.png");
 }
