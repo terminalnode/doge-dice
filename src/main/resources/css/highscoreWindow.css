@@ -1,17 +1,18 @@
-
+#highscoreWindow {
+	padding: 5px;
+}
 
 Label{
 	-fx-font: normal bold 16px 'arial';
 	-fx-text-fill: #2196F3;
 }
 
-#rectangle {
+.rectangle {
 	-fx-image: url("../images/rectangle.png");
 }
 
 #coolDoge {
 	-fx-image: url("../images/CoolDoge.jpg");
-
 	}
 
 #sadDoge {
