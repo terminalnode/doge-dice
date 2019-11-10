@@ -42,7 +42,7 @@
              max="10"/>
   </VBox>
 
-  <HBox styleClass="spinnerBox" spacing="50">
+  <HBox styleClass="spinnerBox" spacing="47">
     <ImageView id="backIcon"
                preserveRatio="true"
                fitWidth="40"
