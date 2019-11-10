@@ -2,23 +2,22 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.VBox?>
 
-<FlowPane id="namePlayersWindow"
-          stylesheets="@/css/namePlayersWindow.css"
-          xmlns="http://javafx.com/javafx"
-          xmlns:fx="http://javafx.com/fxml"
-          fx:controller="com.example.dogedice.controllers.NamePlayersWindow"
-          prefHeight="200.0" prefWidth="200.0"
-          alignment="CENTER"
-          orientation="VERTICAL">
+<VBox id="namePlayersWindow"
+      stylesheets="@/css/namePlayersWindow.css"
+      xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.dogedice.controllers.NamePlayersWindow"
+      alignment="CENTER">
 
-  <Label id="header" text="Name players"/>
+    <Label id="header" text="Name players" alignment="TOP_CENTER"/>
 
-  <ScrollPane prefWidth="200" minHeight="100" hbarPolicy="NEVER">
-    <VBox fx:id="namePlayersBox" prefWidth="200"/>
-  </ScrollPane>
+    <ScrollPane hbarPolicy="NEVER">
+      <VBox fx:id="namePlayersBox"/>
+    </ScrollPane>
 
-  <Button text="Confirm"/>
-</FlowPane>
+    <Button text="Confirm"
+            focusTraversable="false"
+            alignment="CENTER"/>
+</VBox>

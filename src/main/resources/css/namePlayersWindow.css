@@ -1,7 +1,18 @@
+#namePlayersWindow {
+  -fx-min-width: 280px;
+  -fx-min-height: 400px;
+}
+
 #header {
-	-fx-font: normal bold 20px 'arial';
+	-fx-font: normal bold 25px 'arial';
 	-fx-text-fill: #2196F3;
-	-fx-padding: 0 0 0 165;
+	-fx-padding: 10px;
+}
+
+ScrollPane {
+	-fx-min-height: 310px;
+	-fx-max-height: 310px;
+	-fx-padding: 10px;
 }
 
 Button {
