@@ -1,3 +1,7 @@
+#dogeCoinWindow {
+	-fx-background-color: white;
+}
+
 Label{
 	-fx-font: normal bold 16px 'arial';
 	-fx-text-fill: #2196F3;
