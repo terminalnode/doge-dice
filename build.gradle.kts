@@ -18,7 +18,8 @@ repositories {
 }
 
 dependencies {
-  // No dependencies yet. Except for JavaFX.
+  testImplementation("org.junit.jupiter:junit-jupiter-api:5.3.1")
+  testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.3.1")
 }
 
 configure<JavaPluginConvention> {
@@ -31,3 +32,8 @@ javafx {
   modules("javafx.controls", "javafx.fxml")
 }
 
+tasks.test {
+  useJUnitPlatform{
+    includeTags("OneSided")
+  }
+}
