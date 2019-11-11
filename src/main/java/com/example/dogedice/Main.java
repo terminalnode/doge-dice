@@ -28,15 +28,6 @@ public class Main extends Application {
     return Thread.currentThread().getContextClassLoader().getResource(fileName);
   }
 
-  public static void openWindow(String fxmlPath, String windowTitle) throws IOException {
-    Stage newWindow = new Stage();
-    Parent root = FXMLLoader.load(Main.getRes(fxmlPath));
-    Scene scene = new Scene(root);
-    newWindow.setTitle(windowTitle);
-    newWindow.setScene(scene);
-    newWindow.show();
-  }
-
   public static void replaceWindow(String fxmlPath, String windowTitle, MouseEvent mouseEvent) throws IOException {
     Stage stage = (Stage) ((Node)mouseEvent.getSource()).getScene().getWindow();
     stage.setTitle(windowTitle);
@@ -49,8 +40,10 @@ public class Main extends Application {
     return new FXMLLoader(getRes(fxmlPath));
   }
 
-  public static void hideParentWindow(MouseEvent mouseEvent) {
-    ((Node)mouseEvent.getSource()).getScene().getWindow().hide();
+  public static void replaceStage(MouseEvent mouseEvent, Scene scene, String title) {
+    Stage stage = (Stage) ((Node)mouseEvent.getSource()).getScene().getWindow();
+    stage.setTitle(title);
+    stage.setScene(scene);
   }
 }
 

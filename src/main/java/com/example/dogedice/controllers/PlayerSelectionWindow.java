@@ -11,8 +11,6 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Spinner;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Region;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 
@@ -29,18 +27,13 @@ public class PlayerSelectionWindow {
       alert.setTitle("Too few players!");
       alert.show();
     } else {
-      Stage newWindow = new Stage();
-      newWindow.setTitle("Name Players");
       FXMLLoader loader = Main.getLoader("fxml/namePlayersWindow.fxml");
       Parent root = loader.load();
-      NamePlayersWindow controller = loader.getController();
       Scene scene = new Scene(root);
-      newWindow.setScene(scene);
+      NamePlayersWindow controller = loader.getController();
       for (int i = 1; i <= numHum; i++) { controller.addHumPlayer(i); }
       for (int i = 1; i <= numCpu; i++) { controller.addCpuPlayer(i); }
-
-      Main.hideParentWindow(mouseEvent);
-      newWindow.show();
+      Main.replaceStage(mouseEvent, scene, "Name Players");
     }
   }
 

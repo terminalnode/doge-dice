@@ -11,7 +11,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 
@@ -54,18 +53,12 @@ public class NamePlayersWindow {
   }
 
   public void backIconClicked(MouseEvent mouseEvent) throws IOException {
-    Stage newWindow = new Stage();
-    newWindow.setTitle("Player Selection");
     FXMLLoader loader = Main.getLoader("fxml/playerSelectionWindow.fxml");
     Parent root = loader.load();
-    PlayerSelectionWindow controller = loader.getController();
     Scene scene = new Scene(root);
-    newWindow.setScene(scene);
-
+    PlayerSelectionWindow controller = loader.getController();
     controller.setCpuPlayersSpinner(numCpu);
     controller.setHumPlayersSpinner(numHum);
-
-    Main.hideParentWindow(mouseEvent);
-    newWindow.show();
+    Main.replaceStage(mouseEvent, scene, "Player Selection");
   }
 }
