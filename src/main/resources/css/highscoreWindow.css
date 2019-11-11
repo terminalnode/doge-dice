@@ -1,6 +1,10 @@
 #highscoreWindow {
-	padding: 5px;
-	-fx-background-color: white;
+		-fx-spacing: 5;
+  	-fx-alignment: center;
+  	-fx-pref-height: 100px;
+  	-fx-pref-width: 250px;
+  	-fx-padding: 5px;
+  	-fx-background-color: white;
 }
 
 Label{
