@@ -21,6 +21,7 @@ public class Main extends Application {
     Scene scene = new Scene(root);
     mainWindow.setScene(scene);
     mainWindow.show();
+    mainWindow.setResizable(false);
   }
 
   // Static helper methods used throughout the program
