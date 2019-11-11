@@ -36,6 +36,18 @@ public class PlayerSelectionWindow {
     newWindow.show();
   }
 
+  void setHumPlayersSpinner(int num) {
+    humPlayersSpinner
+        .getValueFactory()
+        .setValue(num);
+  }
+
+  void setCpuPlayersSpinner(int num) {
+    cpuPlayersSpinner
+        .getValueFactory()
+        .setValue(num);
+  }
+
   public void spinningDogeClicked(MouseEvent mouseEvent)  {
     ImageView spinningDoge = (ImageView ) mouseEvent.getSource();
     spinningDoge.setScaleX(spinningDoge.getScaleX() * -1);
