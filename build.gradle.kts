@@ -32,8 +32,19 @@ javafx {
   modules("javafx.controls", "javafx.fxml")
 }
 
+tasks.create<Test>("testDie") {
+  testLogging.showStandardStreams = true
+  include("**/*DieTest.class")
+  useJUnitPlatform()
+}
+
+tasks.create<Test>("testPlayer") {
+  testLogging.showStandardStreams = true
+  include("**/*PlayerTest.class")
+  useJUnitPlatform()
+}
+
 tasks.test {
-  useJUnitPlatform{
-    includeTags("OneSided")
-  }
+  testLogging.showStandardStreams = true
+  useJUnitPlatform()
 }
