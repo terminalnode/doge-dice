@@ -1,0 +1,53 @@
+#playWindow {
+  -fx-min-width: 280px;
+  -fx-min-height: 400px;
+  -fx-background-color: white;
+  -fx-alignment: top-center;
+}
+
+#header {
+	-fx-font-size: 20px;
+}
+
+.modifiers{
+ -fx-translate-y: -90;
+ -fx-translate-x: 250;
+}
+
+
+#backIcon {
+	  -fx-image: url("../images/backIcon.png");
+	  -fx-translate-y:110;
+	  -fx-translate-x:-3;
+}
+
+
+#dieTwenty {
+	  -fx-image: url("../images/d20.png");
+
+}
+
+#dieSix {
+	  -fx-image: url("../images/d6.png");
+}
+
+#bot {
+-fx-translate-y:10;
+}
+
+Button {
+	-fx-color: #2196F3;
+	-fx-shape: "M 350 300 L 500 300 L 500 200 L 350 200 L 350 300";
+	-fx-background-radius: 5em;
+	-fx-font: normal bold 20px 'serif';
+	-fx-focus-color: transparent;
+	-fx-faint-focus-color: transparent;
+	-fx-translate-x: 100;
+	-fx-translate-y: 150;
+}
+
+.spinningDoge {
+  -fx-image: url("../images/dogespin.gif");
+  -fx-translate-x: 100;
+  -fx-translate-y: 150;
+}

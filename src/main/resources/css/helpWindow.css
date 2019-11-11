@@ -1,5 +1,6 @@
 #helpWindow {
 	-fx-pref-width: 300;
+	-fx-background-color: white;
 }
 
 #header {

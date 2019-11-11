@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.image.ImageView?>
+
+<VBox id="playWindow"
+      xmlns="http://javafx.com/javafx"
+      stylesheets="@/css/playWindow.css"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.dogedice.controllers.PlayWindow">
+
+  <Label id="header"
+         text="Much game, such wow!"/>
+
+  <HBox styleClass="scrollPane">
+    <ScrollPane fx:id="playerPane"/>
+    <VBox>
+
+    </VBox>
+  </HBox>
+
+  <VBox styleClass="modifiers" spacing="10" >
+    <ImageView id="dieTwenty"
+               preserveRatio="true"
+               fitWidth="30"/>
+    <ImageView id="dieSix"
+               preserveRatio="true"
+               fitWidth="30"/>
+  </VBox>
+
+  <VBox styleClass="side2">
+
+  </VBox>
+
+  <VBox styleClass="bot">
+    <Button id="rollButton"
+            text="ROLL"/>
+
+  <ImageView id="backIcon"
+             preserveRatio="true"
+             fitWidth="40"/>
+
+  <ImageView id="spinningDoge"
+             preserveRatio="true"
+             fitWidth="40"/>
+
+
+  </VBox>
+
+
+
+</VBox>
