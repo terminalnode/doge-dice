@@ -16,28 +16,24 @@ public class NamePlayersWindow {
   VBox namePlayersBox;
 
   void addHumPlayer(int num) {
-    Label label = new Label("Human: ");
-    label.setLayoutY(5);
-    TextField textField = new TextField(String.format("Player #%s", num));
-    textField.prefWidth(50);
-    textField.setLayoutX(70);
-
-    Group parent = new Group();
-    parent.getChildren().addAll(label, textField);
-    namePlayersBox.getChildren().add(parent);
+    addPlayer("Human", num, true);
   }
 
   void addCpuPlayer(int num) {
-    Label label = new Label("CPU: ");
-    label.setLayoutY(5);
-    TextField textField = new TextField(String.format("CPU #%s", num));
-    textField.prefWidth(50);
-    textField.setLayoutX(70);
-    textField.setEditable(false);
+    addPlayer("Robo Doge", num, false);
+  }
 
-    Group parent = new Group();
-    parent.getChildren().addAll(label, textField);
-    namePlayersBox.getChildren().add(parent);
+  private void addPlayer(String playerType, int num, boolean editable) {
+    Label label = new Label(playerType + ": ");
+    label.setLayoutY(5);
+    TextField textField = new TextField(String.format("%s #%s", playerType, num));
+    textField.prefWidth(50);
+    textField.setLayoutX(90);
+    textField.setEditable(editable);
+
+    namePlayersBox
+        .getChildren()
+        .add(new Group(label, textField));
   }
 
   public void confirmButtonClicked(MouseEvent mouseEvent) {
