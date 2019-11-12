@@ -7,28 +7,12 @@
 
 #header {
 	-fx-font-size: 20px;
+	-fx-text-fill: #2196F3;
 }
 
-.modifiers{
+.modifiers {
  -fx-translate-y: -90;
- -fx-translate-x: 250;
-}
-
-
-#backIcon {
-	  -fx-image: url("../images/backIcon.png");
-	  -fx-translate-y:110;
-	  -fx-translate-x:-3;
-}
-
-
-#dieTwenty {
-	  -fx-image: url("../images/d20.png");
-
-}
-
-#dieSix {
-	  -fx-image: url("../images/d6.png");
+ -fx-translate-x: 240;
 }
 
 #bot {
@@ -36,7 +20,7 @@
 }
 
 Button {
-	-fx-color: #2196F3;
+	-fx-color: #FFCB7A;
 	-fx-shape: "M 350 300 L 500 300 L 500 200 L 350 200 L 350 300";
 	-fx-background-radius: 5em;
 	-fx-font: normal bold 20px 'serif';
@@ -46,8 +30,34 @@ Button {
 	-fx-translate-y: 150;
 }
 
+Button:hover {
+	-fx-color: #2196F3;
+}
+
+Button:focused {
+	-fx-background-insets: 0, 0, 1, 2;
+}
+
+Button:pressed {
+	-fx-color: #FFCB7A;
+}
+
+#dieTwenty {
+	  -fx-image: url("../images/d20.png");
+}
+
+#dieSix {
+	  -fx-image: url("../images/d6.png");
+}
+
 .spinningDoge {
   -fx-image: url("../images/dogespin.gif");
   -fx-translate-x: 100;
   -fx-translate-y: 150;
+}
+
+#backIcon {
+	  -fx-image: url("../images/backIcon.png");
+	  -fx-translate-y:110;
+	  -fx-translate-x:-3;
 }

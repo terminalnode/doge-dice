@@ -15,7 +15,7 @@
       fx:controller="com.example.dogedice.controllers.PlayWindow">
 
   <Label id="header"
-         text="Much game, such wow!"/>
+         text="GAME"/>
 
   <HBox styleClass="scrollPane">
     <ScrollPane fx:id="playerPane"/>
@@ -41,11 +41,14 @@
     <Button id="rollButton"
             text="ROLL"/>
 
+
   <ImageView id="backIcon"
              preserveRatio="true"
-             fitWidth="40"/>
+             fitWidth="40"
+             onMouseClicked="#backIconClicked"/>
 
-  <ImageView id="spinningDoge"
+
+    <ImageView id="spinningDoge"
              preserveRatio="true"
              fitWidth="40"/>
 
