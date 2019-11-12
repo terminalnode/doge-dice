@@ -3,7 +3,7 @@ package com.example.dogedice.model;
 import java.util.ArrayList;
 import java.util.List;
 
-abstract class Player {
+public abstract class Player {
   private String name;
   private int score;
   private List<Die> dice;
