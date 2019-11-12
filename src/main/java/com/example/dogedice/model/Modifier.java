@@ -1,11 +1,13 @@
 package com.example.dogedice.model;
 
 public class Modifier {
+  private int value;
+
   public Modifier(int value) {
-    throw new UnsupportedOperationException("Not implemented yet");
+    this.value = value;
   }
 
   public int getValue() {
-    throw new UnsupportedOperationException("Not implemented yet");
+    return this.value;
   }
 }
