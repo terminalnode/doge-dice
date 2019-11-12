@@ -17,7 +17,7 @@ public class Main extends Application {
   @Override
   public void start(Stage mainWindow) throws IOException {
     mainWindow.setTitle("Doge Dice");  // Give the stage a title.
-    Parent root = FXMLLoader.load(getRes("fxml/playWindow.fxml"));
+    Parent root = FXMLLoader.load(getRes("fxml/mainWindow.fxml"));
     Scene scene = new Scene(root);
     mainWindow.setScene(scene);
     mainWindow.show();
