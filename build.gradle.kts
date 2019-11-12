@@ -20,6 +20,7 @@ repositories {
 dependencies {
   testImplementation("org.junit.jupiter:junit-jupiter-api:5.3.1")
   testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.3.1")
+  testCompile("org.testfx:testfx-junit5:4.0.16-alpha")
 }
 
 configure<JavaPluginConvention> {
@@ -41,6 +42,12 @@ tasks.create<Test>("testDie") {
 tasks.create<Test>("testPlayer") {
   testLogging.showStandardStreams = true
   include("**/*PlayerTest.class")
+  useJUnitPlatform()
+}
+
+tasks.create<Test>("testMainWindow") {
+  testLogging.showStandardStreams = true
+  include("**/*MainWindowTest.class")
   useJUnitPlatform()
 }
 
