@@ -61,3 +61,16 @@ Button:pressed {
 	  -fx-translate-y:110;
 	  -fx-translate-x:-3;
 }
+
+#modifierLogo {
+	-fx-translate-x:-38;
+	-fx-translate-y:-35;
+		-fx-scale-y: 0.35;
+  	-fx-scale-x: 0.35;
+}
+
+#modifierLabel {
+	-fx-text-fill: purple;
+	-fx-translate-y:-110;
+	-fx-translate-x:8;
+}

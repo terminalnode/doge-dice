@@ -14,11 +14,7 @@ public class PlayWindow {
   public void backIconClicked(MouseEvent mouseEvent) throws IOException {
     FXMLLoader loader = Main.getLoader("fxml/mainWindow.fxml");
     Parent root = loader.load();
-
     Scene scene = new Scene(root);
-
     Main.replaceStage(mouseEvent, scene, "Doge dice");
-
-
   }
 }

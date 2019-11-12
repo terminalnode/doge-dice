@@ -8,6 +8,10 @@
 
 <?import javafx.scene.image.ImageView?>
 
+<?import javafx.scene.shape.Box?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.shape.SVGPath?>
 <VBox id="playWindow"
       xmlns="http://javafx.com/javafx"
       stylesheets="@/css/playWindow.css"
@@ -28,9 +32,16 @@
     <ImageView id="dieTwenty"
                preserveRatio="true"
                fitWidth="30"/>
+
     <ImageView id="dieSix"
                preserveRatio="true"
                fitWidth="30"/>
+
+
+    <SVGPath id="modifierLogo" content="M 450 250 L 500 200 L 550 250 L 500 300 L 450 250 " fill="transparent" strokeWidth="5" stroke="black"/>
+    <Label id="modifierLabel" text="+1"/>
+
+
   </VBox>
 
   <VBox styleClass="side2">
