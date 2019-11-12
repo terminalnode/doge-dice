@@ -13,7 +13,7 @@ class DieTest {
     Die die = new Die(sides);
     Set<Integer> rolls = new HashSet<>();
     for (int i = 0; i <= sides * 100; i++) {
-      rolls.add(die.rollDice());
+      rolls.add(die.roll());
     }
     assertTrue(rolls.contains(1));
     assertTrue(rolls.contains(sides));
