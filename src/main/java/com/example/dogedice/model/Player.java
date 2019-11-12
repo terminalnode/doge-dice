@@ -1,16 +1,23 @@
 package com.example.dogedice.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 abstract class Player {
-  Player(String name) {
-    throw new UnsupportedOperationException("Not implemented yet");
+  private String name;
+  private int score;
+  private List<Die> dice;
+
+  public Player(String name) {
+    this.name = name;
+    this.score = 0;
+    this.dice = new ArrayList();
   }
 
   public abstract boolean isBot();
 
   public void addDie(Die die) {
-    throw new UnsupportedOperationException("Not implemented yet");
+    this.dice.add(die);
   }
 
   public void addModifier(Modifier modifier) {
@@ -18,7 +25,7 @@ abstract class Player {
   }
 
   public List<Die> getDice() {
-    throw new UnsupportedOperationException("Not implemented yet");
+    return this.dice;
   }
 
   public List<Modifier> getModifiers() {
@@ -26,14 +33,20 @@ abstract class Player {
   }
 
   public int getScore() {
-    throw new UnsupportedOperationException("Not implemented yet");
+    return this.score;
   }
 
   public String getName() {
-    throw new UnsupportedOperationException("Not implemented yet");
+    return this.name;
   }
 
   public int rollAllDice() {
-    throw new UnsupportedOperationException("Not implemented yet");
+    int sum = 0;
+    for (Die die : this.dice) {
+      int outcome = die.roll();
+      sum += outcome;
+    }
+    score += sum;
+    return sum;
   }
 }
