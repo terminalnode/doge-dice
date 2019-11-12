@@ -7,7 +7,5 @@ public class Die {
     this.numOfSides = numOfSides;
   }
 
-  public int rollDice() {
-    return (int) (1 + Math.random() * numOfSides);
-  }
+  public int roll() { return (int) (1 + Math.random() * numOfSides); }
 }
