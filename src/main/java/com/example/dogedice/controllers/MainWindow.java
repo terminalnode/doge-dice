@@ -1,7 +1,9 @@
 package com.example.dogedice.controllers;
 
 import com.example.dogedice.Main;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import java.io.IOException;
 
@@ -23,7 +25,19 @@ public class MainWindow {
   }
 
   public void spinningDogeClicked(MouseEvent mouseEvent) {
-    ImageView spinningDoge = (ImageView) mouseEvent.getSource();
-    spinningDoge.setScaleX(spinningDoge.getScaleX() * -1);
+    ImageView imageView = (ImageView) mouseEvent.getSource();
+    Image image = imageView.getImage();
+
+    if (mouseEvent.getButton() == MouseButton.PRIMARY) {
+      imageView.setScaleX(imageView.getScaleX() * -1);
+    } else if (mouseEvent.getButton() == MouseButton.SECONDARY) {
+      if (image.getUrl().contains("dogespin")) {
+        Image newImage = new Image(Main.getRes("images/rainbowDoge.gif").toExternalForm());
+        imageView.setImage(newImage);
+      } else {
+        Image newImage = new Image(Main.getRes("images/dogespin.gif").toExternalForm());
+        imageView.setImage(newImage);
+      }
+    }
   }
 }

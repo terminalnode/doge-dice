@@ -21,11 +21,11 @@ public class Main extends Application {
     Scene scene = new Scene(root);
     mainWindow.setScene(scene);
     mainWindow.show();
-    mainWindow.setResizable(false);
+    //mainWindow.setResizable(false);
   }
 
   // Static helper methods used throughout the program
-  private static URL getRes(String fileName) {
+  public static URL getRes(String fileName) {
     return Thread.currentThread().getContextClassLoader().getResource(fileName);
   }
 
@@ -35,6 +35,7 @@ public class Main extends Application {
     Parent root = FXMLLoader.load(Main.getRes(fxmlPath));
     Scene scene = new Scene(root);
     stage.setScene(scene);
+    System.out.println(scene.lookup(".spinningDoge"));
   }
 
   public static FXMLLoader getLoader(String fxmlPath) {
