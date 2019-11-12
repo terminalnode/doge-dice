@@ -7,11 +7,13 @@ abstract class Player {
   private String name;
   private int score;
   private List<Die> dice;
+  private List<Modifier> modifiers;
 
   public Player(String name) {
     this.name = name;
     this.score = 0;
-    this.dice = new ArrayList();
+    this.dice = new ArrayList<>();
+    this.modifiers = new ArrayList<>();
   }
 
   public abstract boolean isBot();
@@ -21,7 +23,7 @@ abstract class Player {
   }
 
   public void addModifier(Modifier modifier) {
-    throw new UnsupportedOperationException("Not implemented yet");
+    this.modifiers.add(modifier);
   }
 
   public List<Die> getDice() {
@@ -29,7 +31,7 @@ abstract class Player {
   }
 
   public List<Modifier> getModifiers() {
-    throw new UnsupportedOperationException("Not implemented yet");
+    return this.modifiers;
   }
 
   public int getScore() {
