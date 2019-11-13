@@ -3,7 +3,7 @@ package com.example.dogedice.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Player {
+public abstract class Player implements Comparable<Player> {
   private String name;
   private int score;
   private List<Die> dice;
@@ -50,5 +50,10 @@ public abstract class Player {
     }
     score += sum;
     return sum;
+  }
+  public int compareTo(Player comparePlayer){
+    int compareScore = ((Player) comparePlayer).getScore();
+
+    return compareScore - this.score;
   }
 }

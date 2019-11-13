@@ -26,7 +26,7 @@
               fitWidth="50"/>
 
     <ScrollPane>
-      <VBox fx:id="winnerBox"/>
+      <VBox styleClass="subLabel" fx:id="winnerBox"/>
     </ScrollPane>
 
    <ImageView id="dabDogeRight"
