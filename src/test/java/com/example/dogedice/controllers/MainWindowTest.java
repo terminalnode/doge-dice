@@ -1,17 +1,15 @@
 package com.example.dogedice.controllers;
 
-import com.example.dogedice.Main;
+import com.example.dogedice.TestHelper;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.ImageView;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.testfx.api.FxAssert;
 import org.testfx.framework.junit5.ApplicationExtension;
 import org.testfx.framework.junit5.ApplicationTest;
-import org.testfx.matcher.control.LabeledMatchers;
 
 import java.io.IOException;
 
@@ -25,7 +23,7 @@ class MainWindowTest extends ApplicationTest {
   @Override
   public void start(Stage stage) throws IOException {
     this.stage = stage;
-    FXMLLoader loader = Main.getLoader("fxml/mainWindow.fxml");
+    FXMLLoader loader = HelperMethods.getLoader(HelperMethods.mainWindowFXML);
     Parent root = loader.load();
     this.scene = new Scene(root);
     stage.setScene(this.scene);
@@ -33,9 +31,13 @@ class MainWindowTest extends ApplicationTest {
   }
 
   @Test
-  void checkButtonTexts() {
-    FxAssert.verifyThat("#startButton", LabeledMatchers.hasText("START"));
-    FxAssert.verifyThat("#highscoreButton", LabeledMatchers.hasText("HIGHSCORE"));
+  void checkButtons() {
+    Button startButton = (Button) scene.lookup("#startButton");
+    Button highscoreButton = (Button) scene.lookup("#highscoreButton");
+    assertEquals("START", startButton.getText());
+    assertEquals("HIGHSCORE", highscoreButton.getText());
+    TestHelper.assertButtonStyle(this, startButton);
+    TestHelper.assertButtonStyle(this, highscoreButton);
   }
 
   @Test
@@ -73,23 +75,7 @@ class MainWindowTest extends ApplicationTest {
 
   @Test
   void spinningDogeClicked() {
-    assertEquals(1.0,scene.lookup("#spinningDoge1").getScaleX());
-    assertEquals(1.0,scene.lookup("#spinningDoge2").getScaleX());
-    clickOn("#spinningDoge1");
-    clickOn("#spinningDoge2");
-    assertEquals(-1.0,scene.lookup("#spinningDoge1").getScaleX());
-    assertEquals(-1.0,scene.lookup("#spinningDoge2").getScaleX());
-    clickOn("#spinningDoge1");
-    clickOn("#spinningDoge2");
-    assertEquals(1.0,scene.lookup("#spinningDoge1").getScaleX());
-    assertEquals(1.0,scene.lookup("#spinningDoge2").getScaleX());
-    rightClickOn("#spinningDoge1");
-    rightClickOn("#spinningDoge2");
-    assertTrue(((ImageView) scene.lookup("#spinningDoge1")).getImage().getUrl().contains("rainbowDoge.gif"));
-    assertTrue(((ImageView) scene.lookup("#spinningDoge2")).getImage().getUrl().contains("rainbowDoge.gif"));
-    rightClickOn("#spinningDoge1");
-    rightClickOn("#spinningDoge2");
-    assertTrue(((ImageView) scene.lookup("#spinningDoge1")).getImage().getUrl().contains("dogespin.gif"));
-    assertTrue(((ImageView) scene.lookup("#spinningDoge2")).getImage().getUrl().contains("dogespin.gif"));
+    TestHelper.assertDogeSpin(this, scene, "#spinningDoge1");
+    TestHelper.assertDogeSpin(this, scene, "#spinningDoge2");
   }
 }
