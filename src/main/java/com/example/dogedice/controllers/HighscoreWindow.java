@@ -14,7 +14,7 @@ public class HighscoreWindow {
   }
 
   public void backIconClicked(MouseEvent mouseEvent) throws IOException {
-    Main.replaceWindow("fxml/mainWindow.fxml", "Main Window", mouseEvent);
+    HelperMethods.replaceWindow(HelperMethods.mainWindowFXML, HelperMethods.mainWindowTitle, mouseEvent);
   }
 }
 

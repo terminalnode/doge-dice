@@ -17,7 +17,7 @@ Label{
 
 }
 
-#backIcon {
+#backButton {
 	-fx-image: url("../images/backIcon.png");
 	-fx-translate-x: -180;
 }

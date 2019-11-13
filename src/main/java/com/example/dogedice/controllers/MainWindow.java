@@ -9,35 +9,22 @@ import java.io.IOException;
 
 public class MainWindow {
   public void startButtonClicked(MouseEvent mouseEvent) throws IOException {
-    Main.replaceWindow("fxml/playerSelectionWindow.fxml", "Player Selection", mouseEvent);
+    HelperMethods.replaceWindow(HelperMethods.playerSelectionWindowFXML, HelperMethods.playerSelectionWindowTitle, mouseEvent);
   }
 
   public void highscoreButtonClicked(MouseEvent mouseEvent) throws IOException {
-    Main.replaceWindow("fxml/highscoreWindow.fxml", "Highscore", mouseEvent);
+    HelperMethods.replaceWindow(HelperMethods.highscoreWindowFXML, HelperMethods.highscoreWindowTitle, mouseEvent);
   }
 
   public void helpButtonClicked(MouseEvent mouseEvent) throws IOException {
-    Main.replaceWindow("fxml/helpWindow.fxml", "How to play", mouseEvent);
+    HelperMethods.replaceWindow(HelperMethods.helpWindowFXML, HelperMethods.helpWindowTitle, mouseEvent);
   }
 
   public void dogecoinButtonClicked(MouseEvent mouseEvent) throws IOException {
-    Main.replaceWindow("fxml/dogeCoinWindow.fxml", "Donate!", mouseEvent);
+    HelperMethods.replaceWindow(HelperMethods.dogeCoinWindowFXML, HelperMethods.dogeCoinWindowTitle, mouseEvent);
   }
 
   public void spinningDogeClicked(MouseEvent mouseEvent) {
-    ImageView imageView = (ImageView) mouseEvent.getSource();
-    Image image = imageView.getImage();
-
-    if (mouseEvent.getButton() == MouseButton.PRIMARY) {
-      imageView.setScaleX(imageView.getScaleX() * -1);
-    } else if (mouseEvent.getButton() == MouseButton.SECONDARY) {
-      if (image.getUrl().contains("dogespin")) {
-        Image newImage = new Image(Main.getRes("images/rainbowDoge.gif").toExternalForm());
-        imageView.setImage(newImage);
-      } else {
-        Image newImage = new Image(Main.getRes("images/dogespin.gif").toExternalForm());
-        imageView.setImage(newImage);
-      }
-    }
+    HelperMethods.spinningDogeClicked(mouseEvent);
   }
 }

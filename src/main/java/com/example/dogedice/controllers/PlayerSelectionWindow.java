@@ -1,6 +1,5 @@
 package com.example.dogedice.controllers;
 
-import com.example.dogedice.Main;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -27,13 +26,13 @@ public class PlayerSelectionWindow {
       alert.setTitle("Too few players!");
       alert.show();
     } else {
-      FXMLLoader loader = Main.getLoader("fxml/namePlayersWindow.fxml");
+      FXMLLoader loader = HelperMethods.getLoader(HelperMethods.namePlayersWindowFXML);
       Parent root = loader.load();
       Scene scene = new Scene(root);
       NamePlayersWindow controller = loader.getController();
       for (int i = 1; i <= numHum; i++) { controller.addHumPlayer(i); }
       for (int i = 1; i <= numCpu; i++) { controller.addCpuPlayer(i); }
-      Main.replaceStage(mouseEvent, scene, "Name Players");
+      HelperMethods.replaceStage(mouseEvent, scene, HelperMethods.namePlayersWindowTitle);
     }
   }
 
@@ -55,6 +54,6 @@ public class PlayerSelectionWindow {
   }
 
   public void backIconClicked(MouseEvent mouseEvent) throws IOException {
-    Main.replaceWindow("fxml/mainWindow.fxml", "Main Window", mouseEvent);
+    HelperMethods.replaceWindow(HelperMethods.mainWindowFXML, HelperMethods.mainWindowTitle, mouseEvent);
   }
 }

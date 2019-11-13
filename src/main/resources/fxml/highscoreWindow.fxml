@@ -62,7 +62,7 @@
                  preserveRatio="true"
                  fitWidth="50"
                  rotate="340"/>
-      <ImageView id="backIcon"
+      <ImageView id="backButton"
                  layoutY="185"
                  preserveRatio="true"
                  fitWidth="40"

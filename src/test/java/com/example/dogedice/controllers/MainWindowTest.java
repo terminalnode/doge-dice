@@ -4,15 +4,13 @@ import com.example.dogedice.Main;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.paint.Color;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-import org.hamcrest.Matcher;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.testfx.api.FxAssert;
 import org.testfx.framework.junit5.ApplicationExtension;
 import org.testfx.framework.junit5.ApplicationTest;
-import org.testfx.matcher.base.ColorMatchers;
 import org.testfx.matcher.control.LabeledMatchers;
 
 import java.io.IOException;
@@ -34,7 +32,6 @@ class MainWindowTest extends ApplicationTest {
     stage.show();
   }
 
-
   @Test
   void checkButtonTexts() {
     FxAssert.verifyThat("#startButton", LabeledMatchers.hasText("START"));
@@ -44,25 +41,34 @@ class MainWindowTest extends ApplicationTest {
   @Test
   void startButtonClicked() {
     clickOn("#startButton");
-    assertEquals("Player Selection", stage.getTitle());
+    assertEquals(HelperMethods.playerSelectionWindowTitle, stage.getTitle());
+    clickOn("#backButton");
+    assertEquals(HelperMethods.mainWindowTitle, stage.getTitle());
   }
 
   @Test
   void highscoreButtonClicked() {
     clickOn("#highscoreButton");
-    assertEquals("Highscore", stage.getTitle());
+    assertEquals(HelperMethods.highscoreWindowTitle, stage.getTitle());
+    clickOn("#backButton");
+    assertEquals(HelperMethods.mainWindowTitle, stage.getTitle());
   }
 
   @Test
   void helpButtonClicked() {
     clickOn("#helpButton");
-    assertEquals("How to play", stage.getTitle());
+    assertEquals(HelperMethods.helpWindowTitle, stage.getTitle());
+    clickOn("#backButton");
+    assertEquals(HelperMethods.mainWindowTitle, stage.getTitle());
   }
 
   @Test
   void dogecoinButtonClicked() {
     clickOn("#dogecoinButton");
-    assertEquals("Donate!", stage.getTitle());
+    assertEquals(HelperMethods.dogeCoinWindowTitle, stage.getTitle());
+    clickOn("#backButton");
+    assertEquals(HelperMethods.mainWindowTitle, stage.getTitle());
+
   }
 
   @Test
@@ -77,5 +83,13 @@ class MainWindowTest extends ApplicationTest {
     clickOn("#spinningDoge2");
     assertEquals(1.0,scene.lookup("#spinningDoge1").getScaleX());
     assertEquals(1.0,scene.lookup("#spinningDoge2").getScaleX());
+    rightClickOn("#spinningDoge1");
+    rightClickOn("#spinningDoge2");
+    assertTrue(((ImageView) scene.lookup("#spinningDoge1")).getImage().getUrl().contains("rainbowDoge.gif"));
+    assertTrue(((ImageView) scene.lookup("#spinningDoge2")).getImage().getUrl().contains("rainbowDoge.gif"));
+    rightClickOn("#spinningDoge1");
+    rightClickOn("#spinningDoge2");
+    assertTrue(((ImageView) scene.lookup("#spinningDoge1")).getImage().getUrl().contains("dogespin.gif"));
+    assertTrue(((ImageView) scene.lookup("#spinningDoge2")).getImage().getUrl().contains("dogespin.gif"));
   }
 }

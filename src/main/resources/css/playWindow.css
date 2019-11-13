@@ -56,7 +56,7 @@ Button:pressed {
   -fx-translate-y: 150;
 }
 
-#backIcon {
+#backButton {
 	  -fx-image: url("../images/backIcon.png");
 	  -fx-translate-y:110;
 	  -fx-translate-x:-3;

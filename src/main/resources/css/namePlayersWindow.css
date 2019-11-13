@@ -37,6 +37,6 @@ Button:pressed {
   -fx-image: url("../images/dogespin.gif");
 }
 
-#backIcon {
+#backButton {
  	-fx-image: url("../images/backIcon.png");
  }

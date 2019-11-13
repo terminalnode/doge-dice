@@ -13,6 +13,6 @@
 	-fx-padding: 0 10 10 10;
 }
 
-#backIcon {
+#backButton {
 	-fx-image: url("../images/backIcon.png");
 }

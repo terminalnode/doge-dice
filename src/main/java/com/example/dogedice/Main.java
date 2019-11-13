@@ -35,7 +35,6 @@ public class Main extends Application {
     Parent root = FXMLLoader.load(Main.getRes(fxmlPath));
     Scene scene = new Scene(root);
     stage.setScene(scene);
-    System.out.println(scene.lookup(".spinningDoge"));
   }
 
   public static FXMLLoader getLoader(String fxmlPath) {

@@ -34,24 +34,20 @@ javafx {
 }
 
 tasks.create<Test>("testDie") {
-  testLogging.showStandardStreams = true
   include("**/*DieTest.class")
   useJUnitPlatform()
 }
 
 tasks.create<Test>("testPlayer") {
-  testLogging.showStandardStreams = true
   include("**/*PlayerTest.class")
   useJUnitPlatform()
 }
 
 tasks.create<Test>("testMainWindow") {
-  testLogging.showStandardStreams = true
   include("**/*MainWindowTest.class")
   useJUnitPlatform()
 }
 
 tasks.test {
-  testLogging.showStandardStreams = true
   useJUnitPlatform()
 }

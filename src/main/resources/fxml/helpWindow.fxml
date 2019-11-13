@@ -11,7 +11,7 @@
   <Label id="header" text="HOW TO PLAY"/>
   <Label fx:id="text" id="text" wrapText="true"/>
 
-  <ImageView id="backIcon"
+  <ImageView id="backButton"
   layoutY="185"
   preserveRatio="true"
   fitWidth="40"

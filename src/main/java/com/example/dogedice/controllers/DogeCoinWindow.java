@@ -5,10 +5,12 @@ import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
 
+import static com.example.dogedice.controllers.HelperMethods.replaceWindow;
+
 public class DogeCoinWindow {
 
   public void backIconClicked(MouseEvent mouseEvent) throws IOException {
-    Main.replaceWindow("fxml/mainWindow.fxml", "Main Window", mouseEvent);
+    HelperMethods.replaceWindow(HelperMethods.mainWindowFXML, HelperMethods.mainWindowTitle, mouseEvent);
   }
 }
 

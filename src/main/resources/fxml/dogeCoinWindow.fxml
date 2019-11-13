@@ -17,7 +17,7 @@
              preserveRatio="true"/>
   <ImageView id="dogeDonate"
              preserveRatio="true"/>
-  <ImageView id="backIcon"
+  <ImageView id="backButton"
              preserveRatio="true"
              fitWidth="40"
 

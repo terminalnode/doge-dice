@@ -43,7 +43,7 @@
   </VBox>
 
   <HBox styleClass="spinnerBox" spacing="47">
-    <ImageView id="backIcon"
+    <ImageView id="backButton"
                preserveRatio="true"
                fitWidth="40"
                onMouseClicked="#backIconClicked"/>
