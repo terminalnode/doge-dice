@@ -1,6 +1,5 @@
 package com.example.dogedice.controllers;
 
-import com.example.dogedice.Main;
 import com.example.dogedice.model.Player;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

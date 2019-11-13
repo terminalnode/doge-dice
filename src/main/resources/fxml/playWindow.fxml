@@ -5,13 +5,9 @@
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
 <?import javafx.scene.image.ImageView?>
-
-<?import javafx.scene.shape.Box?>
-<?import javafx.scene.shape.Circle?>
-<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.shape.SVGPath?>
+
 <VBox id="playWindow"
       xmlns="http://javafx.com/javafx"
       stylesheets="@/css/playWindow.css"
@@ -20,14 +16,15 @@
 
   <Label id="header"
          text="GAME"/>
+  <HBox styleClass="gameWindow">
 
   <ScrollPane styleClass="scrollPane">
 
-    <VBox fx:id="playerPaneBox"/>
+    <VBox id="playerPaneBox" fx:id="playerPaneBox" maxHeight="200" maxWidth="200"/>
 
   </ScrollPane>
 
-  <VBox styleClass="modifiers" spacing="10" >
+  <VBox styleClass="modifiers" spacing="10" maxHeight="300" maxWidth="240">
     <ImageView id="dieTwenty"
                preserveRatio="true"
                fitWidth="30"/>
@@ -40,12 +37,9 @@
     <SVGPath id="modifierLogo" content="M 450 250 L 500 200 L 550 250 L 500 300 L 450 250 " fill="transparent" strokeWidth="5" stroke="black"/>
     <Label id="modifierLabel" text="+1"/>
 
-
   </VBox>
 
-  <VBox styleClass="side2">
-
-  </VBox>
+  </HBox>
 
   <VBox styleClass="bot">
     <Button id="rollButton"
@@ -62,9 +56,6 @@
              preserveRatio="true"
              fitWidth="40"/>
 
-
   </VBox>
-
-
 
 </VBox>

@@ -1,6 +1,8 @@
 #playWindow {
-  -fx-min-width: 280px;
-  -fx-min-height: 400px;
+  -fx-min-width: 400px;
+  -fx-min-height: 480px;
+  -fx-max-width: 400px;
+  -fx-max-height: 480px;
   -fx-background-color: white;
   -fx-alignment: top-center;
 }
@@ -10,13 +12,26 @@
 	-fx-text-fill: #2196F3;
 }
 
+.gameWindow{
+	-fx-scale-x:.7;
+	-fx-scale-y:.7;
+	-fx-padding: -10 0 0 10;
+}
+
+.scrollPane{
+	-fx-max-width: 200;
+	-fx-translate-x: -65;
+	-fx-translate-y: 8;
+}
+
 .modifiers {
- -fx-translate-y: -90;
- -fx-translate-x: 240;
+ -fx-translate-y: -30;
+ -fx-translate-x: 280;
+
 }
 
 #bot {
--fx-translate-y:-100;
+-fx-translate-y:-80;
 -fx-translate-x:100;
 }
 
@@ -27,8 +42,8 @@ Button {
 	-fx-font: normal bold 20px 'serif';
 	-fx-focus-color: transparent;
 	-fx-faint-focus-color: transparent;
-	-fx-translate-x: 100;
-	-fx-translate-y: 150;
+	-fx-translate-x: 150;
+	-fx-translate-y: 147;
 }
 
 Button:hover {
@@ -53,8 +68,10 @@ Button:pressed {
 
 .spinningDoge {
   -fx-image: url("../images/dogespin.gif");
-  -fx-translate-x: 100;
-  -fx-translate-y: 150;
+  -fx-translate-x: 110;
+  -fx-translate-y: 110;
+  -fx-scale-x:20;
+  -fx-scale-y:20;
 }
 
 #backButton {
