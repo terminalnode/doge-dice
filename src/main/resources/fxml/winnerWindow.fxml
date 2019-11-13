@@ -4,6 +4,8 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Label?>
 
 <VBox id="winnerWindow"
       stylesheets="@/css/winnerWindow.css"
@@ -23,7 +25,9 @@
               fitHeight="50"
               fitWidth="50"/>
 
-    <Label styleClass="subLabel" fx:id="printWinner" id="text" />
+    <ScrollPane>
+      <VBox fx:id="winnerBox"/>
+    </ScrollPane>
 
    <ImageView id="dabDogeRight"
               fitHeight="50"

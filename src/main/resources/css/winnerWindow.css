@@ -2,7 +2,7 @@
 	-fx-spacing: 5;
 	-fx-alignment: center;
 	-fx-pref-height: 100px;
-	-fx-pref-width: 400px;
+	-fx-pref-width: 300px;
 	-fx-padding: 5px;
 	-fx-background-color: white;
 }
@@ -28,6 +28,16 @@
 	-fx-faint-focus-color: transparent;
 }
 
+ScrollPane {
+	-fx-min-height: 50px;
+	-fx-max-height: 50px;
+	-fx-min-width: 150px;
+	-fx-max-width: 150px;
+	-fx-padding: 10px;
+	-fx-background-color: white;
+
+}
+
 Button:hover {
 	-fx-color: #2196F3;
 }
@@ -44,7 +54,7 @@ Button:pressed {
 .center {
  -fx-alignment: center;
  -fx-padding: 5;
- -fx-spacing: 10;
+ -fx-spacing: 20;
 
 }
 
@@ -57,6 +67,7 @@ Button:pressed {
 .subLabel {
 	-fx-font: normal bold 20px 'Arial';
 	-fx-text-fill: #2196F3;
+	-fx-alignment: center;
 }
 
 #firework {
