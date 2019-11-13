@@ -1,6 +1,5 @@
 package com.example.dogedice.controllers;
 
-import com.example.dogedice.Main;
 import com.example.dogedice.model.CpuPlayer;
 import com.example.dogedice.model.HumanPlayer;
 import com.example.dogedice.model.Player;
@@ -18,8 +17,7 @@ import javafx.scene.layout.VBox;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+
 
 public class NamePlayersWindow {
   private int numCpu = 0;
@@ -60,8 +58,9 @@ public class NamePlayersWindow {
     Scene scene = new Scene(root);
     PlayWindow controller = loader.getController();
     List<Player> players = new ArrayList<>();
-    for (TextField tf : humans) { players.add(new HumanPlayer(tf.getText())); }
-    for (TextField tf : cpus) { players.add(new CpuPlayer(tf.getText())); }
+    for (TextField tf : humans) { players.add(new HumanPlayer(tf.getText()));}
+    for (TextField tf : cpus) { players.add(new CpuPlayer(tf.getText()));}
+    controller.addPlayers(players);
     HelperMethods.replaceStage(mouseEvent, scene, HelperMethods.playWindowTitle);
   }
 

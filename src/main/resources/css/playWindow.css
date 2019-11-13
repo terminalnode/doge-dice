@@ -16,7 +16,8 @@
 }
 
 #bot {
--fx-translate-y:10;
+-fx-translate-y:-100;
+-fx-translate-x:100;
 }
 
 Button {
