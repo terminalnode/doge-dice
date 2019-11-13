@@ -21,10 +21,10 @@
     </ScrollPane>
 
   <HBox styleClass="namePlayersWindow" spacing="47">
-    <ImageView id="backIcon"
+    <ImageView id="backButton"
                preserveRatio="true"
                fitWidth="40"
-               onMouseClicked="#backIconClicked"/>
+               onMouseClicked="#backButtonClicked"/>
 
     <Button id="confirmButton"
             layoutX="250"

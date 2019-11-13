@@ -54,10 +54,15 @@ public class NamePlayersWindow {
         .add(new Group(label, textField));
   }
 
-  public void confirmButtonClicked(MouseEvent mouseEvent) {
+  public void confirmButtonClicked(MouseEvent mouseEvent) throws IOException {
+    FXMLLoader loader = HelperMethods.getLoader(HelperMethods.playWindowFXML);
+    Parent root = loader.load();
+    Scene scene = new Scene(root);
+    PlayWindow controller = loader.getController();
     List<Player> players = new ArrayList<>();
     for (TextField tf : humans) { players.add(new HumanPlayer(tf.getText())); }
     for (TextField tf : cpus) { players.add(new CpuPlayer(tf.getText())); }
+    HelperMethods.replaceStage(mouseEvent, scene, HelperMethods.playWindowTitle);
   }
 
   public void spinningDogeClicked(MouseEvent mouseEvent)  {
@@ -65,13 +70,13 @@ public class NamePlayersWindow {
     spinningDoge.setScaleX(spinningDoge.getScaleX() * -1);
   }
 
-  public void backIconClicked(MouseEvent mouseEvent) throws IOException {
-    FXMLLoader loader = Main.getLoader("fxml/playerSelectionWindow.fxml");
+  public void backButtonClicked(MouseEvent mouseEvent) throws IOException {
+    FXMLLoader loader = HelperMethods.getLoader(HelperMethods.playerSelectionWindowFXML);
     Parent root = loader.load();
     Scene scene = new Scene(root);
     PlayerSelectionWindow controller = loader.getController();
     controller.setCpuPlayersSpinner(numCpu);
     controller.setHumPlayersSpinner(numHum);
-    Main.replaceStage(mouseEvent, scene, "Player Selection");
+    HelperMethods.replaceWindow(HelperMethods.playerSelectionWindowFXML, HelperMethods.playerSelectionWindowTitle, mouseEvent);
   }
 }
