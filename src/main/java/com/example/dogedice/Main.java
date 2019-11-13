@@ -1,13 +1,20 @@
 package com.example.dogedice;
 
+import com.example.dogedice.controllers.HelperMethods;
 import javafx.application.*;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.*;
+import javafx.scene.control.Spinner;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.*;
 
+import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.net.URL;
+import java.nio.file.Files;
 
 public class Main extends Application {
   public static void main(String[] args) {
@@ -15,13 +22,17 @@ public class Main extends Application {
   }
 
   @Override
-  public void start(Stage mainWindow) throws IOException {
+  public void start(Stage mainWindow) throws IOException, URISyntaxException {
     mainWindow.setTitle("Doge Dice");  // Give the stage a title.
     Parent root = FXMLLoader.load(getRes("fxml/mainWindow.fxml"));
     Scene scene = new Scene(root);
     mainWindow.setScene(scene);
     mainWindow.show();
-    //mainWindow.setResizable(false);
+
+    File soundFile = new File(getRes("sounds/biggestSmile.wav").toURI());
+    MediaPlayer player = new MediaPlayer(new Media(soundFile.toURI().toString()));
+    player.setCycleCount(MediaPlayer.INDEFINITE);
+    player.play();
   }
 
   // Static helper methods used throughout the program

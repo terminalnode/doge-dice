@@ -30,7 +30,7 @@ configure<JavaPluginConvention> {
 
 javafx {
   version = "11"
-  modules("javafx.controls", "javafx.fxml")
+  modules("javafx.controls", "javafx.fxml", "javafx.media")
 }
 
 tasks.create<Test>("testDie") {
