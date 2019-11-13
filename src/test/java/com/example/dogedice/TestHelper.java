@@ -25,7 +25,6 @@ public class TestHelper {
     assertEquals(1.0,scene.lookup(id).getScaleX());
     origin.rightClickOn(id);
     assertImageViewUrlContains(scene, id, "rainbowDoge.gif");
-    assertTrue(((ImageView) scene.lookup(id)).getImage().getUrl().contains("rainbowDoge.gif"));
     origin.rightClickOn(id);
     assertImageViewUrlContains(scene, id, "dogespin.gif");
   }
