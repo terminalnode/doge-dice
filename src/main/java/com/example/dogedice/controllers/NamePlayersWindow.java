@@ -76,6 +76,6 @@ public class NamePlayersWindow {
     PlayerSelectionWindow controller = loader.getController();
     controller.setCpuPlayersSpinner(numCpu);
     controller.setHumPlayersSpinner(numHum);
-    HelperMethods.replaceWindow(HelperMethods.playerSelectionWindowFXML, HelperMethods.playerSelectionWindowTitle, mouseEvent);
+    HelperMethods.replaceStage(mouseEvent, scene, HelperMethods.playerSelectionWindowTitle);
   }
 }
