@@ -34,8 +34,10 @@
                fitWidth="55"/>
 
 
-    <SVGPath id="modifierLogo" content="M 450 250 L 500 200 L 550 250 L 500 300 L 450 250 " fill="transparent" strokeWidth="5" stroke="black"/>
+    <SVGPath id="modifierLogo" content="M 400 300 L 450 250 L 500 300 L 450 350 L 400 300 " fill="transparent" strokeWidth="5" stroke="black"/>
     <Label id="modifierLabel" text="+1"/>
+    <Label id="score" text="SCORE"/>
+    <Label id="testLabel" fx:id="roll"/>
 
   </VBox>
 
@@ -43,7 +45,8 @@
 
   <VBox styleClass="bot">
     <Button id="rollButton"
-            text="ROLL"/>
+            text="ROLL"
+            onMouseClicked="#rollButtonClicked"/>
 
 
   <ImageView id="backButton"

@@ -81,7 +81,7 @@ Button:pressed {
 
 #backButton {
 	  -fx-image: url("../images/backIcon.png");
-	  -fx-translate-y:45;
+	  -fx-translate-y:25;
 	  -fx-translate-x:-3;
 }
 
@@ -97,4 +97,10 @@ Button:pressed {
 	-fx-translate-y:-108;
 	-fx-font-size: 20px;
 	-fx-translate-x:15;
+}
+
+#testLabel {
+	-fx-text-fill: red;
+	-fx-padding: 0 0 0 20;
+	-fx-border-style: dashed;
 }

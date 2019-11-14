@@ -15,6 +15,9 @@ import java.io.IOException;
 import java.util.List;
 
 public class PlayWindow {
+  private int index = 0;
+  private List<Player> players;
+
   @FXML
   VBox playerPaneBox;
 
@@ -24,20 +27,32 @@ public class PlayWindow {
     Scene scene = new Scene(root);
     HelperMethods.replaceWindow(HelperMethods.mainWindowFXML, HelperMethods.mainWindowTitle, mouseEvent);  }
 
+  @FXML
+  Label roll;
 
+  public void rollButtonClicked(MouseEvent mouseEvent) throws IOException{
+    Player player = players.get(index);
+
+        roll
+        .setText("" + player.rollAllDice());
+
+  }
 
   public void addPlayers(List<Player> players) {
-    for(Player player : players){
+    for (Player player : players){
       Label label = new Label(player.getName());
       playerPaneBox
         .getChildren()
           .add(label);
     }
+    this.players = players;
   }
 
+  /*
   public void changePlayer() {
     for (int i = 0; i <= ; i ++)
   }
+  */
 }
 
 
