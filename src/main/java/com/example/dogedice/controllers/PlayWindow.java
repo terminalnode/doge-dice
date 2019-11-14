@@ -32,10 +32,8 @@ public class PlayWindow {
 
   public void rollButtonClicked(MouseEvent mouseEvent) throws IOException{
     Player player = players.get(index);
-
-        roll
-        .setText("" + player.rollAllDice());
-
+      roll.setText("" + player.rollAllDice());
+      changePlayer();
   }
 
   public void addPlayers(List<Player> players) {
@@ -48,11 +46,13 @@ public class PlayWindow {
     this.players = players;
   }
 
-  /*
+
   public void changePlayer() {
-    for (int i = 0; i <= ; i ++)
+    index++;
+    if (players.size() == index){
+     index = 0;
+    }
   }
-  */
 }
 
 
