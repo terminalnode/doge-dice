@@ -2,12 +2,16 @@
 package com.example.dogedice.model;
 
 import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class PlayerTest {
   private Random r = new Random();
+  private Logger logger = LoggerFactory.getLogger(DieTest.class);
 
   private String randomString() {
     String characters = "abcdefghijklmnopqrstuvwxyzåäöæœþđłçô" +
@@ -23,7 +27,7 @@ class PlayerTest {
 
   @Test
   void setName() {
-    System.out.println("Testing creating a few players with random names.");
+    logger.info("Creating 100 human players and 100 CPU players with random names.");
     for (int i = 0; i < 100; i++) {
       String str = randomString();
       Player human = new HumanPlayer(str);
@@ -35,10 +39,11 @@ class PlayerTest {
 
   @Test
   void rollDice() {
+    logger.info("Creating a human player and a cpu player");
     Player human = new HumanPlayer("Human");
     Player cpu = new CpuPlayer("CPU");
 
-    System.out.println("Testing that dice are added properly.");
+    logger.info("Testing that dice are added properly.");
     for (int i = 1; i <= 100; i++) {
       Die die = new Die(1);
       human.addDie(die);
@@ -51,14 +56,14 @@ class PlayerTest {
 
   @Test
   void isBot() {
-    System.out.println("Testing that HumanPlayer isn't a bot and that CpuPlayer is a bot.");
+    logger.info("Testing that HumanPlayer isn't a bot and that CpuPlayer is a bot.");
     assertFalse(new HumanPlayer("").isBot());
     assertTrue(new CpuPlayer("").isBot());
   }
 
   @Test
   void getPoints() {
-    System.out.println("Testing that points are added and summed up correctly.");
+    logger.info("Testing that points are added and summed up correctly.");
     Player human = new HumanPlayer("");
     Player cpu = new CpuPlayer("");
     for (int i = 0; i < 10; i++) {
@@ -87,16 +92,35 @@ class PlayerTest {
 
   @Test
   void addModifiers() {
-    System.out.println("Testing that modifiers are added correctly.");
+    logger.info("Creating human and cpu player.");
     Player human = new HumanPlayer("");
     Player cpu = new CpuPlayer("");
-    for (int i = 0; i < 10; i++) {
-      Modifier mod = new Modifier(5);
+
+    logger.info("Adding a single die to each player.");
+    Die exampleDie = new Die(6);
+    human.addDie(exampleDie);
+    cpu.addDie(exampleDie);
+
+    int modifierSum = 0;
+    int totalScore = 0;
+    logger.info("Adding modifiers +1, +2 .. +10 to each of the players while doing some checks.");
+    for (int i = 1; i <= 10; i++) {
+      modifierSum += i;
+      totalScore += modifierSum;
+      Modifier mod = new Modifier(i);
+      logger.info("Adding modifier with value {} to human and cpu", i);
       human.addModifier(mod);
       cpu.addModifier(mod);
-    }
 
-    assertEquals(10, human.getModifiers().size());
-    assertEquals(10, cpu.getModifiers().size());
+      logger.info("Asserting that the modifier sums are {}", modifierSum);
+      assertEquals(modifierSum, human.sumAllModifiers());
+      assertEquals(modifierSum, cpu.sumAllModifiers());
+      logger.info("Asserting that the players have {} modifiers each", i);
+      assertEquals(i, human.getModifiers().size());
+      assertEquals(i, cpu.getModifiers().size());
+      logger.info("Asserting that both players now have {} points", totalScore);
+      assertEquals(totalScore, human.getScore());
+      assertEquals(totalScore, human.getScore());
+    }
   }
 }

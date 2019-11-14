@@ -1,6 +1,8 @@
 package com.example.dogedice.model;
 
 import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -8,8 +10,10 @@ import java.util.Set;
 import static org.junit.jupiter.api.Assertions.*;
 
 class DieTest {
+  private Logger logger = LoggerFactory.getLogger(DieTest.class);
+
   private void rollArbitraryDie(int sides) {
-    System.out.println(String.format("Testing with %s-sided die", sides));
+    logger.info(String.format("Testing with %s-sided die", sides));
     Die die = new Die(sides);
     Set<Integer> rolls = new HashSet<>();
     for (int i = 0; i <= sides * 100; i++) {

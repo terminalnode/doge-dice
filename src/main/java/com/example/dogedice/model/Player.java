@@ -51,6 +51,15 @@ public abstract class Player implements Comparable<Player> {
     score += sum;
     return sum;
   }
+
+  // TODO summera alla modifiers från this.modifiers, multiplicera med antalet tärningar.
+  // TODO För att få värdet på en modifier använd metoden `.getValue()`
+  // TODO Lägg till summan till this.score och returnera sedan summan.
+  // TODO ta bort alla kommentarer där det står TODO när du är klar.
+  public int sumAllModifiers() {
+    return 1; // TODO Ändra till faktiska summan
+  }
+
   public int compareTo(Player comparePlayer){
     int compareScore = ((Player) comparePlayer).getScore();
 
