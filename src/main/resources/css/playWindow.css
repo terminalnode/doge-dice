@@ -13,15 +13,17 @@
 }
 
 .gameWindow{
-	-fx-scale-x:.7;
-	-fx-scale-y:.7;
+	-fx-scale-x:.8;
+	-fx-scale-y:.8;
 	-fx-padding: -10 0 0 10;
+	-fx-font-size: 16px;
 }
 
 .scrollPane{
 	-fx-max-width: 200;
-	-fx-translate-x: -65;
-	-fx-translate-y: 8;
+	-fx-translate-x: -15;
+	-fx-translate-y: 6;
+	-fx-background-color: transparent;
 }
 
 .modifiers {
