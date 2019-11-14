@@ -1,5 +1,7 @@
 package com.example.dogedice.controllers;
 
+import com.example.dogedice.model.Die;
+import com.example.dogedice.model.HumanPlayer;
 import com.example.dogedice.model.Player;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -31,6 +33,10 @@ public class PlayWindow {
         .getChildren()
           .add(label);
     }
+  }
+
+  public void changePlayer() {
+    for (int i = 0; i <= ; i ++)
   }
 }
 
