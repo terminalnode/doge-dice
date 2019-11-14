@@ -1,6 +1,7 @@
 package com.example.dogedice.controllers;
 
 import com.example.dogedice.model.CpuPlayer;
+import com.example.dogedice.model.Die;
 import com.example.dogedice.model.HumanPlayer;
 import com.example.dogedice.model.Player;
 import javafx.fxml.FXML;
@@ -17,7 +18,6 @@ import javafx.scene.layout.VBox;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
 
 public class NamePlayersWindow {
   private int numCpu = 0;
@@ -58,10 +58,26 @@ public class NamePlayersWindow {
     Scene scene = new Scene(root);
     PlayWindow controller = loader.getController();
     List<Player> players = new ArrayList<>();
-    for (TextField tf : humans) { players.add(new HumanPlayer(tf.getText()));}
-    for (TextField tf : cpus) { players.add(new CpuPlayer(tf.getText()));}
+    for (TextField tf : humans) {
+      players.add(createHuman(tf.getText(), new int[]{6,6}));
+    }
+    for (TextField tf : cpus) {
+      players.add(createBot(tf.getText(), new int[]{6,6}));
+    }
     controller.addPlayers(players);
     HelperMethods.replaceStage(mouseEvent, scene, HelperMethods.playWindowTitle);
+  }
+
+  private Player createHuman(String name, int[] dice) {
+    Player newPlayer = new HumanPlayer(name);
+    for (int i : dice) { newPlayer.addDie(new Die(i)); }
+    return newPlayer;
+  }
+
+  private Player createBot(String name, int[] dice) {
+    Player newPlayer = new CpuPlayer(name);
+    for (int i : dice) { newPlayer.addDie(new Die(i)); }
+    return newPlayer;
   }
 
   public void spinningDogeClicked(MouseEvent mouseEvent)  {
