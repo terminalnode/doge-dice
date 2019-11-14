@@ -34,18 +34,27 @@ javafx {
   modules("javafx.controls", "javafx.fxml", "javafx.media")
 }
 
-tasks.create<Test>("testDie") {
-  include("**/*DieTest.class")
-  useJUnitPlatform()
-}
-
-tasks.create<Test>("testPlayer") {
-  include("**/*PlayerTest.class")
-  useJUnitPlatform()
-}
-
 tasks.create<Test>("testMainWindow") {
+  testLogging.showStandardStreams = true
   include("**/*MainWindowTest.class")
+  useJUnitPlatform()
+}
+
+tasks.create<Test>("testPlayerSelection") {
+  testLogging.showStandardStreams = true
+  include("**/*PlayerSelectionWindowTest.class")
+  useJUnitPlatform()
+}
+
+tasks.create<Test>("testModel") {
+  testLogging.showStandardStreams = true
+  include("**/model/*.class")
+  useJUnitPlatform()
+}
+
+tasks.create<Test>("testGUI") {
+  testLogging.showStandardStreams = true
+  include("**/controllers/*.class")
   useJUnitPlatform()
 }
 
