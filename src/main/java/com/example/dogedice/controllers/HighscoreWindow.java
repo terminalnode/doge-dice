@@ -1,9 +1,7 @@
 package com.example.dogedice.controllers;
 
-import com.example.dogedice.Main;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-
 import java.io.IOException;
 
 public class HighscoreWindow {
