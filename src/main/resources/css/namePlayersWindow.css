@@ -25,12 +25,12 @@ Button {
 	-fx-faint-focus-color: transparent;
 }
 
-Button {
-	-fx-color: #2196F3;
-}
-
 Button:pressed {
 	-fx-color: #FFCB7A;
+}
+
+Button:hover {
+	-fx-color: #2196F3;
 }
 
 #spinningDoge {

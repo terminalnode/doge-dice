@@ -18,20 +18,20 @@
          text="GAME"/>
   <HBox styleClass="gameWindow">
 
-  <ScrollPane styleClass="scrollPane">
+  <ScrollPane styleClass="scrollPane" hbarPolicy="NEVER" minHeight="350" maxHeight="350" minWidth="500" maxWidth="400">
 
-    <VBox id="playerPaneBox" fx:id="playerPaneBox" maxHeight="200" maxWidth="200"/>
+    <VBox id="playerPaneBox" fx:id="playerPaneBox" minHeight="-Infinity" maxHeight="-Infinity" minWidth="470" maxWidth="420"/>
 
   </ScrollPane>
 
   <VBox styleClass="modifiers" spacing="10" maxHeight="300" maxWidth="240">
     <ImageView id="dieTwenty"
                preserveRatio="true"
-               fitWidth="30"/>
+               fitWidth="55"/>
 
     <ImageView id="dieSix"
                preserveRatio="true"
-               fitWidth="30"/>
+               fitWidth="55"/>
 
 
     <SVGPath id="modifierLogo" content="M 450 250 L 500 200 L 550 250 L 500 300 L 450 250 " fill="transparent" strokeWidth="5" stroke="black"/>
