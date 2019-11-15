@@ -1,5 +1,7 @@
 package com.example.dogedice.model;
 
+import javafx.collections.ModifiableObservableListBase;
+
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -53,25 +55,15 @@ public abstract class Player implements Comparable<Player> {
     return sum;
   }
 
-  // TODO summera alla modifiers från this.modifiers, multiplicera med antalet tärningar.
-  // TODO För att få värdet på en modifier använd metoden `.getValue()`
-  // TODO Lägg till summan till this.score och returnera sedan summan.
-  // TODO ta bort alla kommentarer där det står TODO när du är klar.
   public int sumAllModifiers() {
-
-    /*
-     for(int sumAll =(modifiers.size() * dice.size());
-          this.score == sumAll;)
-
-    int sumMods = modifiers.size();
-    int sumDice = dice.size();
-      int sumAll = sumMods * sumDice;
-      this.score = sumAll;
-      return sumAll;
-      */
-
-       return 0; // TODO Ändra till faktiska summan
-     }
+    int sum = 0;
+    for (Modifier modifier : this.modifiers) {
+      sum += modifier.getValue();
+    }
+    sum *= this.dice.size();
+    this.score += sum;
+    return sum;
+  }
 
   public int compareTo(Player comparePlayer){
     int compareScore = ((Player) comparePlayer).getScore();
