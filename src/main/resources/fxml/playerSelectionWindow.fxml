@@ -21,6 +21,7 @@
            text="2leg Doge?"/>
 
     <Spinner fx:id="humPlayersSpinner"
+             id="humPlayersSpinner"
              editable="true"
              initialValue="1"
              min="1"
@@ -36,6 +37,7 @@
            text="Robo Doge?"/>
 
     <Spinner fx:id="cpuPlayersSpinner"
+             id="cpuPlayersSpinner"
              editable="true"
              initialValue="0"
              min="0"

@@ -40,9 +40,9 @@ tasks.create<Test>("testMainWindow") {
   useJUnitPlatform()
 }
 
-tasks.create<Test>("testPlayerSelection") {
+tasks.create<Test>("testFlow") {
   testLogging.showStandardStreams = true
-  include("**/*PlayerSelectionWindowTest.class")
+  include("**/*FlowTest.class")
   useJUnitPlatform()
 }
 
