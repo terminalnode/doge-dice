@@ -8,13 +8,12 @@
 <VBox id="playWindow" stylesheets="@/css/playWindow.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dogedice.controllers.PlayWindow">
 
   <Label id="header" text="GAME" />
+
   <HBox styleClass="gameWindow">
 
   <ScrollPane hbarPolicy="NEVER" maxHeight="350" maxWidth="400" minHeight="350" minWidth="500" styleClass="scrollPane">
 
-    <VBox id="playerPaneBox" fx:id="playerPaneBox" maxHeight="-Infinity" maxWidth="420" minHeight="-Infinity" minWidth="470">
-    <Label id="currentScore" fx:id="score"  minHeight="5" minWidth="5"  />
-    </VBox>
+    <VBox id="playerPaneBox" fx:id="playerPaneBox" maxHeight="-Infinity" maxWidth="420" minHeight="-Infinity" minWidth="470"/>
 
   </ScrollPane>
 
@@ -23,22 +22,22 @@
 
     <ImageView id="dieSix" fitWidth="55" preserveRatio="true" />
 
-
     <SVGPath id="modifierLogo" content="M 400 300 L 450 250 L 500 300 L 450 350 L 400 300" fill="transparent" stroke="black" strokeWidth="5" />
-    <Label id="modifierLabel" text="+1" />
-    <Label id="score" text="SCORE" />
-    <Label id="resultLabel" fx:id="roll" />
 
+    <Label id="modifierLabel" text="+1" />
+
+    <Label id="score" text="SCORE" />
+
+    <Label id="resultLabel" fx:id="roll" />
   </VBox>
 
   </HBox>
 
   <VBox styleClass="bot">
+
     <Button id="rollButton" onMouseClicked="#rollButtonClicked" text="ROLL" />
 
-
   <ImageView id="backButton" fitWidth="40" onMouseClicked="#backButtonClicked" preserveRatio="true" />
-
 
     <ImageView id="spinningDoge" fitWidth="40" preserveRatio="true" />
 

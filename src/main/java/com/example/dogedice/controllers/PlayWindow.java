@@ -4,9 +4,7 @@ import com.example.dogedice.model.Player;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -18,12 +16,12 @@ public class PlayWindow {
   private List<Player> players;
   private final Map<Player, Label> playerNames;
   private final Map<Player, Label> playerScores;
-  private final Map<Player, FlowPane> playerDice;
+  private final Map<Player, FlowPane> playerItems;
 
   public PlayWindow() {
     playerNames = new HashMap<>();  // the labels where we display player names
     playerScores = new HashMap<>(); // the labels where we display player scores
-    playerDice = new HashMap<>();   // the flowpane where we display player dice/modifiers
+    playerItems = new HashMap<>();   // the flowpane where we display player dice/modifiers
   }
 
   @FXML
@@ -36,20 +34,11 @@ public class PlayWindow {
     HelperMethods.replaceWindow(HelperMethods.mainWindowFXML, HelperMethods.mainWindowTitle, mouseEvent);
   }
 
-  public void rollButtonClicked(MouseEvent mouseEvent) throws IOException{
+  public void rollButtonClicked(MouseEvent mouseEvent) {
     Player player = players.get(index);
       roll.setText("" + player.rollAllDice());
       changePlayer();
-      addScore();
   }
-
-  @FXML
-  Label score;
-  public void addScore(){
-    Player player = players.get(index);
-    score.setText("" + player.getScore());
-  }
-
 
   public void addPlayers(List<Player> players) {
     this.players = players;
@@ -57,19 +46,21 @@ public class PlayWindow {
     for (Player player : players){
       playerNames.put(player, new Label(player.getName()));
       playerScores.put(player, new Label("" + player.getScore()));
-      playerDice.put(player, new FlowPane());
-      HBox playerInfo = new HBox();
-      playerInfo.getChildren().addAll(playerNames.get(player), playerScores.get(player));
-
+      playerItems.put(player, new FlowPane());
+      GridPane playerInfo = new GridPane();
+      playerInfo.setHgap(30);
+      playerInfo.addColumn(0 , playerNames.get(player));
+      playerInfo.addColumn(1, playerScores.get(player));
+     // playerScores.get(player).setText("" +player.getScore());
+      playerInfo.getColumnConstraints().addAll(new ColumnConstraints(300), new ColumnConstraints(50));
       playerPaneBox
         .getChildren()
           .addAll(
               playerInfo,
-              playerDice.get(player)
+              playerItems.get(player)
           );
     }
   }
-
 
   public void changePlayer() {
     index++;

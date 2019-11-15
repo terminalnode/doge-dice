@@ -105,13 +105,3 @@ Button:pressed {
 	-fx-border-style: dashed;
 }
 
-#currentScore{
-	-fx-text-fill: red;
-	-fx-background-color:transparent;
-	-fx-translate-x: 300;
-	-fx-translate-y: 25;
-}
-
-#playerPaneBox{
-	-fx-translate-y: -27;
-}
