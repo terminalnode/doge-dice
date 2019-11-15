@@ -18,6 +18,7 @@ import javafx.scene.layout.VBox;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class NamePlayersWindow {
   private int numCpu = 0;
@@ -58,12 +59,9 @@ public class NamePlayersWindow {
     Scene scene = new Scene(root);
     PlayWindow controller = loader.getController();
     List<Player> players = new ArrayList<>();
-    for (TextField tf : humans) {
-      players.add(createHuman(tf.getText(), new int[]{6,6}));
-    }
-    for (TextField tf : cpus) {
-      players.add(createBot(tf.getText(), new int[]{6,6}));
-    }
+    int[] diceSelection = {6,6};
+    humans.stream().map(x -> createHuman(x.getText(), diceSelection)).forEach(players::add);
+    cpus.stream().map(x -> createBot(x.getText(), diceSelection)).forEach(players::add);
     controller.addPlayers(players);
     HelperMethods.replaceStage(mouseEvent, scene, HelperMethods.playWindowTitle);
   }
