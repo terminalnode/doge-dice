@@ -34,7 +34,17 @@ public class PlayWindow {
     Player player = players.get(index);
       roll.setText("" + player.rollAllDice());
       changePlayer();
+      addScore();
+
   }
+
+  @FXML
+  Label score;
+  public void addScore(){
+    Player player = players.get(index);
+    score.setText("" + player.getScore());
+  }
+
 
   public void addPlayers(List<Player> players) {
     for (Player player : players){

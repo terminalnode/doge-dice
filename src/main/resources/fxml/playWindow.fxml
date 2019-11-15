@@ -1,63 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.shape.SVGPath?>
+<?import javafx.scene.shape.*?>
 
-<VBox id="playWindow"
-      xmlns="http://javafx.com/javafx"
-      stylesheets="@/css/playWindow.css"
-      xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.dogedice.controllers.PlayWindow">
+<VBox id="playWindow" stylesheets="@/css/playWindow.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dogedice.controllers.PlayWindow">
 
-  <Label id="header"
-         text="GAME"/>
+  <Label id="header" text="GAME" />
   <HBox styleClass="gameWindow">
 
-  <ScrollPane styleClass="scrollPane" hbarPolicy="NEVER" minHeight="350" maxHeight="350" minWidth="500" maxWidth="400">
+  <ScrollPane hbarPolicy="NEVER" maxHeight="350" maxWidth="400" minHeight="350" minWidth="500" styleClass="scrollPane">
 
-    <VBox id="playerPaneBox" fx:id="playerPaneBox" minHeight="-Infinity" maxHeight="-Infinity" minWidth="470" maxWidth="420"/>
+    <VBox id="playerPaneBox" fx:id="playerPaneBox" maxHeight="-Infinity" maxWidth="420" minHeight="-Infinity" minWidth="470">
+    <Label id="currentScore" fx:id="score"  minHeight="5" minWidth="5"  />
+    </VBox>
 
   </ScrollPane>
 
-  <VBox styleClass="modifiers" spacing="10" maxHeight="300" maxWidth="240">
-    <ImageView id="dieTwenty"
-               preserveRatio="true"
-               fitWidth="55"/>
+  <VBox maxHeight="300" maxWidth="240" spacing="10" styleClass="modifiers">
+    <ImageView id="dieTwenty" fitWidth="55" preserveRatio="true" />
 
-    <ImageView id="dieSix"
-               preserveRatio="true"
-               fitWidth="55"/>
+    <ImageView id="dieSix" fitWidth="55" preserveRatio="true" />
 
 
-    <SVGPath id="modifierLogo" content="M 400 300 L 450 250 L 500 300 L 450 350 L 400 300" fill="transparent" strokeWidth="5" stroke="black"/>
-    <Label id="modifierLabel" text="+1"/>
-    <Label id="score" text="SCORE"/>
-    <Label id="testLabel" fx:id="roll"/>
+    <SVGPath id="modifierLogo" content="M 400 300 L 450 250 L 500 300 L 450 350 L 400 300" fill="transparent" stroke="black" strokeWidth="5" />
+    <Label id="modifierLabel" text="+1" />
+    <Label id="score" text="SCORE" />
+    <Label id="resultLabel" fx:id="roll" />
 
   </VBox>
 
   </HBox>
 
   <VBox styleClass="bot">
-    <Button id="rollButton"
-            text="ROLL"
-            onMouseClicked="#rollButtonClicked"/>
+    <Button id="rollButton" onMouseClicked="#rollButtonClicked" text="ROLL" />
 
 
-  <ImageView id="backButton"
-             preserveRatio="true"
-             fitWidth="40"
-             onMouseClicked="#backButtonClicked"/>
+  <ImageView id="backButton" fitWidth="40" onMouseClicked="#backButtonClicked" preserveRatio="true" />
 
 
-    <ImageView id="spinningDoge"
-             preserveRatio="true"
-             fitWidth="40"/>
+    <ImageView id="spinningDoge" fitWidth="40" preserveRatio="true" />
 
   </VBox>
 
