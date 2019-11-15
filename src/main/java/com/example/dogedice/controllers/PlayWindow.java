@@ -61,7 +61,9 @@ public class PlayWindow {
   }
 
   public void setActiveStylePlayer(Player player) {
-    playerNames.get(player).setStyle("-fx-font: bold italic 16pt 'Arial'; -fx-border-color:BLACK");
+    playerNames.get(player).setStyle("-fx-font: bold italic 16pt 'Arial';" +
+        " -fx-border-color:#2196F3;" +
+        " -fx-text-fill: #2196F3;");
   }
 
   public void setInactiveStylePlayer(Player player) {

@@ -8,8 +8,11 @@ public class Die {
   private Image dieImage;
 
 
-  public Die(int numOfSides, Image dieImage) {
+  public Die(int numOfSides) {
     this.numOfSides = numOfSides;
+  }
+
+  public Die( Image dieImage) {
     this.dieImage = dieImage;
   }
 

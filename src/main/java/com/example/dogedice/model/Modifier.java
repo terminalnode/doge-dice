@@ -7,8 +7,11 @@ public class Modifier {
   private Image modImage;
 
 
-  public Modifier(int value, Image modImage) {
+  public Modifier(int value) {
     this.value = value;
+  }
+
+  public Modifier( Image modImage) {
     this.modImage = modImage;
   }
 
