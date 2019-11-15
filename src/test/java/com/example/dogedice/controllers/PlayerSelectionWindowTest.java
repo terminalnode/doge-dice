@@ -54,7 +54,6 @@ class PlayerSelectionWindowTest extends ApplicationTest {
   void setCpuPlayersSpinner() {
     clickOn("#cpuPlayersSpinner .decrement-arrow-button");
     scene.lookup("#cpuPlayersSpinner");
-    assertEquals(, stage.equals(2));
   }
 
   @Test
