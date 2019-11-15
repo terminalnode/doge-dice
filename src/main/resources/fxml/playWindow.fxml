@@ -18,11 +18,11 @@
   </ScrollPane>
 
   <VBox maxHeight="300" maxWidth="240" spacing="10" styleClass="modifiers">
-    <ImageView id="dieTwenty" fitWidth="55" preserveRatio="true" />
+    <ImageView id="dieTwenty" fitWidth="55" preserveRatio="true" onMouseClicked="#dieTwentyClicked"/>
 
-    <ImageView id="dieSix" fitWidth="55" preserveRatio="true" />
+    <ImageView id="dieSix" fitWidth="55" preserveRatio="true" onMouseClicked="#dieSixClicked" />
 
-    <SVGPath id="modifierLogo" content="M 400 300 L 450 250 L 500 300 L 450 350 L 400 300" fill="transparent" stroke="black" strokeWidth="5" />
+    <SVGPath id="modifierLogo" content="M 400 300 L 450 250 L 500 300 L 450 350 L 400 300" fill="transparent" stroke="black" strokeWidth="5" onMouseClicked="#modifierClicked"/>
 
     <Label id="modifierLabel" text="+1" />
 

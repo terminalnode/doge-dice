@@ -30,6 +30,18 @@ public class PlayWindow {
   @FXML
   Label roll;
 
+  public void dieTwentyClicked(MouseEvent mouseEvent) {
+
+  }
+
+  public void dieSixClicked(MouseEvent mouseEvent) {
+
+  }
+
+  public void modifierClicked(MouseEvent mouseEvent) {
+
+  }
+
   public void backButtonClicked(MouseEvent mouseEvent) throws IOException {
     HelperMethods.replaceWindow(HelperMethods.mainWindowFXML, HelperMethods.mainWindowTitle, mouseEvent);
   }
@@ -41,21 +53,20 @@ public class PlayWindow {
     changePlayer();
 
     Player nextPlayer = players.get(index);
+    setInactiveStylePlayer(player);
+    setActiveStylePlayer(nextPlayer);
     if (nextPlayer.isBot()) {
       rollButtonClicked(null);
     }
-    setInactiveStylePlayer(player);
-    setActiveStylePlayer(nextPlayer);
   }
 
   public void setActiveStylePlayer(Player player) {
-    playerNames.get(player).setStyle("-fx-font: bold italic 20pt 'Arial'; -fx-border-color:BLUE ");
+    playerNames.get(player).setStyle("-fx-font: bold italic 16pt 'Arial'; -fx-border-color:BLACK");
   }
 
   public void setInactiveStylePlayer(Player player) {
     playerNames.get(player).setStyle("-fx-border-color: transparent");
   }
-
 
   public void addPlayers(List<Player> players) {
     this.players = players;
