@@ -5,9 +5,13 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
 
-<VBox id="playWindow" stylesheets="@/css/playWindow.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dogedice.controllers.PlayWindow">
+<VBox id="playWindow"
+      stylesheets="@/css/playWindow.css"
+      xmlns="http://javafx.com/javafx/10.0.2-internal"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.dogedice.controllers.PlayWindow">
 
-  <Label id="header" text="GAME" />
+  <Label id="header" text="Doge-Dice" />
 
   <HBox styleClass="gameWindow">
 
@@ -16,6 +20,10 @@
     <VBox id="playerPaneBox" fx:id="playerPaneBox" maxHeight="-Infinity" maxWidth="420" minHeight="-Infinity" minWidth="470"/>
 
   </ScrollPane>
+
+    <FlowPane>
+
+    </FlowPane>
 
   <VBox maxHeight="300" maxWidth="240" spacing="10" styleClass="modifiers">
     <ImageView id="dieTwenty" fitWidth="55" preserveRatio="true" onMouseClicked="#dieTwentyClicked"/>
@@ -33,7 +41,7 @@
 
   </HBox>
 
-  <VBox styleClass="bot">
+  <VBox spacing="10">
 
     <Button id="rollButton" onMouseClicked="#rollButtonClicked" text="ROLL" />
 

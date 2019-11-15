@@ -16,8 +16,11 @@ public class HelpWindow {
   @FXML
   public void initialize() {
     text.setText(
-        "1. Happy fun for whole family! :D\n" +
-            "2. Enjoy! >:("
-    );
+        "1. Pick 2leg-Doge or robo Doge if less Friend.\n" +
+            "2. so amaze Play! \n" +
+            "3. Play til much rich dice. \n" +
+            "4. Wow so rich, dice or mod buy now. doge impressed! \n" +
+            "5. Lose or win, u never be Top-Doge with no donation \n " +
+            "Play much impress donation == Top-Doge" );
   }
 }

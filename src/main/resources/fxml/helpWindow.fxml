@@ -8,7 +8,7 @@
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.example.dogedice.controllers.HelpWindow">
 
-  <Label id="header" text="HOW TO PLAY"/>
+  <Label id="header" text="Much Nub? Doge so help"/>
   <Label fx:id="text" id="text" wrapText="true"/>
 
   <ImageView id="backButton"
