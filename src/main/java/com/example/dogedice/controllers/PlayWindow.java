@@ -1,17 +1,26 @@
 package com.example.dogedice.controllers;
 
+import com.example.dogedice.model.Modifier;
 import com.example.dogedice.model.Player;
 import javafx.fxml.FXML;
+import javafx.scene.Group;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Paint;
+import javafx.scene.shape.SVGPath;
 
+import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class PlayWindow {
   private int index = 0;
@@ -67,7 +76,7 @@ public class PlayWindow {
     }
   }
 
-  void addPlayers(List<Player> players) {
+  void addPlayers(List<Player> players) throws IOException, URISyntaxException {
     this.players = players;
 
     for (Player player : players){
@@ -115,18 +124,36 @@ public class PlayWindow {
     }
   }
 
-  private ImageView sixSidedDieIcon() {
-    ImageView icon = new ImageView(sixSidedDie);
-    icon.setFitWidth(25);
-    icon.setFitHeight(25);
-    return icon;
+  private Group sixSidedDieIcon() throws URISyntaxException, IOException {
+    return getSVGIcon("svgpaths/d6");
   }
 
+  // TODO not svg yet
   private ImageView twentySidedDieIcon() {
     ImageView icon = new ImageView(twentySidedDie);
     icon.setFitWidth(25);
     icon.setFitHeight(25);
     return icon;
+  }
+
+  // TODO modifier icon is currently all black. Should display value as well.
+  private Group modifierIcon(Modifier mod) throws IOException, URISyntaxException {
+    return getSVGIcon("svgpaths/modifier");
+  }
+
+  private Group getSVGIcon(String filePath) throws URISyntaxException, IOException {
+    SVGPath icon = new SVGPath();
+    List<String> path = Files.readAllLines(Paths.get(HelperMethods.getRes(filePath).toURI()));
+    icon.setContent(String.join("", path));
+    resizeSVG(icon, 25, 25);
+    return new Group(icon);
+  }
+
+  private void resizeSVG(SVGPath svg, double width, double height) {
+    double originalHeight = svg.prefHeight(-1);
+    double originalWidth = svg.prefWidth(originalHeight);
+    svg.setScaleX(width / originalWidth);
+    svg.setScaleY(height / originalHeight);
   }
 }
 

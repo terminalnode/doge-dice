@@ -16,6 +16,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,7 +53,7 @@ public class NamePlayersWindow {
         .add(new Group(label, textField));
   }
 
-  public void confirmButtonClicked(MouseEvent mouseEvent) throws IOException {
+  public void confirmButtonClicked(MouseEvent mouseEvent) throws IOException, URISyntaxException {
     FXMLLoader loader = HelperMethods.getLoader(HelperMethods.playWindowFXML);
     Parent root = loader.load();
     Scene scene = new Scene(root);
