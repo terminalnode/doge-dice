@@ -29,8 +29,8 @@
   </HBox>
 
   <VBox>
+    <ImageView id="spinningDoge" fitWidth="40" preserveRatio="true" onMouseClicked="#spinningDogeClicked"/>
     <Button id="rollButton" onMouseClicked="#rollButtonClicked" text="ROLL" />
     <ImageView id="backButton" fitWidth="40" onMouseClicked="#backButtonClicked" preserveRatio="true" />
-    <ImageView id="spinningDoge" fitWidth="40" preserveRatio="true" />
   </VBox>
 </VBox>

@@ -3,6 +3,8 @@ package com.example.dogedice.controllers;
 import com.example.dogedice.model.Player;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 
@@ -17,6 +19,8 @@ public class PlayWindow {
   private final Map<Player, Label> playerNames;
   private final Map<Player, Label> playerScores;
   private final Map<Player, FlowPane> playerItems;
+  private final Image sixSidedDie;
+  private final Image twentySidedDie;
 
   @FXML
   VBox playerPaneBox;
@@ -28,18 +32,21 @@ public class PlayWindow {
     playerNames = new HashMap<>();  // the labels where we display player names
     playerScores = new HashMap<>(); // the labels where we display player scores
     playerItems = new HashMap<>();  // the flowpane where we display player dice/modifiers
+    sixSidedDie = new Image(HelperMethods.getRes("images/d6.png").toExternalForm());
+    twentySidedDie = new Image(HelperMethods.getRes("images/d20.png").toExternalForm());
   }
 
   public void dieTwentyClicked(MouseEvent mouseEvent) {
-
   }
 
   public void dieSixClicked(MouseEvent mouseEvent) {
-
   }
 
   public void modifierClicked(MouseEvent mouseEvent) {
+  }
 
+  public void spinningDogeClicked(MouseEvent mouseEvent) {
+    HelperMethods.spinningDogeClicked(mouseEvent);
   }
 
   public void backButtonClicked(MouseEvent mouseEvent) throws IOException {
@@ -72,10 +79,14 @@ public class PlayWindow {
       playerScore.getStyleClass().add("playerInfo");
       playerScores.put(player, playerScore);
 
-      playerItems.put(player, new FlowPane());
+      FlowPane playerItemPane = new FlowPane();
+      playerItemPane.setHgap(5);
+      playerItemPane.getChildren().addAll(sixSidedDieIcon(), sixSidedDieIcon()); // starting dice
+      playerItems.put(player, playerItemPane);
+
       GridPane playerInfo = new GridPane();
       playerInfo.setHgap(30);
-      playerInfo.addColumn(0 , playerNames.get(player));
+      playerInfo.addColumn(0, playerNames.get(player));
       playerInfo.addColumn(1, playerScores.get(player));
       playerScores.get(player).setText("" +player.getScore());
       playerInfo.getColumnConstraints().addAll(new ColumnConstraints(300), new ColumnConstraints(50));
@@ -102,6 +113,20 @@ public class PlayWindow {
     if (players.size() == index){
       index = 0;
     }
+  }
+
+  private ImageView sixSidedDieIcon() {
+    ImageView icon = new ImageView(sixSidedDie);
+    icon.setFitWidth(25);
+    icon.setFitHeight(25);
+    return icon;
+  }
+
+  private ImageView twentySidedDieIcon() {
+    ImageView icon = new ImageView(twentySidedDie);
+    icon.setFitWidth(25);
+    icon.setFitHeight(25);
+    return icon;
   }
 }
 

@@ -1,8 +1,8 @@
 #playWindow {
 	-fx-min-width:        500px;
-	-fx-min-height:       500px;
 	-fx-max-width:        500px;
-	-fx-max-height:       500px;
+	-fx-min-height:       600px;
+	-fx-max-height:       600px;
 	-fx-background-color: white;
 	-fx-alignment:        top-center;
 }
@@ -94,8 +94,8 @@ Button:pressed {
 
 .spinningDoge {
 	-fx-image: url("../images/dogespin.gif");
-	-fx-translate-x: 110;
-	-fx-translate-y: 110;
+	-fx-translate-x: -100;
+	-fx-translate-y: -100;
 	-fx-scale-x:     20;
 	-fx-scale-y:     20;
 }

@@ -1,8 +1,5 @@
 package com.example.dogedice.model;
 
-import javafx.collections.ModifiableObservableListBase;
-
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,12 +8,10 @@ public abstract class Player implements Comparable<Player> {
   private int score;
   private List<Die> dice;
   private List<Modifier> modifiers;
-  private Image image;
 
-  public Player(String name) {
+  Player(String name) {
     this.name = name;
     this.score = 0;
-    this.image = image;
     this.dice = new ArrayList<>();
     this.modifiers = new ArrayList<>();
   }
@@ -47,8 +42,6 @@ public abstract class Player implements Comparable<Player> {
     return this.name;
   }
 
-  public Image getImage() {return this.image;}
-
   public int rollAllDice() {
     int sum = 0;
     for (Die die : this.dice) {
@@ -70,8 +63,6 @@ public abstract class Player implements Comparable<Player> {
   }
 
   public int compareTo(Player comparePlayer){
-    int compareScore = ((Player) comparePlayer).getScore();
-
-    return compareScore - this.score;
+    return this.score - comparePlayer.getScore();
   }
 }
