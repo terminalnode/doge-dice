@@ -9,6 +9,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.SVGPath;
 
@@ -125,28 +126,33 @@ public class PlayWindow {
   }
 
   private Group sixSidedDieIcon() throws URISyntaxException, IOException {
-    return getSVGIcon("svgpaths/d6");
+    SVGPath icon = getSVGIcon("svgpaths/d6");
+    Group group = new Group();
+    group.getChildren().add(icon);
+    return group;
   }
 
-  // TODO not svg yet
-  private ImageView twentySidedDieIcon() {
-    ImageView icon = new ImageView(twentySidedDie);
-    icon.setFitWidth(25);
-    icon.setFitHeight(25);
-    return icon;
+  private Group twentySidedDieIcon() throws IOException, URISyntaxException {
+    SVGPath icon = getSVGIcon("svgpaths/d20");
+    Group group = new Group();
+    group.getChildren().add(icon);
+    return group;
   }
 
   // TODO modifier icon is currently all black. Should display value as well.
   private Group modifierIcon(Modifier mod) throws IOException, URISyntaxException {
-    return getSVGIcon("svgpaths/modifier");
+    SVGPath icon = getSVGIcon("svgpaths/modifier");
+    Group group = new Group();
+    group.getChildren().add(icon);
+    return group;
   }
 
-  private Group getSVGIcon(String filePath) throws URISyntaxException, IOException {
+  private SVGPath getSVGIcon(String filePath) throws URISyntaxException, IOException {
     SVGPath icon = new SVGPath();
     List<String> path = Files.readAllLines(Paths.get(HelperMethods.getRes(filePath).toURI()));
     icon.setContent(String.join("", path));
-    resizeSVG(icon, 25, 25);
-    return new Group(icon);
+    resizeSVG(icon, 35, 35);
+    return icon;
   }
 
   private void resizeSVG(SVGPath svg, double width, double height) {
