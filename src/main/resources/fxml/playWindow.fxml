@@ -11,44 +11,26 @@
       xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="com.example.dogedice.controllers.PlayWindow">
 
-  <Label id="header" text="Doge-Dice" />
+  <Label id="header" text="Doge-Dice"/>
 
   <HBox styleClass="gameWindow">
+    <ScrollPane hbarPolicy="NEVER" styleClass="scrollPane">
+      <VBox id="playerPaneBox" fx:id="playerPaneBox"/>
+    </ScrollPane>
 
-  <ScrollPane hbarPolicy="NEVER" maxHeight="350" maxWidth="400" minHeight="350" minWidth="500" styleClass="scrollPane">
-
-    <HBox >
-    <VBox id="playerPaneBox" fx:id="playerPaneBox" maxHeight="-Infinity" maxWidth="420" minHeight="-Infinity" minWidth="470"/>
-
-     <ImageView id="dieSixSmall" fitWidth="25" fitHeight="25" layoutY="50"/>
-   </HBox>
-
-  </ScrollPane>
-
-  <VBox maxHeight="300" maxWidth="240" spacing="10" styleClass="modifiers">
-    <ImageView id="dieTwenty" fitWidth="55" preserveRatio="true" onMouseClicked="#dieTwentyClicked"/>
-
-    <ImageView id="dieSix" fitWidth="55" preserveRatio="true" onMouseClicked="#dieSixClicked" />
-
-    <SVGPath id="modifierLogo" content="M 400 300 L 450 250 L 500 300 L 450 350 L 400 300" fill="transparent" stroke="black" strokeWidth="5" onMouseClicked="#modifierClicked"/>
-
-    <Label id="modifierLabel" text="+1" />
-
-    <Label id="score" text="SCORE"/>
-
-    <Label id="resultLabel" fx:id="roll" />
-  </VBox>
-
+    <VBox id="diceBox" styleClass="modifiers">
+      <ImageView id="dieTwenty" fitWidth="55" preserveRatio="true" onMouseClicked="#dieTwentyClicked"/>
+      <ImageView id="dieSix" fitWidth="55" preserveRatio="true" onMouseClicked="#dieSixClicked" />
+      <SVGPath id="modifierLogo" content="M 400 300 L 450 250 L 500 300 L 450 350 L 400 300" onMouseClicked="#modifierClicked"/>
+      <Label id="modifierLabel" text="+1" />
+      <Label id="resultHeader" text="SCORE"/>
+      <Label id="resultLabel" fx:id="roll" />
+    </VBox>
   </HBox>
 
-  <VBox spacing="10">
-
+  <VBox>
     <Button id="rollButton" onMouseClicked="#rollButtonClicked" text="ROLL" />
-
-  <ImageView id="backButton" fitWidth="40" onMouseClicked="#backButtonClicked" preserveRatio="true" />
-
+    <ImageView id="backButton" fitWidth="40" onMouseClicked="#backButtonClicked" preserveRatio="true" />
     <ImageView id="spinningDoge" fitWidth="40" preserveRatio="true" />
-
   </VBox>
-
 </VBox>
