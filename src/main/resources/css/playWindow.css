@@ -12,6 +12,11 @@
 	-fx-text-fill: #2196F3;
 }
 
+#score {
+-fx-font: normal bold 17px "Arial";
+	-fx-text-fill: #2196F3;
+}
+
 .gameWindow{
 	-fx-scale-x:.8;
 	-fx-scale-y:.8;

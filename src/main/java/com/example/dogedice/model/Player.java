@@ -11,10 +11,12 @@ public abstract class Player implements Comparable<Player> {
   private int score;
   private List<Die> dice;
   private List<Modifier> modifiers;
+  private Image image;
 
   public Player(String name) {
     this.name = name;
     this.score = 0;
+    this.image = image;
     this.dice = new ArrayList<>();
     this.modifiers = new ArrayList<>();
   }
@@ -44,6 +46,8 @@ public abstract class Player implements Comparable<Player> {
   public String getName() {
     return this.name;
   }
+
+  public Image getImage() {return this.image;}
 
   public int rollAllDice() {
     int sum = 0;
