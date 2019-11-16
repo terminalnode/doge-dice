@@ -2,8 +2,6 @@ package com.example.dogedice.controllers;
 
 import com.example.dogedice.model.Player;
 import javafx.fxml.FXML;
-import javafx.scene.Group;
-import javafx.scene.Parent;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import java.io.IOException;
@@ -11,7 +9,6 @@ import java.util.Collections;
 import java.util.List;
 
 import javafx.scene.control.Label;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 public class WinnerWindow {
