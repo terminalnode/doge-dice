@@ -18,12 +18,12 @@ public abstract class Player implements Comparable<Player> {
 
   public abstract boolean isBot();
 
-  public void addDie(Die die) {
-    this.dice.add(die);
+  public int getScore() {
+    return this.score;
   }
 
-  public void addModifier(Modifier modifier) {
-    this.modifiers.add(modifier);
+  public String getName() {
+    return this.name;
   }
 
   public List<Die> getDice() {
@@ -34,12 +34,21 @@ public abstract class Player implements Comparable<Player> {
     return this.modifiers;
   }
 
-  public int getScore() {
-    return this.score;
+  public void addDie(Die die) {
+    this.dice.add(die);
   }
 
-  public String getName() {
-    return this.name;
+  public void addModifier(Modifier modifier) {
+    this.modifiers.add(modifier);
+  }
+
+  public boolean removePoints(int toRemove) {
+    if (this.score >= toRemove) {
+      this.score -= toRemove;
+      return true;
+    } else {
+      return false;
+    }
   }
 
   public int rollAllDice() {

@@ -55,6 +55,52 @@ class PlayerTest {
   }
 
   @Test
+  void removePoints() {
+    logger.info("Setting up a human and a cpu player with a one-sided die.");
+    Player human = new HumanPlayer("Human");
+    Player cpu = new CpuPlayer("CPU");
+    Die die = new Die(1);
+    human.addDie(die);
+    cpu.addDie(die);
+
+    logger.info("Rolling the die, giving each 1 point.");
+    human.rollAllDice();
+    cpu.rollAllDice();
+
+    logger.info("Asserting that removePoints(2) returns false.");
+    assertFalse(human.removePoints(2));
+    assertFalse(cpu.removePoints(2));
+
+    logger.info("Asserting that no points were removed.");
+    assertEquals(1, human.getScore());
+    assertEquals(1, cpu.getScore());
+
+    logger.info("Asserting that removePoints(1) returns true.");
+    assertTrue(human.removePoints(1));
+    assertTrue(cpu.removePoints(1));
+
+    logger.info("Asserting that 1 point was removed.");
+    assertEquals(0, human.getScore());
+    assertEquals(0, cpu.getScore());
+
+    logger.info("Rolling die three times for both players.");
+    human.rollAllDice();
+    human.rollAllDice();
+    human.rollAllDice();
+    cpu.rollAllDice();
+    cpu.rollAllDice();
+    cpu.rollAllDice();
+
+    logger.info("Asserting that removePoints(2) returns true.");
+    assertTrue(human.removePoints(2));
+    assertTrue(cpu.removePoints(2));
+
+    logger.info("Asserting that 2 points were removed.");
+    assertEquals(1, human.getScore());
+    assertEquals(1, cpu.getScore());
+  }
+
+  @Test
   void isBot() {
     logger.info("Testing that HumanPlayer isn't a bot and that CpuPlayer is a bot.");
     assertFalse(new HumanPlayer("").isBot());
