@@ -11,4 +11,8 @@ public class Die {
   public int roll() {
     return (int) (1 + Math.random() * numOfSides);
   }
+
+  public int getNumOfSides() {
+    return numOfSides;
+  }
 }
