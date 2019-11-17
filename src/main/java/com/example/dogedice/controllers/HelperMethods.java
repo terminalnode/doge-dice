@@ -12,6 +12,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 
 public class HelperMethods {
@@ -63,6 +64,10 @@ public class HelperMethods {
    */
   public static URL getRes(String fileName) {
     return Thread.currentThread().getContextClassLoader().getResource(fileName);
+  }
+
+  public static InputStream getResAsStream(String fileName) {
+    return Thread.currentThread().getContextClassLoader().getResourceAsStream(fileName);
   }
 
   /**

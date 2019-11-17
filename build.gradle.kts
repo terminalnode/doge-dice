@@ -1,3 +1,4 @@
+
 plugins {
   java
   // Gradle plugin for handling jfx.
@@ -22,6 +23,16 @@ dependencies {
   testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.3.1")
   testCompile("org.testfx:testfx-junit5:4.0.16-alpha")
   compile("org.slf4j:slf4j-simple:1.7.21")
+  compile("commons-io:commons-io:2.6")
+
+}
+
+sourceSets {
+  main {
+    resources {
+      srcDirs(listOf("resources/sounds"))
+    }
+  }
 }
 
 configure<JavaPluginConvention> {
@@ -62,3 +73,19 @@ tasks.test {
   testLogging.showStandardStreams = true
   useJUnitPlatform()
 }
+
+tasks.create<Jar>("fatJar") {
+  archiveClassifier.set("all")
+  duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+  manifest {
+    attributes["Implementation-Title"] = "a"
+    attributes["Implementation-Version"] = "1.0"
+    attributes["Main-Class"] = "com.example.dogedice.Launcher"
+    attributes["Class-Path"] = "dogedice-1.0-SNAPSHOT-all.jar"
+  }
+  from(configurations.runtimeClasspath.get()
+      .map { if (it.isDirectory) it else zipTree(it) })
+  val sourcesMain = sourceSets.main.get()
+  from(sourcesMain.output)
+}
+

@@ -10,14 +10,18 @@ import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.shape.SVGPath;
+import org.apache.commons.io.IOUtils;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URISyntaxException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 
 public class PlayWindow extends GenericController {
   private int index = 0;
@@ -148,10 +152,13 @@ public class PlayWindow extends GenericController {
     return group;
   }
 
-  private SVGPath getSVGIcon(String filePath) throws URISyntaxException, IOException {
+  private SVGPath getSVGIcon(String filePath) throws IOException {
     SVGPath icon = new SVGPath();
-    List<String> path = Files.readAllLines(Paths.get(HelperMethods.getRes(filePath).toURI()));
-    icon.setContent(String.join("", path));
+    String path = IOUtils.toString(
+        HelperMethods.getResAsStream(filePath),
+        StandardCharsets.UTF_8
+    );
+    icon.setContent(path);
     return icon;
   }
 
