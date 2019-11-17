@@ -1,6 +1,7 @@
 package com.example.dogedice.controllers;
 
 import com.example.dogedice.TestHelper;
+import com.example.dogedice.model.GameEngine;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -26,11 +27,17 @@ class MainWindowTest extends ApplicationTest {
   @Override
   public void start(Stage stage) throws IOException {
     this.stage = stage;
+    GameEngine gameEngine = new GameEngine(30, 5, 10, 15, new int[]{6,6}, new int[]{});
     FXMLLoader loader = HelperMethods.getLoader(HelperMethods.mainWindowFXML);
     Parent root = loader.load();
     this.scene = new Scene(root);
+    GenericController controller = loader.getController();
+    controller.setGameEngine(gameEngine);
+
+    stage.setTitle(HelperMethods.mainWindowTitle);
     stage.setScene(this.scene);
     stage.show();
+    stage.toFront();
   }
 
   @Test
@@ -52,6 +59,7 @@ class MainWindowTest extends ApplicationTest {
   void startButtonClicked() {
     logger.info("Clicking START button");
     clickOn("#startButton");
+    logger.info("Asserting that title is {}, actual title is: {}", HelperMethods.playerSelectionWindowTitle, stage.getTitle());
     assertEquals(HelperMethods.playerSelectionWindowTitle, stage.getTitle());
     logger.info("Clicking back button to get back to main screen");
     clickOn("#backButton");
@@ -62,6 +70,7 @@ class MainWindowTest extends ApplicationTest {
   void highscoreButtonClicked() {
     logger.info("Clicking HIGHSCORE button");
     clickOn("#highscoreButton");
+    logger.info("Asserting that title is {}, actual title is: {}", HelperMethods.highscoreWindowTitle, stage.getTitle());
     assertEquals(HelperMethods.highscoreWindowTitle, stage.getTitle());
     logger.info("Clicking back button to get back to main screen");
     clickOn("#backButton");
@@ -72,6 +81,7 @@ class MainWindowTest extends ApplicationTest {
   void helpButtonClicked() {
     logger.info("Clicking help button");
     clickOn("#helpButton");
+    logger.info("Asserting that title is {}, actual title is: {}", HelperMethods.helpWindowTitle, stage.getTitle());
     assertEquals(HelperMethods.helpWindowTitle, stage.getTitle());
     logger.info("Clicking back button to get back to main screen");
     clickOn("#backButton");
@@ -82,6 +92,7 @@ class MainWindowTest extends ApplicationTest {
   void dogecoinButtonClicked() {
     logger.info("Clicking dogecoin button");
     clickOn("#dogecoinButton");
+    logger.info("Asserting that title is {}, actual title is: {}", HelperMethods.dogeCoinWindowTitle, stage.getTitle());
     assertEquals(HelperMethods.dogeCoinWindowTitle, stage.getTitle());
     logger.info("Clicking back button to get back to main screen");
     clickOn("#backButton");

@@ -14,6 +14,8 @@ public class GameEngine {
   private final List<Player> players;
   private final List<Die> startingDice;
   private final List<Modifier> startingModifiers;
+  private Integer numberOfHumans;
+  private Integer numberOfCPUs;
 
   public GameEngine(int totalRounds, int d6Price, int d20Price, int modifierPrice, int[] startingDice, int[] startingModifiers) {
     this.roundsLeft = totalRounds;
@@ -26,10 +28,25 @@ public class GameEngine {
     this.startingModifiers = Arrays.stream(startingModifiers)
         .mapToObj(Modifier::new)
         .collect(Collectors.toList());
+    this.numberOfHumans = 1;
+    this.numberOfCPUs = 0;
 
     // Initializing the game
     this.playerIndex = 0;
     players = new ArrayList<>();
+  }
+
+  public void setNumberOfPlayers(int humans, int cpus) {
+    numberOfHumans = humans;
+    numberOfCPUs = cpus;
+  }
+
+  public Integer getNumberOfHumans() {
+    return this.numberOfHumans;
+  }
+
+  public Integer getNumberOfCPUs() {
+    return this.numberOfCPUs;
   }
 
   public void addHumanPlayer(String name) {

@@ -4,7 +4,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import java.io.IOException;
 
-public class HighscoreWindow {
+public class HighscoreWindow extends GenericController {
 
   public void spinningDogeClicked(MouseEvent mouseEvent)  {
     ImageView spinningDoge = (ImageView ) mouseEvent.getSource();
@@ -12,7 +12,12 @@ public class HighscoreWindow {
   }
 
   public void backIconClicked(MouseEvent mouseEvent) throws IOException {
-    HelperMethods.replaceWindow(HelperMethods.mainWindowFXML, HelperMethods.mainWindowTitle, mouseEvent);
+    HelperMethods.replaceScene(
+        HelperMethods.mainWindowFXML,
+        HelperMethods.mainWindowTitle,
+        mouseEvent,
+        gameEngine
+    );
   }
 }
 

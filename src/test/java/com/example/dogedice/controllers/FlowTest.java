@@ -1,5 +1,6 @@
 package com.example.dogedice.controllers;
 
+import com.example.dogedice.model.GameEngine;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -33,9 +34,14 @@ class FlowTest extends ApplicationTest {
   @Override
   public void start(Stage stage) throws IOException {
     this.stage = stage;
+    GameEngine gameEngine = new GameEngine(30, 5, 10, 15, new int[]{6,6}, new int[]{});
     FXMLLoader loader = HelperMethods.getLoader(HelperMethods.mainWindowFXML);
     Parent root = loader.load();
     Scene scene = new Scene(root);
+    GenericController controller = loader.getController();
+    controller.setGameEngine(gameEngine);
+
+    stage.setTitle(HelperMethods.mainWindowTitle);
     stage.setScene(scene);
     stage.show();
     stage.toFront();

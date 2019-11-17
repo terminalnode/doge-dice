@@ -6,11 +6,16 @@ import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
 
-public class HelpWindow {
+public class HelpWindow extends GenericController {
   @FXML
   Label text;
   public void backIconClicked(MouseEvent mouseEvent) throws IOException {
-    HelperMethods.replaceWindow(HelperMethods.mainWindowFXML, HelperMethods.mainWindowTitle, mouseEvent);
+    HelperMethods.replaceScene(
+        HelperMethods.mainWindowFXML,
+        HelperMethods.mainWindowTitle,
+        mouseEvent,
+        gameEngine
+    );
   }
 
   @FXML

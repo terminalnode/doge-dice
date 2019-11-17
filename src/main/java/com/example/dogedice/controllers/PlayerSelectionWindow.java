@@ -1,9 +1,6 @@
 package com.example.dogedice.controllers;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
@@ -13,9 +10,19 @@ import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
 
-public class PlayerSelectionWindow {
+public class PlayerSelectionWindow extends GenericController {
   @FXML
   Spinner<Integer> humPlayersSpinner, cpuPlayersSpinner;
+
+  @Override
+  public void postInitialization() {
+    humPlayersSpinner
+        .getValueFactory()
+        .setValue(gameEngine.getNumberOfHumans());
+    cpuPlayersSpinner
+        .getValueFactory()
+        .setValue(gameEngine.getNumberOfCPUs());
+  }
 
   public void confirmButtonClicked(MouseEvent mouseEvent) throws IOException {
     int numHum = humPlayersSpinner.getValue();
@@ -26,26 +33,14 @@ public class PlayerSelectionWindow {
       alert.setTitle("Too few players!");
       alert.show();
     } else {
-      FXMLLoader loader = HelperMethods.getLoader(HelperMethods.namePlayersWindowFXML);
-      Parent root = loader.load();
-      Scene scene = new Scene(root);
-      NamePlayersWindow controller = loader.getController();
-      for (int i = 1; i <= numHum; i++) { controller.addHumPlayer(i); }
-      for (int i = 1; i <= numCpu; i++) { controller.addCpuPlayer(i); }
-      HelperMethods.replaceStage(mouseEvent, scene, HelperMethods.namePlayersWindowTitle);
+      gameEngine.setNumberOfPlayers(numHum, numCpu);
+      HelperMethods.replaceScene(
+          HelperMethods.namePlayersWindowFXML,
+          HelperMethods.namePlayersWindowTitle,
+          mouseEvent,
+          gameEngine
+      );
     }
-  }
-
-  void setHumPlayersSpinner(int num) {
-    humPlayersSpinner
-        .getValueFactory()
-        .setValue(num);
-  }
-
-  void setCpuPlayersSpinner(int num) {
-    cpuPlayersSpinner
-        .getValueFactory()
-        .setValue(num);
   }
 
   public void spinningDogeClicked(MouseEvent mouseEvent)  {
@@ -54,6 +49,11 @@ public class PlayerSelectionWindow {
   }
 
   public void backIconClicked(MouseEvent mouseEvent) throws IOException {
-    HelperMethods.replaceWindow(HelperMethods.mainWindowFXML, HelperMethods.mainWindowTitle, mouseEvent);
+    HelperMethods.replaceScene(
+        HelperMethods.mainWindowFXML,
+        HelperMethods.mainWindowTitle,
+        mouseEvent,
+        gameEngine
+    );
   }
 }

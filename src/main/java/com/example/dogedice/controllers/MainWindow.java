@@ -3,21 +3,41 @@ package com.example.dogedice.controllers;
 import javafx.scene.input.MouseEvent;
 import java.io.IOException;
 
-public class MainWindow {
+public class MainWindow extends GenericController {
   public void startButtonClicked(MouseEvent mouseEvent) throws IOException {
-    HelperMethods.replaceWindow(HelperMethods.playerSelectionWindowFXML, HelperMethods.playerSelectionWindowTitle, mouseEvent);
+    HelperMethods.replaceScene(
+        HelperMethods.playerSelectionWindowFXML,
+        HelperMethods.playerSelectionWindowTitle,
+        mouseEvent,
+        gameEngine
+    );
   }
 
   public void highscoreButtonClicked(MouseEvent mouseEvent) throws IOException {
-    HelperMethods.replaceWindow(HelperMethods.highscoreWindowFXML, HelperMethods.highscoreWindowTitle, mouseEvent);
+    HelperMethods.replaceScene(
+        HelperMethods.highscoreWindowFXML,
+        HelperMethods.highscoreWindowTitle,
+        mouseEvent,
+        gameEngine
+    );
   }
 
   public void helpButtonClicked(MouseEvent mouseEvent) throws IOException {
-    HelperMethods.replaceWindow(HelperMethods.helpWindowFXML, HelperMethods.helpWindowTitle, mouseEvent);
+    HelperMethods.replaceScene(
+        HelperMethods.helpWindowFXML,
+        HelperMethods.helpWindowTitle,
+        mouseEvent,
+        gameEngine
+    );
   }
 
   public void dogecoinButtonClicked(MouseEvent mouseEvent) throws IOException {
-    HelperMethods.replaceWindow(HelperMethods.dogeCoinWindowFXML, HelperMethods.dogeCoinWindowTitle, mouseEvent);
+    HelperMethods.replaceScene(
+        HelperMethods.dogeCoinWindowFXML,
+        HelperMethods.dogeCoinWindowTitle,
+        mouseEvent,
+        gameEngine
+    );
   }
 
   public void spinningDogeClicked(MouseEvent mouseEvent) {

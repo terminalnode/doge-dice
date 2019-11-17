@@ -1,5 +1,6 @@
 package com.example.dogedice.controllers;
 
+import com.example.dogedice.model.GameEngine;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -33,6 +34,11 @@ public class HelperMethods {
   public static final String playWindowFXML = "fxml/playWindow.fxml";
 
 
+  /**
+   * SpinningDoge image is used on most (if not all) screens, and has some fairly complex click actions.
+   * The onButtonClick action for any spinningDoge image can be replaced with this method.
+   * @param mouseEvent The MouseEvent from which we can retrieve the SpinningDoge.
+   */
   public static void spinningDogeClicked(MouseEvent mouseEvent) {
     ImageView imageView = (ImageView) mouseEvent.getSource();
     Image image = imageView.getImage();
@@ -50,25 +56,46 @@ public class HelperMethods {
     }
   }
 
+  /**
+   * Retrieves a given resource.
+   * @param fileName The resource we're retrieving.
+   * @return A URL instance for the resource.
+   */
   public static URL getRes(String fileName) {
     return Thread.currentThread().getContextClassLoader().getResource(fileName);
   }
 
-  public static void replaceWindow(String fxmlPath, String windowTitle, MouseEvent mouseEvent) throws IOException {
-    Stage stage = (Stage) ((Node)mouseEvent.getSource()).getScene().getWindow();
-    stage.setTitle(windowTitle);
-    Parent root = FXMLLoader.load(getRes(fxmlPath));
-    Scene scene = new Scene(root);
-    stage.setScene(scene);
-  }
-
+  /**
+   * Retrieves an FXMLLoader instance preloaded with the desired FXML file.
+   * @param fxmlPath Path to the FXML we're loading.
+   * @return The FXMLLoader.
+   */
   public static FXMLLoader getLoader(String fxmlPath) {
     return new FXMLLoader(getRes(fxmlPath));
   }
 
-  public static void replaceStage(MouseEvent mouseEvent, Scene scene, String title) {
-    Stage stage = (Stage) ((Node)mouseEvent.getSource()).getScene().getWindow();
-    stage.setTitle(title);
+  /**
+   * Replaces the scene in the current stage and passes on the GameEngine instance to the next controller.
+   * @param fxmlPath Path to the FXML we're loading.
+   * @param windowTitle The new title for the stage.
+   * @param mouseEvent MouseEvent from which we can retrieve the stage.
+   * @param gameEngine The GameEngine instance we're passing on.
+   * @throws IOException If the FXML can't be loaded.
+   */
+  public static void replaceScene(String fxmlPath,
+                                  String windowTitle,
+                                  MouseEvent mouseEvent,
+                                  GameEngine gameEngine) throws IOException {
+    Stage stage = (Stage) ((Node) mouseEvent.getSource())
+        .getScene()
+        .getWindow();
+    stage.setTitle(windowTitle);
+    FXMLLoader loader = getLoader(fxmlPath);
+    Parent root = loader.load();
+    Scene scene = new Scene(root);
+    GenericController controller = loader.getController();
+    controller.setGameEngine(gameEngine);
+    controller.postInitialization();
     stage.setScene(scene);
   }
 }
