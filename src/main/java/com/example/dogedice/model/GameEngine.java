@@ -60,12 +60,8 @@ public class GameEngine {
   }
 
   private void initializePlayer(Player player) {
-    for (Die die : startingDice) {
-      player.addDie(die);
-    }
-    for (Modifier modifier : startingModifiers) {
-      player.addModifier(modifier);
-    }
+    startingDice.forEach(player::addDie);
+    startingModifiers.forEach(player::addModifier);
     this.players.add(player);
   }
 
