@@ -35,10 +35,12 @@ public class Main extends Application {
     mainWindow.show();
     mainWindow.toFront();
 
-    File soundFile = new File(HelperMethods.getRes("sounds/biggestSmile.wav").toURI());
-    MediaPlayer player = new MediaPlayer(new Media(soundFile.toURI().toString()));
-    player.setCycleCount(MediaPlayer.INDEFINITE);
-    player.play();
+    if (!getClass().getResource("").getProtocol().equals("jar")) {
+      File soundFile = new File(HelperMethods.getRes("sounds/biggestSmile.wav").toURI());
+      MediaPlayer player = new MediaPlayer(new Media(soundFile.toURI().toString()));
+      player.setCycleCount(MediaPlayer.INDEFINITE);
+      player.play();
+    }
   }
 }
 
