@@ -185,7 +185,7 @@ public class GameEngine {
     highScore.writeJSON();
   }
 
-  public List<Player> getHighScore() {
+  public List<HumanPlayer> getHighScore() {
     return highScore.getPlayers();
   }
 

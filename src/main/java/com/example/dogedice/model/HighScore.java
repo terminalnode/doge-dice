@@ -1,17 +1,19 @@
 package com.example.dogedice.model;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import org.apache.commons.io.IOUtils;
 
-import java.io.FileOutputStream;
-import java.io.PrintStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.io.FileWriter;
+import java.lang.reflect.Type;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
+import java.util.stream.Collectors;
 
 class HighScore {
   private final Gson gson;
-  private final List<Player> players;
+  private List<HumanPlayer> players;
   private final int playersToSave;
   private final String jsonPath;
 
@@ -23,37 +25,42 @@ class HighScore {
     this.jsonPath = "highscores.json";
 
     try {
-      Path settingsPath = Paths.get(jsonPath);
-      String json = Files.readString(settingsPath);
-      // This should work, but doesn't at the moment
-      // Type highScoreType = new TypeToken<ArrayList<Player>>() {}.getType();
-      List<Player> highScoreFromFile = gson.fromJson(json, ArrayList.class);
-      players.addAll(highScoreFromFile);
+      String json = IOUtils.toString(
+          new URL("file:" + jsonPath),
+          StandardCharsets.UTF_8
+      );
+      Type listType = new TypeToken<ArrayList<HumanPlayer>>() {}.getType();
+      List<HumanPlayer> playersFromFile = gson.fromJson(json, listType);
+      players.addAll(playersFromFile);
     } catch (Exception e) {
       System.out.println("Something went wrong when trying to load json.");
     }
   }
 
   void addPlayers(List<Player> newPlayers) {
-    players.addAll(newPlayers);
+    List<HumanPlayer> newHumanPlayers = newPlayers
+        .stream()
+        .filter(x -> !x.isBot())
+        .map(x -> (HumanPlayer) x)
+        .collect(Collectors.toList());
+    players.addAll(newHumanPlayers);
     Collections.sort(players);
-    System.out.println(players.subList(playersToSave, players.size()).size());
+
+    players = players.subList(0, playersToSave);
   }
 
-  List<Player> getPlayers() {
+  List<HumanPlayer> getPlayers() {
     return players;
   }
 
   void writeJSON() {
     String json = gson.toJson(players);
     try {
-      PrintStream out = new PrintStream(new FileOutputStream(jsonPath));
-      out.print(json);
-      out.flush();
+      FileWriter fw = new FileWriter(jsonPath);
+      IOUtils.write(json, fw);
+      fw.close();
     } catch (Exception e) {
-      System.out.println("Error: Failed to write " + jsonPath + " to disk:");
-      System.out.println(e.toString());
+      e.printStackTrace();
     }
   }
-
 }
