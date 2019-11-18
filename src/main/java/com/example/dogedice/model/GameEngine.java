@@ -141,25 +141,34 @@ public class GameEngine {
     this.roundsLeft = this.totalRounds;
   }
 
-  public void buyD6() {
+  public Die buyD6() {
     Player player = getPlayer();
+    Die newDie = null;
     if (player.removePoints(d6Price)) {
-      player.addDie(new Die(6));
+      newDie = new Die(6);
+      player.addDie(newDie);
     }
+    return newDie;
   }
 
-  public void buyD20() {
+  public Die buyD20() {
     Player player = getPlayer();
+    Die newDie = null;
     if (player.removePoints(d20Price)) {
-      player.addDie(new Die(20));
+      newDie = new Die(20);
+      player.addDie(newDie);
     }
+    return newDie;
   }
 
-  public void buyModifier() {
+  public Modifier buyModifier() {
     Player player = getPlayer();
+    Modifier newModifier = null;
     if (player.removePoints(modifierPrice)) {
-      player.addModifier(new Modifier(1));
+      newModifier = new Modifier(1);
+      player.addModifier(newModifier);
     }
+    return newModifier;
   }
 
   public int incrementPlayer() {
