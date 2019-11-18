@@ -9,7 +9,7 @@ public class MainWindow extends GenericController {
         HelperMethods.playerSelectionWindowFXML,
         HelperMethods.playerSelectionWindowTitle,
         mouseEvent,
-        gameEngine
+        this
     );
   }
 
@@ -18,7 +18,7 @@ public class MainWindow extends GenericController {
         HelperMethods.highscoreWindowFXML,
         HelperMethods.highscoreWindowTitle,
         mouseEvent,
-        gameEngine
+        this
     );
   }
 
@@ -27,7 +27,7 @@ public class MainWindow extends GenericController {
         HelperMethods.helpWindowFXML,
         HelperMethods.helpWindowTitle,
         mouseEvent,
-        gameEngine
+        this
     );
   }
 
@@ -36,7 +36,7 @@ public class MainWindow extends GenericController {
         HelperMethods.dogeCoinWindowFXML,
         HelperMethods.dogeCoinWindowTitle,
         mouseEvent,
-        gameEngine
+        this
     );
   }
 

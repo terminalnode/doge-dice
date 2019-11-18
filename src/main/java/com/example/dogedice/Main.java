@@ -41,6 +41,7 @@ public class Main extends Application {
       clip.open(inputStream);
       clip.loop(Clip.LOOP_CONTINUOUSLY);
       clip.start();
+      controller.setClip(clip, scene);
     } catch (Exception e) {
       // Audio won't play, big deal
     }

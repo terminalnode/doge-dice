@@ -35,7 +35,7 @@ public class WinnerWindow extends GenericController {
         HelperMethods.mainWindowFXML,
         HelperMethods.mainWindowTitle,
         mouseEvent,
-        gameEngine
+        this
     );
   }
 
@@ -45,7 +45,7 @@ public class WinnerWindow extends GenericController {
         HelperMethods.playWindowFXML,
         HelperMethods.playWindowTitle,
         mouseEvent,
-        gameEngine
+        this
     );
   }
 
@@ -54,7 +54,7 @@ public class WinnerWindow extends GenericController {
         HelperMethods.highscoreWindowFXML,
         HelperMethods.highscoreWindowTitle,
         mouseEvent,
-        gameEngine
+        this
     );
   }
   public void spinningDogeClicked(MouseEvent mouseEvent)  {

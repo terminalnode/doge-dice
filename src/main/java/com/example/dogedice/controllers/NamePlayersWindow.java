@@ -50,7 +50,7 @@ public class NamePlayersWindow extends GenericController {
         HelperMethods.playWindowFXML,
         HelperMethods.playWindowTitle,
         mouseEvent,
-        gameEngine
+        this
     );
   }
 
@@ -64,7 +64,7 @@ public class NamePlayersWindow extends GenericController {
         HelperMethods.playerSelectionWindowFXML,
         HelperMethods.playerSelectionWindowTitle,
         mouseEvent,
-        gameEngine
+        this
     );
   }
 }

@@ -10,7 +10,7 @@ public class DogeCoinWindow extends GenericController {
         HelperMethods.mainWindowFXML,
         HelperMethods.mainWindowTitle,
         mouseEvent,
-        gameEngine
+        this
     );
   }
 }

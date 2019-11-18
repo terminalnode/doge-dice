@@ -5,7 +5,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Spinner;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
@@ -38,14 +37,13 @@ public class PlayerSelectionWindow extends GenericController {
           HelperMethods.namePlayersWindowFXML,
           HelperMethods.namePlayersWindowTitle,
           mouseEvent,
-          gameEngine
+          this
       );
     }
   }
 
   public void spinningDogeClicked(MouseEvent mouseEvent)  {
-    ImageView spinningDoge = (ImageView ) mouseEvent.getSource();
-    spinningDoge.setScaleX(spinningDoge.getScaleX() * -1);
+    HelperMethods.spinningDogeClicked(mouseEvent);
   }
 
   public void backIconClicked(MouseEvent mouseEvent) throws IOException {
@@ -53,7 +51,7 @@ public class PlayerSelectionWindow extends GenericController {
         HelperMethods.mainWindowFXML,
         HelperMethods.mainWindowTitle,
         mouseEvent,
-        gameEngine
+        this
     );
   }
 }
