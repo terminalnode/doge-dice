@@ -4,6 +4,7 @@ import com.example.dogedice.model.Die;
 import com.example.dogedice.model.Modifier;
 import com.example.dogedice.model.Player;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.control.*;
@@ -13,15 +14,11 @@ import javafx.scene.shape.SVGPath;
 import org.apache.commons.io.IOUtils;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.URISyntaxException;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Scanner;
 
 public class PlayWindow extends GenericController {
   private int index = 0;
@@ -31,7 +28,7 @@ public class PlayWindow extends GenericController {
   private final Map<Player, FlowPane> playerItems;
 
   @FXML
-  VBox playerPaneBox;
+  VBox playerPaneBox, diceBox;
 
   @FXML
   Label roll;
@@ -42,23 +39,14 @@ public class PlayWindow extends GenericController {
     playerItems = new HashMap<>();  // the flowpane where we display player dice/modifiers
   }
 
-  public void dieTwentyClicked(MouseEvent mouseEvent) {
-  }
-
-  public void dieSixClicked(MouseEvent mouseEvent) {
-  }
-
-  public void modifierClicked(MouseEvent mouseEvent) {
-  }
-
   public void spinningDogeClicked(MouseEvent mouseEvent) {
     HelperMethods.spinningDogeClicked(mouseEvent);
   }
 
   public void backButtonClicked(MouseEvent mouseEvent) throws IOException {
     HelperMethods.replaceScene(
-        HelperMethods.mainWindowFXML,
-        HelperMethods.mainWindowTitle,
+        HelperMethods.namePlayersWindowFXML,
+        HelperMethods.namePlayersWindowTitle,
         mouseEvent,
         gameEngine
     );
@@ -80,6 +68,25 @@ public class PlayWindow extends GenericController {
 
   @Override
   public void postInitialization() {
+    Group testMods = new Group();
+    try{
+      SVGPath d6 = getSVGIcon("svgpaths/d6");
+      resizeSVG(d6, 60, 60 );
+      d6.setId("dieSix");
+      SVGPath d20 = getSVGIcon("svgpaths/d20");
+      resizeSVG(d20, 60, 65);
+      d20.setId("dieTwenty");
+      SVGPath modifier = getSVGIcon("svgpaths/modifier");
+      resizeSVG(modifier, 60, 60);
+      modifier.setId("modifier");
+      testMods.getStylesheets().add("css/playWindow.css");
+      testMods.getChildren().addAll(d6, d20, modifier);
+      testMods.setId("modsGroup");
+      diceBox.getChildren().add(testMods);
+    }
+
+    catch (Exception e) { e.printStackTrace(); }
+
     this.players = gameEngine.getPlayers();
     for (Player player : players){
       Label playerNameLabel = new Label(player.getName());
@@ -92,6 +99,7 @@ public class PlayWindow extends GenericController {
 
       FlowPane playerItemPane = new FlowPane();
       playerItemPane.setHgap(5);
+      playerItemPane.setPadding(new Insets(5,0,15,0));
       List<Node> playerItemsList = playerItemPane.getChildren();
       player.getDice().forEach(x -> {
         try { playerItemsList.add(getDieIcon(x)); } catch (Exception e) { e.printStackTrace(); }
@@ -99,11 +107,11 @@ public class PlayWindow extends GenericController {
       playerItems.put(player, playerItemPane);
 
       GridPane playerInfo = new GridPane();
-      playerInfo.setHgap(30);
+      playerInfo.setVgap(100);
       playerInfo.addColumn(0, playerNames.get(player));
       playerInfo.addColumn(1, playerScores.get(player));
       playerScores.get(player).setText("" +player.getScore());
-      playerInfo.getColumnConstraints().addAll(new ColumnConstraints(300), new ColumnConstraints(50));
+      playerInfo.getColumnConstraints().addAll(new ColumnConstraints(330), new ColumnConstraints(90));
       playerPaneBox
           .getChildren()
           .addAll(
@@ -133,13 +141,15 @@ public class PlayWindow extends GenericController {
     SVGPath icon = null;
     if (die.getNumOfSides() == 6) {
       icon = getSVGIcon("svgpaths/d6");
-      resizeSVG(icon, 35, 35);
+      resizeSVG(icon, 25, 25);
     } else if (die.getNumOfSides() == 20) {
       icon = getSVGIcon("svgpaths/d20");
-      resizeSVG(icon, 35, 35);
+      resizeSVG(icon, 25, 25);
     }
     Group group = new Group();
-    group.getChildren().add(icon); // will return null pointer exception for weird dice
+    group.getStylesheets().add("css/playWindow.css");
+    group.setId("dies");
+    group.getChildren().addAll(icon); // will return null pointer exception for weird dice
     return group;
   }
 
