@@ -10,3 +10,4 @@ build
 */gradle/wrapper/gradle-wrapper.properties
 *.iml
 !gradle-wrapper.jar
+highscores.json

@@ -72,6 +72,21 @@ public abstract class Player implements Comparable<Player> {
   }
 
   public int compareTo(Player comparePlayer){
-    return this.score - comparePlayer.getScore();
+    int compareScore = score - comparePlayer.getScore();
+    int compareItems = dice.size() + modifiers.size() - (comparePlayer.getDice().size() + comparePlayer.getModifiers().size());
+    if (compareScore != 0) {
+      return compareScore;
+    } else {
+      return compareItems;
+    }
+  }
+
+  @Override
+  public String toString() {
+    return String.format("[<%s> %s (%sp)]",
+        this.getClass().getSimpleName(),
+        name,
+        score
+    );
   }
 }

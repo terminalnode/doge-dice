@@ -1,7 +1,5 @@
 package com.example.dogedice.model;
 
-import com.google.gson.Gson;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -19,6 +17,7 @@ public class GameEngine {
   private final List<Modifier> startingModifiers;
   private Integer numberOfHumans;
   private Integer numberOfCPUs;
+  private final HighScore highScore;
 
   public GameEngine(int totalRounds, int d6Price, int d20Price, int modifierPrice, int[] startingDice, int[] startingModifiers) {
     this.roundsLeft = totalRounds;
@@ -34,6 +33,7 @@ public class GameEngine {
         .collect(Collectors.toList());
     this.numberOfHumans = 1;
     this.numberOfCPUs = 0;
+    this.highScore = new HighScore(3);
 
     // Initializing the game
     this.playerIndex = 0;
@@ -169,5 +169,24 @@ public class GameEngine {
       roundsLeft--;
     }
     return playerIndex;
+  }
+
+  public void updateHighScore() {
+    highScore.addPlayers(players);
+    highScore.writeJSON();
+  }
+
+  public List<Player> getHighScore() {
+    return highScore.getPlayers();
+  }
+
+  @Override
+  public String toString() {
+    return String.format("[<%s> Rounds left: %s/%s, Players: %s]",
+        this.getClass().getSimpleName(),
+        roundsLeft,
+        totalRounds,
+        players.size()
+    );
   }
 }
