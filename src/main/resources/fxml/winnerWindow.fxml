@@ -26,7 +26,7 @@
               fitHeight="50"
               fitWidth="50"/>
 
-      <Label styleClass="subLabel" fx:id="winnerLabel" text="placeHolder" minWidth="250"/>
+      <Label styleClass="subLabel" fx:id="winnerLabel" text="placeHolder" minWidth="150"/>
 
    <ImageView id="dabDogeRight"
               fitHeight="50"
