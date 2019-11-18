@@ -33,8 +33,9 @@ ScrollPane {
 	-fx-max-height: 50px;
 	-fx-min-width: 150px;
 	-fx-max-width: 150px;
-	-fx-padding: 10px;
+	-fx-padding: 5px;
 	-fx-background-color: white;
+	-fx-border-color: black;
 
 }
 
