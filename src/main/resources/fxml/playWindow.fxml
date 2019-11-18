@@ -11,7 +11,7 @@
       fx:controller="com.example.dogedice.controllers.PlayWindow">
 
   <Label id="header" text="Doge-Dice"/>
-  <Label fx:id="gameTurns"/>
+  <Label id="gameTurns" fx:id="gameTurns"/>
 
   <HBox styleClass="gameWindow">
     <ScrollPane hbarPolicy="NEVER" styleClass="scrollPane">

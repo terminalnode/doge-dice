@@ -24,6 +24,7 @@ public class HelperMethods {
   public static final String highscoreWindowTitle = "Highscore";
   public static final String namePlayersWindowTitle = "Name Players";
   public static final String playWindowTitle = "Game!";
+  public static final String winnerWindowTitle = "Winner!";
 
   // FXML paths
   public static final String mainWindowFXML = "fxml/mainWindow.fxml";
@@ -33,7 +34,7 @@ public class HelperMethods {
   public static final String highscoreWindowFXML = "fxml/highscoreWindow.fxml";
   public static final String namePlayersWindowFXML = "fxml/namePlayersWindow.fxml";
   public static final String playWindowFXML = "fxml/playWindow.fxml";
-
+  public static final String winnerWindowFXML = "fxml/winnerWIndow.fxml";
 
   /**
    * SpinningDoge image is used on most (if not all) screens, and has some fairly complex click actions.

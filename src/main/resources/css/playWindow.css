@@ -133,3 +133,8 @@ Button:pressed {
 	-fx-translate-x: -313;
 	-fx-translate-y: 5;
 }
+
+#gameTurns {
+	-fx-font: bold 12px arial;
+	-fx-text-fill: #2196F3;
+}

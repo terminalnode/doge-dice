@@ -1,6 +1,7 @@
 package com.example.dogedice.controllers;
 
 import com.example.dogedice.model.Die;
+import com.example.dogedice.model.GameEngine;
 import com.example.dogedice.model.Modifier;
 import com.example.dogedice.model.Player;
 import javafx.fxml.FXML;
@@ -27,17 +28,18 @@ public class PlayWindow extends GenericController {
   private final Map<Player, Label> playerScores;
   private final Map<Player, FlowPane> playerItems;
 
+
   @FXML
   VBox playerPaneBox, diceBox;
 
   @FXML
-  Label roll;
+  Label roll, gameTurns;
 
   public PlayWindow() {
     playerNames = new HashMap<>();  // the labels where we display player names
     playerScores = new HashMap<>(); // the labels where we display player scores
     playerItems = new HashMap<>();  // the flowpane where we display player dice/modifiers
-  }
+   }
 
   public void spinningDogeClicked(MouseEvent mouseEvent) {
     HelperMethods.spinningDogeClicked(mouseEvent);
@@ -52,22 +54,41 @@ public class PlayWindow extends GenericController {
     );
   }
 
-  public void rollButtonClicked(MouseEvent mouseEvent) {
-    Player player = players.get(index);
-    roll.setText("" + player.rollAllDice());
-    playerScores.get(player).setText(""+player.getScore());
-    changePlayer();
+  public void rollButtonClicked(MouseEvent mouseEvent) throws IOException {
+    Player player = gameEngine.getPlayer();
 
-    Player nextPlayer = players.get(index);
+    roll.setText("" + player.rollAllDice());
+    playerScores.get(player).setText(gameEngine.getScoreAsString());
+
+    gameEngine.incrementPlayer();
+    Player nextPlayer = gameEngine.getPlayer();
+
     setInactiveStylePlayer(player);
     setActiveStylePlayer(nextPlayer);
     if (nextPlayer.isBot()) {
-      rollButtonClicked(null);
+      rollButtonClicked(mouseEvent);
     }
+    System.out.println(gameTurns);
+    gameTurns.setText("Rounds Left: " + gameEngine.getRoundsLeftAsString());
+    getWinner(mouseEvent);
+
+  }
+
+  private void getWinner(MouseEvent mouseEvent) throws IOException {
+
+    if (gameEngine.getRoundsLeft() == 0) {
+        HelperMethods.replaceScene(
+            HelperMethods.winnerWindowFXML,
+            HelperMethods.winnerWindowTitle,
+            mouseEvent,
+            gameEngine);
+      }
+
   }
 
   @Override
   public void postInitialization() {
+    gameTurns.setText("Rounds Left: " + gameEngine.getRoundsLeftAsString());
     Group testMods = new Group();
     try{
       SVGPath d6 = getSVGIcon("svgpaths/d6");
@@ -88,7 +109,7 @@ public class PlayWindow extends GenericController {
     catch (Exception e) { e.printStackTrace(); }
 
     this.players = gameEngine.getPlayers();
-    for (Player player : players){
+    for (Player player : players) {
       Label playerNameLabel = new Label(player.getName());
       playerNameLabel.getStyleClass().add("playerInfo");
       playerNames.put(player, playerNameLabel);
@@ -132,7 +153,7 @@ public class PlayWindow extends GenericController {
 
   private void changePlayer() {
     index++;
-    if (players.size() == index){
+    if (players.size() == index) {
       index = 0;
     }
   }
@@ -141,10 +162,10 @@ public class PlayWindow extends GenericController {
     SVGPath icon = null;
     if (die.getNumOfSides() == 6) {
       icon = getSVGIcon("svgpaths/d6");
-      resizeSVG(icon, 25, 25);
+      resizeSVG(icon, 35, 35);
     } else if (die.getNumOfSides() == 20) {
       icon = getSVGIcon("svgpaths/d20");
-      resizeSVG(icon, 25, 25);
+      resizeSVG(icon, 35, 35);
     }
     Group group = new Group();
     group.getStylesheets().add("css/playWindow.css");
@@ -179,5 +200,4 @@ public class PlayWindow extends GenericController {
     svg.setScaleY(height / originalHeight);
   }
 }
-
 

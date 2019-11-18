@@ -29,6 +29,7 @@ public class WinnerWindow extends GenericController {
     }
   }
 
+
   public void menuButtonClicked(MouseEvent mouseEvent) throws IOException {
     // TODO add reset function to game engine
     HelperMethods.replaceScene(
