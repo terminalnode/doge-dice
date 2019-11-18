@@ -24,6 +24,7 @@ dependencies {
   testCompile("org.testfx:testfx-junit5:4.0.16-alpha")
   compile("org.slf4j:slf4j-simple:1.7.21")
   compile("commons-io:commons-io:2.6")
+  implementation("com.google.code.gson:gson:2.8.6")
 
 }
 
