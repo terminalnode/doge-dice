@@ -6,13 +6,11 @@ import com.example.dogedice.model.GameEngine;
 import javafx.application.*;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.*;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import javafx.stage.*;
 
-import java.io.File;
+import javax.sound.sampled.*;
+import java.io.BufferedInputStream;
 import java.io.IOException;
-import java.net.URISyntaxException;
 
 public class Main extends Application {
   public static void main(String[] args) {
@@ -20,7 +18,7 @@ public class Main extends Application {
   }
 
   @Override
-  public void start(Stage mainWindow) throws IOException, URISyntaxException {
+  public void start(Stage mainWindow) throws IOException {
     GameEngine gameEngine = new GameEngine(30, 5, 10, 15, new int[]{6,6}, new int[]{});
 
     // First window must be loaded manually, other windows will use replaceWindow from HelperMethods.
@@ -35,11 +33,16 @@ public class Main extends Application {
     mainWindow.show();
     mainWindow.toFront();
 
-    if (!getClass().getResource("").getProtocol().equals("jar")) {
-      File soundFile = new File(HelperMethods.getRes("sounds/biggestSmile.wav").toURI());
-      MediaPlayer player = new MediaPlayer(new Media(soundFile.toURI().toString()));
-      player.setCycleCount(MediaPlayer.INDEFINITE);
-      player.play();
+    try {
+      Clip clip = AudioSystem.getClip();
+      AudioInputStream inputStream = AudioSystem.getAudioInputStream(
+          new BufferedInputStream(HelperMethods.getResAsStream("sounds/biggestSmile.wav"))
+      );
+      clip.open(inputStream);
+      clip.loop(Clip.LOOP_CONTINUOUSLY);
+      clip.start();
+    } catch (Exception e) {
+      // Audio won't play, big deal
     }
   }
 }

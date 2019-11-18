@@ -42,7 +42,7 @@ configure<JavaPluginConvention> {
 
 javafx {
   version = "11"
-  modules("javafx.controls", "javafx.fxml", "javafx.media")
+  modules("javafx.controls", "javafx.fxml")
 }
 
 tasks.create<Test>("testMainWindow") {
