@@ -22,10 +22,15 @@ public class HelpWindow extends GenericController {
   public void initialize() {
     text.setText(
         "1. Pick 2leg-Doge or robo Doge if less Friend.\n" +
-            "2. so amaze Play! \n" +
-            "3. Play til much rich dice. \n" +
-            "4. Wow so rich, dice or mod buy now. doge impressed! \n" +
-            "5. Lose or win, u never be Top-Doge with no donation \n " +
-            "Play much impress donation == Top-Doge" );
+            "2. pick so sexi name" +
+            "3. so amaze Play! \n" +
+            "4. Play til much rich dice. \n" +
+            "5. Wow so rich, dice or mod buy now. doge impressed! \n" +
+            "6. Lose or win, u never be Top-Doge with no donation \n " +
+            "much impress Play with donation == Top-Doge" +
+            "\n No like wonder music ? M press.");
+  }
+  public void spinningDogeClicked(MouseEvent mouseEvent)  {
+    HelperMethods.spinningDogeClicked(mouseEvent);
   }
 }
