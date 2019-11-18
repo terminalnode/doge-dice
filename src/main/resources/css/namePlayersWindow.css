@@ -1,5 +1,5 @@
 #namePlayersWindow {
-  -fx-min-width: 280px;
+  -fx-min-width: 300px;
   -fx-min-height: 400px;
   -fx-background-color: white;
 }
@@ -39,4 +39,8 @@ Button:hover {
 
 #backButton {
  	-fx-image: url("../images/backIcon.png");
- }
+}
+
+#coolDoge {
+  	-fx-image: url("../images/CoolDoge.jpg");
+}

@@ -14,7 +14,10 @@
       fx:controller="com.example.dogedice.controllers.NamePlayersWindow"
       alignment="CENTER">
 
-    <Label id="header" text="Name players" alignment="TOP_CENTER"/>
+  <HBox alignment="center" spacing="5">
+  <Label id="header" text="Name Doges?" alignment="CENTER" />
+  <ImageView id="coolDoge" fitWidth="35" preserveRatio="true" />
+  </HBox>
 
     <ScrollPane hbarPolicy="NEVER">
       <VBox fx:id="namePlayersBox"/>
