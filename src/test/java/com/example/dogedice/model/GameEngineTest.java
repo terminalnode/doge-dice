@@ -14,7 +14,7 @@ class GameEngineTest {
 
   private List<Integer> playerDiceSides(GameEngine gameEngine) {
     return gameEngine
-        .getCurrentPlayer()
+        .getPlayer()
         .getDice()
         .stream()
         .map(Die::getNumOfSides)
@@ -73,9 +73,10 @@ class GameEngineTest {
     logger.info("Asserting that players start with 0 points and incrementing players works correctly.");
     for (int i = 0; i < 2; i++) {
       logger.info("Asserting that player {} is {}", i + 1, players.get(i).getName());
-      assertEquals(players.get(i), gameEngine.getCurrentPlayer());
+      assertEquals(players.get(i), gameEngine.getPlayer());
       logger.info("Asserting that {}'s score is 0", players.get(i).getName());
-      assertEquals("0", gameEngine.getCurrentPlayerScore());
+      assertEquals("0", gameEngine.getScoreAsString());
+      assertEquals(0, gameEngine.getScore());
       logger.info("Asserting that playerIndex is correctly set to {}.", i);
       assertEquals(i, gameEngine.getPlayerIndex());
       gameEngine.incrementPlayer();
@@ -103,10 +104,12 @@ class GameEngineTest {
 
     logger.info("Asserting that players have 4 points after rolling dice");
     assertEquals(4, gameEngine.rollDice());
-    assertEquals("4", gameEngine.getCurrentPlayerScore());
+    assertEquals("4", gameEngine.getScoreAsString());
+    assertEquals(4, gameEngine.getScore());
     gameEngine.incrementPlayer();
     assertEquals(4, gameEngine.rollDice());
-    assertEquals("4", gameEngine.getCurrentPlayerScore());
+    assertEquals("4", gameEngine.getScoreAsString());
+    assertEquals(4, gameEngine.getScore());
     gameEngine.incrementPlayer();
 
     logger.info("With prices 5/10/15 for d6/d20/modifier, asserting that canBuy-methods return false.");
@@ -119,68 +122,83 @@ class GameEngineTest {
 
     logger.info("Asserting that buy-methods don't do anything.");
     for (int i = 0; i < 2; i++) {
-      logger.info("Asserting buy methods for {}.", gameEngine.getCurrentPlayerName());
+      logger.info("Asserting buy methods for {}.", gameEngine.getPlayerName());
       gameEngine.buyD6();
-      assertEquals(4, gameEngine.getCurrentPlayer().getDice().size());
-      assertEquals("4", gameEngine.getCurrentPlayerScore());
+      assertEquals(4, gameEngine.getPlayer().getDice().size());
+      assertEquals("4", gameEngine.getScoreAsString());
+      assertEquals(4, gameEngine.getScore());
       gameEngine.buyD20();
-      assertEquals(4, gameEngine.getCurrentPlayer().getDice().size());
-      assertEquals("4", gameEngine.getCurrentPlayerScore());
+      assertEquals(4, gameEngine.getPlayer().getDice().size());
+      assertEquals("4", gameEngine.getScoreAsString());
+      assertEquals(4, gameEngine.getScore());
       gameEngine.buyModifier();
-      assertEquals(4, gameEngine.getCurrentPlayer().getModifiers().size());
-      assertEquals("4", gameEngine.getCurrentPlayerScore());
+      assertEquals(4, gameEngine.getPlayer().getModifiers().size());
+      assertEquals("4", gameEngine.getScoreAsString());
+      assertEquals(4, gameEngine.getScore());
       gameEngine.incrementPlayer();
     }
 
     for (int i = 0; i < 2; i++) {
-      logger.info("Asserting that sumModifiers give {} 16 points.", gameEngine.getCurrentPlayerName());
+      logger.info("Asserting that sumModifiers give {} 16 points.", gameEngine.getPlayerName());
       assertEquals(16, gameEngine.sumModifiers());
-      logger.info("Asserting that {}'s current score is 20.", gameEngine.getCurrentPlayerName());
-      assertEquals("20", gameEngine.getCurrentPlayerScore());
+      logger.info("Asserting that {}'s current score is 20.", gameEngine.getPlayerName());
+      assertEquals("20", gameEngine.getScoreAsString());
+      assertEquals(20, gameEngine.getScore());
       gameEngine.incrementPlayer();
     }
 
     for (int i = 0; i < 2; i++) {
-      logger.info("Asserting that {} is now able to buy anything.", gameEngine.getCurrentPlayerName());
+      logger.info("Asserting that {} is now able to buy anything.", gameEngine.getPlayerName());
       assertTrue(gameEngine.canBuyD6());
       assertTrue(gameEngine.canBuyD20());
       assertTrue(gameEngine.canBuyModifier());
 
-      logger.info("Asserting that buying a D6 works for {}.", gameEngine.getCurrentPlayerName());
+      logger.info("Asserting that buying a D6 works for {}.", gameEngine.getPlayerName());
       logger.info("d6Price is {} and {} has {} points",
           gameEngine.getD6Price(),
-          gameEngine.getCurrentPlayerName(),
-          gameEngine.getCurrentPlayerScore()
+          gameEngine.getPlayerName(),
+          gameEngine.getScoreAsString()
       );
       gameEngine.buyD6();
-      assertEquals("15", gameEngine.getCurrentPlayerScore());
-      logger.info("Asserting that {} now has a d6", gameEngine.getCurrentPlayerName());
+      assertEquals("15", gameEngine.getScoreAsString());
+      assertEquals(15, gameEngine.getScore());
+      logger.info("Asserting that {} now has a d6", gameEngine.getPlayerName());
       assertTrue(playerDiceSides(gameEngine).contains(6));
 
-      logger.info("Asserting that buying a modifier works for {}", gameEngine.getCurrentPlayerName());
+      logger.info("Asserting that buying a modifier works for {}", gameEngine.getPlayerName());
       logger.info("modifierPrice is {} and {} has {} points",
           gameEngine.getModifierPrice(),
-          gameEngine.getCurrentPlayerName(),
-          gameEngine.getCurrentPlayerScore()
+          gameEngine.getPlayerName(),
+          gameEngine.getScoreAsString()
       );
       gameEngine.buyModifier();
-      assertEquals("0", gameEngine.getCurrentPlayerScore());
-      logger.info("Asserting that {} now has another value 1 modifier", gameEngine.getCurrentPlayerName());
-      assertEquals(5, gameEngine.getCurrentPlayer().getModifiers().size());
+      assertEquals("0", gameEngine.getScoreAsString());
+      assertEquals(0, gameEngine.getScore());
+      logger.info("Asserting that {} now has another value 1 modifier", gameEngine.getPlayerName());
+      assertEquals(5, gameEngine.getPlayer().getModifiers().size());
 
 
-      logger.info("Rolling dice and summing modifiers to get {} above 20 points again.", gameEngine.getCurrentPlayerName());
+      logger.info("Rolling dice and summing modifiers to get {} above 20 points again.", gameEngine.getPlayerName());
       gameEngine.rollDice();
       gameEngine.sumModifiers();
-      logger.info("Buying {} a 20-sided die for 15 points.", gameEngine.getCurrentPlayerName());
+      logger.info("Buying {} a 20-sided die for 15 points.", gameEngine.getPlayerName());
       gameEngine.buyD20();
-      logger.info("Asserting that {} has a d20 and a d6 now.", gameEngine.getCurrentPlayerName());
+      logger.info("Asserting that {} has a d20 and a d6 now.", gameEngine.getPlayerName());
       assertTrue(playerDiceSides(gameEngine).contains(20));
 
-      logger.info("Asserting that {} has a total of 6 dice now.", gameEngine.getCurrentPlayerName());
-      assertEquals(6, gameEngine.getCurrentPlayer().getDice().size());
+      logger.info("Asserting that {} has a total of 6 dice now.", gameEngine.getPlayerName());
+      assertEquals(6, gameEngine.getPlayer().getDice().size());
 
       gameEngine.incrementPlayer();
     }
+
+    logger.info("Testing the gameEngine.resetPlayers() method.");
+    gameEngine.resetPlayers();
+    logger.info("gameEngine.getPlayers().size() should be 0, is {}.", gameEngine.getPlayers().size());
+    assertEquals(0, gameEngine.getPlayers().size());
+
+    logger.info("Testing the gameEngine.reset");
+    gameEngine.resetRounds();
+    assertEquals(30, gameEngine.getRoundsLeft());
   }
 }

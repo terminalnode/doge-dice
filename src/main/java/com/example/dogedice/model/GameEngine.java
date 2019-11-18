@@ -7,11 +7,12 @@ import java.util.stream.Collectors;
 
 public class GameEngine {
   private int roundsLeft;
+  private int totalRounds;
   private int playerIndex;
   private int d6Price;
   private int d20Price;
   private int modifierPrice;
-  private final List<Player> players;
+  private List<Player> players;
   private final List<Die> startingDice;
   private final List<Modifier> startingModifiers;
   private Integer numberOfHumans;
@@ -19,6 +20,7 @@ public class GameEngine {
 
   public GameEngine(int totalRounds, int d6Price, int d20Price, int modifierPrice, int[] startingDice, int[] startingModifiers) {
     this.roundsLeft = totalRounds;
+    this.totalRounds = totalRounds;
     this.d6Price = d6Price;
     this.d20Price = d20Price;
     this.modifierPrice = modifierPrice;
@@ -66,77 +68,89 @@ public class GameEngine {
   }
 
   public int getD6Price() {
-    return this.d6Price;
+    return d6Price;
   }
 
   public int getD20Price() {
-    return this.d20Price;
+    return d20Price;
   }
 
   public int getModifierPrice() {
-    return this.modifierPrice;
+    return modifierPrice;
   }
 
   public int getPlayerIndex() {
-    return this.playerIndex;
+    return playerIndex;
   }
 
   public int getRoundsLeft() {
-    return this.roundsLeft;
+    return roundsLeft;
   }
 
   public List<Player> getPlayers() {
-    return this.players;
+    return players;
   }
 
-  public Player getCurrentPlayer() {
+  public Player getPlayer() {
     return this.players.get(playerIndex);
   }
 
-  public String getCurrentPlayerScore() {
-    return "" + this.players.get(playerIndex).getScore();
+  public int getScore() {
+    return getPlayer().getScore();
   }
 
-  public String getCurrentPlayerName() {
-    return getCurrentPlayer().getName();
+  public String getScoreAsString() {
+    return "" + getPlayer().getScore();
+  }
+
+  public String getPlayerName() {
+    return getPlayer().getName();
   }
 
   public boolean canBuyD6() {
-    return getCurrentPlayer().getScore() >= d6Price;
+    return getPlayer().getScore() >= d6Price;
   }
 
   public boolean canBuyD20() {
-    return getCurrentPlayer().getScore() >= d20Price;
+    return getPlayer().getScore() >= d20Price;
   }
 
   public boolean canBuyModifier() {
-    return getCurrentPlayer().getScore() >= modifierPrice;
+    return getPlayer().getScore() >= modifierPrice;
   }
 
   public int rollDice() {
-    return getCurrentPlayer().rollAllDice();
+    return getPlayer().rollAllDice();
   }
 
   public int sumModifiers() {
-    return getCurrentPlayer().sumAllModifiers();
+    return getPlayer().sumAllModifiers();
+  }
+
+  public void resetPlayers() {
+    this.players = new ArrayList<>();
+  }
+
+  public void resetRounds() {
+    this.roundsLeft = this.totalRounds;
   }
 
   public void buyD6() {
-    Player player = getCurrentPlayer();
+    Player player = getPlayer();
     if (player.removePoints(d6Price)) {
       player.addDie(new Die(6));
     }
   }
 
   public void buyD20() {
-    Player player = getCurrentPlayer();
+    Player player = getPlayer();
     if (player.removePoints(d20Price)) {
       player.addDie(new Die(20));
     }
   }
 
   public void buyModifier() {
-    Player player = getCurrentPlayer();
+    Player player = getPlayer();
     if (player.removePoints(modifierPrice)) {
       player.addModifier(new Modifier(1));
     }
