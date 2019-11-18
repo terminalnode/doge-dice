@@ -1,7 +1,6 @@
 package com.example.dogedice.controllers;
 
 import com.example.dogedice.model.Die;
-import com.example.dogedice.model.GameEngine;
 import com.example.dogedice.model.Modifier;
 import com.example.dogedice.model.Player;
 import javafx.fxml.FXML;
@@ -89,21 +88,59 @@ public class PlayWindow extends GenericController {
   @Override
   public void postInitialization() {
     gameTurns.setText("Rounds Left: " + gameEngine.getRoundsLeftAsString());
-    Group testMods = new Group();
     try{
-      SVGPath d6 = getSVGIcon("svgpaths/d6");
-      resizeSVG(d6, 60, 60 );
-      d6.setId("dieSix");
-      SVGPath d20 = getSVGIcon("svgpaths/d20");
-      resizeSVG(d20, 60, 65);
-      d20.setId("dieTwenty");
+      SVGPath die6 = getSVGIcon("svgpaths/d6");
+      resizeSVG(die6, 60, 60 );
+      Group d6G = new Group(die6);
+      d6G.setId("dieSix");
+      SVGPath die20 = getSVGIcon("svgpaths/d20");
+      resizeSVG(die20, 60, 65);
+      Group d20G = new Group(die20);
+      d20G.setId("dieTwenty");
       SVGPath modifier = getSVGIcon("svgpaths/modifier");
       resizeSVG(modifier, 60, 60);
-      modifier.setId("modifier");
-      testMods.getStylesheets().add("css/playWindow.css");
-      testMods.getChildren().addAll(d6, d20, modifier);
-      testMods.setId("modsGroup");
-      diceBox.getChildren().add(testMods);
+      Group modG = new Group(modifier);
+      modG.setId("modifier");
+      diceBox.getChildren().addAll(d6G, d20G, modG);
+
+      die6.setOnMousePressed(mouseEvent -> {
+        Die newDie = gameEngine.buyD6();
+        if (newDie != null){
+          try {
+            playerItems.get(gameEngine.getPlayer()).getChildren().add(getDieIcon(newDie));
+          } catch (IOException e) { e.printStackTrace();
+          } catch (URISyntaxException e) { e.printStackTrace(); }
+        }
+
+        playerScores.get(gameEngine.getPlayer()).setText(gameEngine.getScoreAsString());
+
+      });
+
+      die20.setOnMousePressed(mouseEvent -> {
+        Die newDie = gameEngine.buyD20();
+        if (newDie != null){
+          try {
+            playerItems.get(gameEngine.getPlayer()).getChildren().add(getDieIcon(newDie));
+          } catch (IOException e) { e.printStackTrace();
+          } catch (URISyntaxException e) { e.printStackTrace();
+          }
+        }
+
+        playerScores.get(gameEngine.getPlayer()).setText(gameEngine.getScoreAsString());
+      });
+
+      modifier.setOnMousePressed(mouseEvent -> {
+        Modifier newModifier = gameEngine.buyModifier();
+        if(newModifier != null){
+          try {
+            playerItems.get(gameEngine.getPlayer()).getChildren().add(getModifierIcon(newModifier));
+          } catch (IOException e) { e.printStackTrace();
+          } catch (URISyntaxException e) { e.printStackTrace();
+          }
+        }
+        playerScores.get(gameEngine.getPlayer()).setText(gameEngine.getScoreAsString());
+      });
+
     }
 
     catch (Exception e) { e.printStackTrace(); }
@@ -151,13 +188,6 @@ public class PlayWindow extends GenericController {
     playerNames.get(player).setStyle("");
   }
 
-  private void changePlayer() {
-    index++;
-    if (players.size() == index) {
-      index = 0;
-    }
-  }
-
   private Group getDieIcon(Die die) throws IOException, URISyntaxException {
     SVGPath icon = null;
     if (die.getNumOfSides() == 6) {
@@ -175,7 +205,7 @@ public class PlayWindow extends GenericController {
   }
 
   // TODO modifier icon is currently all black. Should display value as well.
-  private Group modifierIcon(Modifier mod) throws IOException, URISyntaxException {
+  private Group getModifierIcon(Modifier mod) throws IOException, URISyntaxException {
     SVGPath icon = getSVGIcon("svgpaths/modifier");
     resizeSVG(icon, 35, 35);
     Group group = new Group();
@@ -199,5 +229,6 @@ public class PlayWindow extends GenericController {
     svg.setScaleX(width / originalWidth);
     svg.setScaleY(height / originalHeight);
   }
+
 }
 

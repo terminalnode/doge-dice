@@ -37,6 +37,7 @@
 	-fx-max-width:  120;
 	-fx-spacing:    15;
 	-fx-translate-x: 25;
+	-fx-translate-y: -105;
 }
 
 #bot {
@@ -91,18 +92,11 @@ Button:pressed {
 	-fx-translate-x: -3;
 }
 
-#modifierLabel {
-	-fx-text-fill:   white;
-	-fx-translate-y: -112;
-	-fx-translate-x: 14;
-	-fx-font:        bold 25px "Arial";
-}
-
 #resultHeader {
 	-fx-font:      bold 18px "Arial";
 	-fx-text-fill: #2196F3;
 	-fx-translate-x: -10;
-	-fx-translate-y: 250;
+	-fx-translate-y: 400;
 }
 
 #resultLabel {
@@ -116,22 +110,7 @@ Button:pressed {
 	-fx-padding:        0 0 0 20;
 	-fx-border-style:   dashed;
 	-fx-translate-x: -7;
-	-fx-translate-y: 240;
-}
-
-#modsGroup{
-	-fx-translate-x: -10;
-	-fx-translate-y: -155;
-}
-
-#dieSix {
-	-fx-translate-x: -305;
-	-fx-translate-y: -210;
-}
-
-#modifier {
-	-fx-translate-x: -313;
-	-fx-translate-y: 5;
+	-fx-translate-y: 390;
 }
 
 #gameTurns {

@@ -19,7 +19,6 @@
     </ScrollPane>
 
     <VBox id="diceBox" fx:id="diceBox" styleClass="modifiers">
-      <Label id="modifierLabel" text="+1" />
       <Label id="resultHeader" text="SCORE"/>
       <Label id="resultLabel" fx:id="roll" />
     </VBox>
