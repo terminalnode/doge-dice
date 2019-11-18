@@ -69,6 +69,7 @@ class GameEngineTest {
 
     logger.info("Asserting that rounds left is set correctly");
     assertEquals(30, gameEngine.getRoundsLeft());
+    assertEquals("30", gameEngine.getRoundsLeftAsString());
 
     logger.info("Asserting that players start with 0 points and incrementing players works correctly.");
     for (int i = 0; i < 2; i++) {
@@ -86,6 +87,7 @@ class GameEngineTest {
     for (int i = 29; i >= 0; i--) {
       logger.info("Asserting that there are {} rounds left", i);
       assertEquals(i, gameEngine.getRoundsLeft());
+      assertEquals("" + i, gameEngine.getRoundsLeftAsString());
       gameEngine.incrementPlayer();
       gameEngine.incrementPlayer();
     }
@@ -200,5 +202,6 @@ class GameEngineTest {
     logger.info("Testing the gameEngine.reset");
     gameEngine.resetRounds();
     assertEquals(30, gameEngine.getRoundsLeft());
+    assertEquals("30", gameEngine.getRoundsLeftAsString());
   }
 }

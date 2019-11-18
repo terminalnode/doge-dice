@@ -1,5 +1,7 @@
 package com.example.dogedice.model;
 
+import com.google.gson.Gson;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -85,6 +87,10 @@ public class GameEngine {
 
   public int getRoundsLeft() {
     return roundsLeft;
+  }
+
+  public String getRoundsLeftAsString() {
+    return "" + roundsLeft;
   }
 
   public List<Player> getPlayers() {
