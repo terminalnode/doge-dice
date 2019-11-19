@@ -20,6 +20,7 @@
 	-fx-font: normal bold 16px 'arial';
   -fx-text-fill: #2196F3;
   -fx-alignment: center;
+  -fx-min-height: 280px;
 }
 
 .center {
