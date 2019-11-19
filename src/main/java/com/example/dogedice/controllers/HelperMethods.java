@@ -31,7 +31,7 @@ public class HelperMethods {
   public static final String dogeCoinWindowFXML = "fxml/dogeCoinWindow.fxml";
   public static final String helpWindowFXML = "fxml/helpWindow.fxml";
   public static final String playerSelectionWindowFXML = "fxml/playerSelectionWindow.fxml";
-  public static final String highscoreWindowFXML = "fxml/highscoreWindow.fxml";
+  public static final String highscoreWindowFXML = "fxml/highScoreWindow.fxml";
   public static final String namePlayersWindowFXML = "fxml/namePlayersWindow.fxml";
   public static final String playWindowFXML = "fxml/playWindow.fxml";
   public static final String winnerWindowFXML = "fxml/winnerWIndow.fxml";

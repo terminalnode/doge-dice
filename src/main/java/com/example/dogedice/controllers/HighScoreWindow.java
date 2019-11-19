@@ -3,13 +3,12 @@ package com.example.dogedice.controllers;
 import com.example.dogedice.model.HumanPlayer;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
 import java.util.List;
 
-public class HighscoreWindow extends GenericController {
+public class HighScoreWindow extends GenericController {
 
   @FXML
   Label firstPlace, secondPlace, thirdPlace;
@@ -23,8 +22,7 @@ public class HighscoreWindow extends GenericController {
   }
 
   public void spinningDogeClicked(MouseEvent mouseEvent)  {
-    ImageView spinningDoge = (ImageView ) mouseEvent.getSource();
-    spinningDoge.setScaleX(spinningDoge.getScaleX() * -1);
+    HelperMethods.spinningDogeClicked(mouseEvent);
   }
 
   public void backIconClicked(MouseEvent mouseEvent) throws IOException {

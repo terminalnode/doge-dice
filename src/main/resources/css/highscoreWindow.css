@@ -7,9 +7,28 @@
   	-fx-background-color: white;
 }
 
-Label{
+Label {
 	-fx-font: normal bold 16px 'arial';
 	-fx-text-fill: #2196F3;
+}
+
+.playerName {
+	-fx-translate-x: 58px;
+	-fx-alignment: center;
+	-fx-min-width: 125px;
+	-fx-max-width: 125px;
+}
+
+#firstPlace {
+	-fx-translate-y: 35px;
+}
+
+#secondPlace {
+	-fx-translate-y: 95px;
+}
+
+#thirdPlace {
+	-fx-translate-y: 155px;
 }
 
 .rectangle {
