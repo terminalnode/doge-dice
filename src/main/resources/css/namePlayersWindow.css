@@ -23,6 +23,8 @@ Button {
 	-fx-font: normal bold 20px 'serif';
 	-fx-focus-color: transparent;
 	-fx-faint-focus-color: transparent;
+	-fx-translate-y: 3;
+	-fx-translate-x: 7;
 }
 
 Button:pressed {
