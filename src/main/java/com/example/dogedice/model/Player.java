@@ -90,4 +90,8 @@ public abstract class Player implements Comparable<Player> {
         score
     );
   }
+
+  public void resetScore() {
+    this.score = 0;
+  }
 }

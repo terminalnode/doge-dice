@@ -153,6 +153,10 @@ public class GameEngine {
     this.roundsLeft = this.totalRounds;
   }
 
+  public void resetScores() {
+    players.forEach(Player::resetScore);
+  }
+
   public Die buyD6() {
     Player player = getPlayer();
     Die newDie = null;

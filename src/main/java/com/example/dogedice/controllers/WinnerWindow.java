@@ -21,8 +21,8 @@ public class WinnerWindow extends GenericController {
     }
 
   public void menuButtonClicked(MouseEvent mouseEvent) throws IOException {
-    gameEngine.resetPlayers();
     gameEngine.resetRounds();
+    gameEngine.resetPlayers();
     HelperMethods.replaceScene(
         HelperMethods.mainWindowFXML,
         HelperMethods.mainWindowTitle,
@@ -32,8 +32,8 @@ public class WinnerWindow extends GenericController {
   }
 
   public void replayButtonClicked(MouseEvent mouseEvent) throws IOException {
-    // TODO add reset function to game engine
     gameEngine.resetRounds();
+    gameEngine.resetScores();
     HelperMethods.replaceScene(
         HelperMethods.playWindowFXML,
         HelperMethods.playWindowTitle,
@@ -43,8 +43,8 @@ public class WinnerWindow extends GenericController {
   }
 
   public void highscoreButtonClicked(MouseEvent mouseEvent) throws IOException {
-    gameEngine.resetPlayers();
     gameEngine.resetRounds();
+    gameEngine.resetPlayers();
     HelperMethods.replaceScene(
         HelperMethods.highscoreWindowFXML,
         HelperMethods.highscoreWindowTitle,
