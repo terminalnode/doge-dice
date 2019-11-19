@@ -27,7 +27,6 @@ public class PlayWindow extends GenericController {
   private final Map<Player, Label> playerScores;
   private final Map<Player, FlowPane> playerItems;
 
-
   @FXML
   VBox playerPaneBox, diceBox;
 
@@ -38,7 +37,7 @@ public class PlayWindow extends GenericController {
     playerNames = new HashMap<>();  // the labels where we display player names
     playerScores = new HashMap<>(); // the labels where we display player scores
     playerItems = new HashMap<>();  // the flowpane where we display player dice/modifiers
-   }
+  }
 
   public void spinningDogeClicked(MouseEvent mouseEvent) {
     HelperMethods.spinningDogeClicked(mouseEvent);
@@ -107,15 +106,14 @@ public class PlayWindow extends GenericController {
       SVGPath die6 = getSVGIcon("svgpaths/d6");
       resizeSVG(die6, 60, 60 );
       Group d6G = new Group(die6);
-      d6G.setId("dieSix");
+
       SVGPath die20 = getSVGIcon("svgpaths/d20");
       resizeSVG(die20, 60, 65);
       Group d20G = new Group(die20);
-      d20G.setId("dieTwenty");
+
       SVGPath modifier = getSVGIcon("svgpaths/modifier");
       resizeSVG(modifier, 60, 60);
       Group modG = new Group(modifier);
-      modG.setId("modifier");
       diceBox.getChildren().addAll(d6G, d20G, modG);
 
       die6.setOnMousePressed(mouseEvent -> {
