@@ -85,8 +85,23 @@ public class PlayWindow extends GenericController {
 
   }
 
+  private void pricing(){
+    Group priceGroup = new Group();
+    Label dieSixPrice = new Label(gameEngine.getD6PriceAsString());
+    dieSixPrice.setId("d6p");
+    Label dieTwentyPrice = new Label (gameEngine.getD20PriceAsString());
+    dieTwentyPrice.setId("d20p");
+    Label modifierPrice = new Label (gameEngine.getModifierPriceAsString());
+    modifierPrice.setId("mp");
+    priceGroup.getStylesheets().add("css/playWindow.css");
+    priceGroup.setId("prices");
+    priceGroup.getChildren().addAll(dieSixPrice, dieTwentyPrice, modifierPrice);
+    diceBox.getChildren().add(priceGroup);
+  }
+
   @Override
   public void postInitialization() {
+    pricing();
     gameTurns.setText("Rounds Left: " + gameEngine.getRoundsLeftAsString());
     try{
       SVGPath die6 = getSVGIcon("svgpaths/d6");

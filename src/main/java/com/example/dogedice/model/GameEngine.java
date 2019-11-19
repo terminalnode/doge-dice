@@ -73,12 +73,24 @@ public class GameEngine {
     return d6Price;
   }
 
+  public String getD6PriceAsString() {
+    return "Cost: " + d6Price;
+  }
+
   public int getD20Price() {
     return d20Price;
   }
 
+  public String getD20PriceAsString() {
+    return "Cost: " + d20Price;
+  }
+
   public int getModifierPrice() {
     return modifierPrice;
+  }
+
+  public String getModifierPriceAsString() {
+    return "Cost: " + modifierPrice;
   }
 
   public int getPlayerIndex() {
