@@ -2,12 +2,10 @@ package com.example.dogedice.model;
 
 public class CpuPlayer extends Player {
   private final GameEngine gameEngine;
-  private BotAction desiredAction;
 
   public CpuPlayer(String name, GameEngine gameEngine) {
     super(name);
     this.gameEngine = gameEngine;
-    this.desiredAction = BotAction.PASS;
   }
 
   @Override
@@ -17,7 +15,8 @@ public class CpuPlayer extends Player {
 
   public BotAction getDesiredAction() {
     int roundsLeft = gameEngine.getRoundsLeft();
-    double pointsPerTurn = (3.5 * numD6) + (10.5 * numD20) + (numModifiers * (numD6 + numD20));
+    int numDice = numD6 + numD20;
+    double pointsPerTurn = (3.5 * numD6) + (10.5 * numD20) + (numModifiers * numDice);
 
     // How many rounds until we can purchase any given item
     long turnsUntilD6 = getTurnsUntil(gameEngine.getD6Price(), pointsPerTurn);
@@ -27,7 +26,7 @@ public class CpuPlayer extends Player {
     // Expected earnings from any given purchase.
     double d6Gain = (3.5 + numModifiers) * (roundsLeft - turnsUntilD6) - gameEngine.getD6Price();
     double d20Gain = (10.5 + numModifiers) * (roundsLeft - turnsUntilD20) - gameEngine.getD20Price();
-    double modifierGain = (numD6 + numD20) * (roundsLeft - turnsUntilModifier) - gameEngine.getModifierPrice();
+    double modifierGain = numDice * (roundsLeft - turnsUntilModifier) - gameEngine.getModifierPrice();
 
     if (d6Gain > d20Gain && d6Gain > modifierGain && d6Gain > 0) {
       return gameEngine.canBuyD6() ? BotAction.BUYD6 : BotAction.PASS;
