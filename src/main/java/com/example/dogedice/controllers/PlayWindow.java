@@ -32,6 +32,9 @@ public class PlayWindow extends GenericController {
   @FXML
   Label roll, gameTurns;
 
+  @FXML
+  Button rollButton;
+
   public PlayWindow() {
     playerNames = new HashMap<>();  // the labels where we display player names
     playerScores = new HashMap<>(); // the labels where we display player scores
@@ -65,26 +68,32 @@ public class PlayWindow extends GenericController {
     if (nextPlayer.isBot()) {
       rollButtonClicked(mouseEvent);
     }
-    System.out.println(gameTurns);
     gameTurns.setText("Rounds Left: " + gameEngine.getRoundsLeftAsString());
-    getWinner(mouseEvent);
+    if (gameEngine.getRoundsLeft() == 0) {
+       rollButton.setOnMousePressed(event -> {
+         try {
+           getWinner(mouseEvent);
+         } catch (IOException e) {
+           e.printStackTrace();
+         }
+       });
+      rollButton.setText("Show Winner!");
+    }
   }
 
   private void getWinner(MouseEvent mouseEvent) throws IOException {
-    if (gameEngine.getRoundsLeft() == 0) {
-        HelperMethods.replaceScene(
-            HelperMethods.winnerWindowFXML,
-            HelperMethods.winnerWindowTitle,
-            mouseEvent,
-            gameEngine);
-      }
+    HelperMethods.replaceScene(
+        HelperMethods.winnerWindowFXML,
+        HelperMethods.winnerWindowTitle,
+        mouseEvent,
+        gameEngine);
   }
 
   @Override
-  public void postInitialization() {
-    Label dieSixPrice = new Label (gameEngine.getD6PriceAsString());
-    Label dieTwentyPrice = new Label (gameEngine.getD20PriceAsString());
-    Label modifierPrice = new Label (gameEngine.getModifierPriceAsString());
+  public void postInitialization(){
+    Label dieSixPrice = new Label(gameEngine.getD6PriceAsString());
+    Label dieTwentyPrice = new Label(gameEngine.getD20PriceAsString());
+    Label modifierPrice = new Label(gameEngine.getModifierPriceAsString());
 
     dieSixPrice.setId("d6p");
     dieTwentyPrice.setId("d20p");

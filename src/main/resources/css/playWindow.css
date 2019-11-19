@@ -52,7 +52,6 @@ Button {
 	-fx-font:              bold 20px 'serif';
 	-fx-focus-color:       transparent;
 	-fx-faint-focus-color: transparent;
-	-fx-translate-x:       210;
 	-fx-translate-y:       30;
 	-fx-scale-x:           2;
 	-fx-scale-y:           2;
