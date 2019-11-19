@@ -59,7 +59,7 @@ public class GameEngine {
   }
 
   public void addCpuPlayer(String name) {
-    Player player = new CpuPlayer(name);
+    Player player = new CpuPlayer(name, this);
     initializePlayer(player);
   }
 
@@ -199,6 +199,14 @@ public class GameEngine {
   public void updateHighScore() {
     highScore.addPlayers(players);
     highScore.writeJSON();
+  }
+
+  public BotAction getBotAction() {
+    if (getPlayer().isBot()) {
+      return ((CpuPlayer) getPlayer()).getDesiredAction();
+    } else {
+      return BotAction.PASS;
+    }
   }
 
   public List<HumanPlayer> getHighScore() {

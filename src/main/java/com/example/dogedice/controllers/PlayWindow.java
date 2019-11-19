@@ -1,5 +1,6 @@
 package com.example.dogedice.controllers;
 
+import com.example.dogedice.model.BotAction;
 import com.example.dogedice.model.Die;
 import com.example.dogedice.model.Modifier;
 import com.example.dogedice.model.Player;
@@ -45,6 +46,8 @@ public class PlayWindow extends GenericController {
   }
 
   public void backButtonClicked(MouseEvent mouseEvent) throws IOException {
+    gameEngine.resetPlayers();
+    gameEngine.resetRounds();
     HelperMethods.replaceScene(
         HelperMethods.namePlayersWindowFXML,
         HelperMethods.namePlayersWindowTitle,
@@ -55,6 +58,15 @@ public class PlayWindow extends GenericController {
 
   public void rollButtonClicked(MouseEvent mouseEvent) {
     Player player = gameEngine.getPlayer();
+    BotAction botAction = gameEngine.getBotAction();
+    while (botAction != BotAction.PASS) {
+      switch (botAction) {
+        case BUYD6: buyD6(mouseEvent); break;
+        case BUYD20: buyD20(mouseEvent); break;
+        case BUYMODIFIER: buyModifier(mouseEvent); break;
+      }
+      botAction = gameEngine.getBotAction();
+    }
 
     roll.setText("" + gameEngine.rollDice());
     playerScores.get(player).setText(gameEngine.getScoreAsString());
@@ -67,6 +79,7 @@ public class PlayWindow extends GenericController {
     if (nextPlayer.isBot()) {
       rollButtonClicked(mouseEvent);
     }
+
     gameTurns.setText("Rounds Left: " + gameEngine.getRoundsLeftAsString());
     if (gameEngine.getRoundsLeft() == 0) {
        rollButton.setOnMousePressed(event -> {
@@ -133,41 +146,9 @@ public class PlayWindow extends GenericController {
       e.printStackTrace();
     }
 
-    dieSix.setOnMousePressed(mouseEvent -> {
-      Die newDie = gameEngine.buyD6();
-      if (newDie != null) {
-        try {
-          playerItems.get(gameEngine.getPlayer()).getChildren().add(getIcon(newDie));
-        } catch (IOException e) {
-          e.printStackTrace();
-        }
-      }
-      playerScores.get(gameEngine.getPlayer()).setText(gameEngine.getScoreAsString());
-    });
-
-    dieTwenty.setOnMousePressed(mouseEvent -> {
-      Die newDie = gameEngine.buyD20();
-      if (newDie != null){
-        try {
-          playerItems.get(gameEngine.getPlayer()).getChildren().add(getIcon(newDie));
-        } catch (IOException e) {
-          e.printStackTrace();
-        }
-      }
-      playerScores.get(gameEngine.getPlayer()).setText(gameEngine.getScoreAsString());
-    });
-
-    mods.setOnMousePressed(mouseEvent -> {
-      Modifier newModifier = gameEngine.buyModifier();
-      if (newModifier != null) {
-        try {
-          playerItems.get(gameEngine.getPlayer()).getChildren().add(getIcon(newModifier));
-        } catch (IOException e) {
-          e.printStackTrace();
-        }
-      }
-      playerScores.get(gameEngine.getPlayer()).setText(gameEngine.getScoreAsString());
-    });
+    dieSix.setOnMousePressed(this::buyD6);
+    dieTwenty.setOnMousePressed(this::buyD20);
+    mods.setOnMousePressed(this::buyModifier);
 
     this.players = gameEngine.getPlayers();
     for (Player player : players) {
@@ -202,6 +183,42 @@ public class PlayWindow extends GenericController {
           );
     }
     setActiveStylePlayer(this.players.get(0));
+  }
+
+  private void buyD6(MouseEvent mouseEvent) {
+    Die newDie = gameEngine.buyD6();
+    if(newDie != null){
+      try {
+        playerItems.get(gameEngine.getPlayer()).getChildren().add(getIcon(newDie));
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    }
+    playerScores.get(gameEngine.getPlayer()).setText(gameEngine.getScoreAsString());
+  }
+
+  private void buyD20(MouseEvent mouseEvent) {
+    Die newDie = gameEngine.buyD20();
+    if(newDie != null){
+      try {
+        playerItems.get(gameEngine.getPlayer()).getChildren().add(getIcon(newDie));
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    }
+    playerScores.get(gameEngine.getPlayer()).setText(gameEngine.getScoreAsString());
+  }
+
+  private void buyModifier(MouseEvent mouseEvent) {
+    Modifier newMod = gameEngine.buyModifier();
+    if(newMod != null){
+      try {
+        playerItems.get(gameEngine.getPlayer()).getChildren().add(getIcon(newMod));
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    }
+    playerScores.get(gameEngine.getPlayer()).setText(gameEngine.getScoreAsString());
   }
 
   private void setActiveStylePlayer(Player player) {

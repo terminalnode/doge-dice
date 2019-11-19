@@ -8,12 +8,18 @@ public abstract class Player implements Comparable<Player> {
   private int score;
   private List<Die> dice;
   private List<Modifier> modifiers;
+  Integer numD6;
+  Integer numD20;
+  Integer numModifiers;
 
   Player(String name) {
     this.name = name;
     this.score = 0;
     this.dice = new ArrayList<>();
     this.modifiers = new ArrayList<>();
+    this.numD6 = 0;
+    this.numD20 = 0;
+    this.numModifiers = 0;
   }
 
   public abstract boolean isBot();
@@ -35,10 +41,16 @@ public abstract class Player implements Comparable<Player> {
   }
 
   public void addDie(Die die) {
+    if (die.getNumOfSides() == 6) {
+      numD6++;
+    } else {
+      numD20++;
+    }
     this.dice.add(die);
   }
 
   public void addModifier(Modifier modifier) {
+    numModifiers++;
     this.modifiers.add(modifier);
   }
 
