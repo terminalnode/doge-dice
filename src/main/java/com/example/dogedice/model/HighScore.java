@@ -35,7 +35,6 @@ class HighScore {
     } catch (Exception e) {
       System.out.println("Something went wrong when trying to load json.");
     }
-
     while (players.size() < playersToSave) {
       players.add(new HumanPlayer("Super Doge"));
     }
@@ -49,7 +48,6 @@ class HighScore {
         .collect(Collectors.toList());
     players.addAll(newHumanPlayers);
     Collections.sort(players);
-
     players = players.subList(0, playersToSave);
   }
 
