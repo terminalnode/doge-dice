@@ -18,7 +18,6 @@ import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 public class PlayWindow extends GenericController {
   private List<Player> players;
@@ -54,7 +53,7 @@ public class PlayWindow extends GenericController {
     );
   }
 
-  public void rollButtonClicked(MouseEvent mouseEvent) throws IOException {
+  public void rollButtonClicked(MouseEvent mouseEvent) {
     Player player = gameEngine.getPlayer();
 
     roll.setText("" + gameEngine.rollDice());
@@ -96,71 +95,79 @@ public class PlayWindow extends GenericController {
     Label modifierPrice = new Label(gameEngine.getModifierPriceAsString());
 
     dieSixPrice.setId("d6p");
-    dieTwentyPrice.setId("d20p");
-    modifierPrice.setId("mp");
+    dieTwentyPrice.getStyleClass().add("modifierLabels");
+    modifierPrice.getStyleClass().add("modifierLabels");
 
     Group priceGroup = new Group(dieSixPrice, dieTwentyPrice, modifierPrice);
     priceGroup.getStylesheets().add("css/playWindow.css");
     priceGroup.setId("prices");
     diceBox.getChildren().add(priceGroup);
 
-    SVGPath die6 = null;
-    SVGPath die20 = null;
-    SVGPath modifier = null;
+    VBox dieSix = new VBox();
+    VBox dieTwenty = new VBox();
+    VBox mods = new VBox();
 
     gameTurns.setText("Rounds Left: " + gameEngine.getRoundsLeftAsString());
     try {
-      die6 = getSVGIcon("svgpaths/d6");
+      SVGPath die6 = getSVGIcon("svgpaths/d6");
       resizeSVG(die6, 60, 60 );
       Group d6G = new Group(die6);
+      dieSix.getChildren().addAll(d6G, dieSixPrice);
+      dieSix.setId("dieSix");
+      dieSix.getStyleClass().add("itemVBox");
 
-      die20 = getSVGIcon("svgpaths/d20");
+      SVGPath die20 = getSVGIcon("svgpaths/d20");
       resizeSVG(die20, 60, 65);
       Group d20G = new Group(die20);
+      dieTwenty.getChildren().addAll(d20G, dieTwentyPrice);
+      dieTwenty.getStyleClass().add("itemVBox");
 
-      modifier = getSVGIcon("svgpaths/modifier");
+      SVGPath modifier = getSVGIcon("svgpaths/modifier");
       resizeSVG(modifier, 60, 60);
       Group modG = new Group(modifier);
-      diceBox.getChildren().addAll(d6G, d20G, modG);
+      mods.getChildren().addAll(modG, modifierPrice);
+      mods.getStyleClass().add("itemVBox");
+
+      diceBox.getChildren().addAll(dieSix, dieTwenty, mods);
     } catch (Exception e) {
       e.printStackTrace();
     }
 
-      Objects.requireNonNull(die6).setOnMousePressed(mouseEvent -> {
-        Die newDie = gameEngine.buyD6();
-        if (newDie != null){
-          try {
-            playerItems.get(gameEngine.getPlayer()).getChildren().add(getIcon(newDie));
-          } catch (Exception e) {
-            e.printStackTrace();
-          }
+    dieSix.setOnMousePressed(mouseEvent -> {
+      Die newDie = gameEngine.buyD6();
+      if (newDie != null) {
+        try {
+          playerItems.get(gameEngine.getPlayer()).getChildren().add(getIcon(newDie));
+        } catch (IOException e) {
+          e.printStackTrace();
         }
-        playerScores.get(gameEngine.getPlayer()).setText(gameEngine.getScoreAsString());
-      });
+      }
+      playerScores.get(gameEngine.getPlayer()).setText(gameEngine.getScoreAsString());
+    });
 
-      Objects.requireNonNull(die20).setOnMousePressed(mouseEvent -> {
-        Die newDie = gameEngine.buyD20();
-        if (newDie != null){
-          try {
-            playerItems.get(gameEngine.getPlayer()).getChildren().add(getIcon(newDie));
-          } catch (Exception e) {
-            e.printStackTrace();
-          }
+    dieTwenty.setOnMousePressed(mouseEvent -> {
+      Die newDie = gameEngine.buyD20();
+      if (newDie != null){
+        try {
+          playerItems.get(gameEngine.getPlayer()).getChildren().add(getIcon(newDie));
+        } catch (IOException e) {
+          e.printStackTrace();
         }
-        playerScores.get(gameEngine.getPlayer()).setText(gameEngine.getScoreAsString());
-      });
+      }
+      playerScores.get(gameEngine.getPlayer()).setText(gameEngine.getScoreAsString());
+    });
 
-      Objects.requireNonNull(modifier).setOnMousePressed(mouseEvent -> {
-        Modifier newModifier = gameEngine.buyModifier();
-        if(newModifier != null){
-          try {
-            playerItems.get(gameEngine.getPlayer()).getChildren().add(getIcon(newModifier));
-          } catch (Exception e) {
-            e.printStackTrace();
-          }
+    mods.setOnMousePressed(mouseEvent -> {
+      Modifier newModifier = gameEngine.buyModifier();
+      if (newModifier != null) {
+        try {
+          playerItems.get(gameEngine.getPlayer()).getChildren().add(getIcon(newModifier));
+        } catch (IOException e) {
+          e.printStackTrace();
         }
-        playerScores.get(gameEngine.getPlayer()).setText(gameEngine.getScoreAsString());
-      });
+      }
+      playerScores.get(gameEngine.getPlayer()).setText(gameEngine.getScoreAsString());
+    });
 
     this.players = gameEngine.getPlayers();
     for (Player player : players) {

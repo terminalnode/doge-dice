@@ -31,13 +31,13 @@
 }
 
 #diceBox {
-	-fx-min-height: 280;
-	-fx-max-height: 280;
-	-fx-min-width:  120;
-	-fx-max-width:  120;
-	-fx-spacing:    15;
-	-fx-translate-x: 25;
-	-fx-translate-y: -105;
+	-fx-min-height:   280;
+	-fx-max-height:   280;
+	-fx-min-width:    120;
+	-fx-max-width:    120;
+	-fx-spacing:      15;
+	-fx-translate-x:  25;
+	-fx-translate-y:  -105;
 }
 
 #bot {
@@ -78,11 +78,11 @@ Button:pressed {
 }
 
 .spinningDoge {
-	-fx-image: url("../images/dogespin.gif");
+	-fx-image:       url("../images/dogespin.gif");
 	-fx-translate-x: -100;
 	-fx-translate-y: -100;
-	-fx-scale-x:     20;
-	-fx-scale-y:     20;
+	-fx-scale-x:      20;
+	-fx-scale-y:      20;
 }
 
 #backButton {
@@ -92,10 +92,10 @@ Button:pressed {
 }
 
 #resultHeader {
-	-fx-font:      bold 18px "Arial";
-	-fx-text-fill: #2196F3;
-	-fx-translate-x: -10;
-	-fx-translate-y: 400;
+	-fx-font:        bold 18px "Arial";
+	-fx-text-fill:   #2196F3;
+	-fx-translate-x: -12;
+	-fx-translate-y: 445;
 }
 
 #resultLabel {
@@ -108,11 +108,27 @@ Button:pressed {
 	-fx-text-alignment: center;
 	-fx-padding:        0 0 0 20;
 	-fx-border-style:   dashed;
-	-fx-translate-x: -7;
-	-fx-translate-y: 390;
+	-fx-translate-x:    -10;
+	-fx-translate-y:    435;
 }
 
 #gameTurns {
-	-fx-font: bold 12px arial;
+	-fx-font:      bold 12px arial;
+	-fx-text-fill: #2196F3;
+}
+
+#d6p {
+	-fx-font:        bold 15px arial;
+	-fx-text-fill:   #2196F3;
+	-fx-translate-x: 4;
+}
+
+.itemVBox {
+	-fx-spacing:      10;
+	-fx-translate-x:  -10;
+}
+
+.modifierLabels {
+	-fx-font: bold 15px arial;
 	-fx-text-fill: #2196F3;
 }
