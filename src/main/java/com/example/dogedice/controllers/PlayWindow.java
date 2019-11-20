@@ -6,10 +6,11 @@ import com.example.dogedice.model.Modifier;
 import com.example.dogedice.model.Player;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.effect.Effect;
+import javafx.scene.effect.MotionBlur;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.shape.SVGPath;
@@ -26,6 +27,10 @@ public class PlayWindow extends GenericController {
   private final Map<Player, Label> playerNames;
   private final Map<Player, Label> playerScores;
   private final Map<Player, FlowPane> playerItems;
+  private Group d6Button;
+  private Group d20Button;
+  private Group modifierButton;
+  private Label modifierButtonText;
 
   @FXML
   VBox playerPaneBox, diceBox;
@@ -60,6 +65,7 @@ public class PlayWindow extends GenericController {
   public void rollButtonClicked(MouseEvent mouseEvent) {
     Player player = gameEngine.getPlayer();
     BotAction botAction = gameEngine.getBotAction();
+
     while (botAction != BotAction.PASS) {
       switch (botAction) {
         case BUYD6: buyD6(mouseEvent); break;
@@ -68,11 +74,12 @@ public class PlayWindow extends GenericController {
       }
       botAction = gameEngine.getBotAction();
     }
-
     roll.setText("" + gameEngine.rollDice());
     playerScores.get(player).setText(gameEngine.getScoreAsString());
 
     gameEngine.incrementPlayer();
+    applyButtonEffects();
+
     Player nextPlayer = gameEngine.getPlayer();
 
     setInactiveStylePlayer(player);
@@ -83,9 +90,14 @@ public class PlayWindow extends GenericController {
 
     gameTurns.setText("Rounds Left: " + gameEngine.getRoundsLeftAsString());
     if (gameEngine.getRoundsLeft() == 0) {
+      gameEngine.updateHighScore();
        rollButton.setOnMousePressed(event -> {
          try {
-           getWinner(mouseEvent);
+           HelperMethods.replaceScene(
+               HelperMethods.winnerWindowFXML,
+               HelperMethods.winnerWindowTitle,
+               mouseEvent,
+               this);
          } catch (IOException e) {
            e.printStackTrace();
          }
@@ -94,13 +106,29 @@ public class PlayWindow extends GenericController {
     }
   }
 
-  private void getWinner(MouseEvent mouseEvent) throws IOException {
-    gameEngine.updateHighScore();
-    HelperMethods.replaceScene(
-        HelperMethods.winnerWindowFXML,
-        HelperMethods.winnerWindowTitle,
-        mouseEvent,
-        this);
+  private void applyButtonEffects() {
+    Effect active = null;
+    Effect inactive = new MotionBlur();
+
+    if (gameEngine.canBuyD6()) {
+      d6Button.setEffect(active);
+    } else {
+      d6Button.setEffect(inactive);
+    }
+
+    if (gameEngine.canBuyD20()) {
+      d20Button.setEffect(active);
+    } else {
+      d20Button.setEffect(inactive);
+    }
+
+    if (gameEngine.canBuyModifier()) {
+      modifierButton.setEffect(active);
+      modifierButtonText.setEffect(active);
+    } else {
+      modifierButton.setEffect(inactive);
+      modifierButtonText.setEffect(inactive);
+    }
   }
 
   @Override
@@ -130,6 +158,12 @@ public class PlayWindow extends GenericController {
     Group modifierSVGGroup = new Group(modifierSVG);
     Label modifierPlusOne = new Label("+1");
     modifierPlusOne.setId("plusOneLabel");
+
+    // Setting the buttons to class fields so we can apply effects to them later
+    d6Button = d6SVGGroup;
+    d20Button = d20SVGGroup;
+    modifierButton = modifierSVGGroup;
+    modifierButtonText = modifierPlusOne;
 
     // Creating labels for each of the upgrades price.
     Label d6Price = new Label(gameEngine.getD6PriceAsString());
@@ -193,6 +227,7 @@ public class PlayWindow extends GenericController {
           );
     }
     setActiveStylePlayer(this.players.get(0));
+    applyButtonEffects();
   }
 
   private void buyD6(MouseEvent mouseEvent) {
@@ -205,6 +240,7 @@ public class PlayWindow extends GenericController {
       }
     }
     playerScores.get(gameEngine.getPlayer()).setText(gameEngine.getScoreAsString());
+    applyButtonEffects();
   }
 
   private void buyD20(MouseEvent mouseEvent) {
@@ -217,6 +253,7 @@ public class PlayWindow extends GenericController {
       }
     }
     playerScores.get(gameEngine.getPlayer()).setText(gameEngine.getScoreAsString());
+    applyButtonEffects();
   }
 
   private void buyModifier(MouseEvent mouseEvent) {
@@ -229,6 +266,7 @@ public class PlayWindow extends GenericController {
       }
     }
     playerScores.get(gameEngine.getPlayer()).setText(gameEngine.getScoreAsString());
+    applyButtonEffects();
   }
 
   private void setActiveStylePlayer(Player player) {
