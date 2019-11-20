@@ -195,37 +195,47 @@ public class PlayWindow extends GenericController {
 
 
     // Adding entries for all the players
+    // First a row with the player's name, then another row with their upgrades.
     this.players = gameEngine.getPlayers();
     for (Player player : players) {
+      // Adding the label with the player's name.
+      // The HashMap is used when setting the active player style.
       Label playerNameLabel = new Label(player.getName());
       playerNameLabel.getStyleClass().add("playerInfo");
       playerNames.put(player, playerNameLabel);
 
+      // Adding the label with the player's score.
+      // The HashMap is used when updating the score.
       Label playerScore = new Label("" + player.getScore());
       playerScore.getStyleClass().add("playerInfo");
       playerScores.put(player, playerScore);
 
-      FlowPane playerItemPane = new FlowPane();
-      playerItemPane.setHgap(5);
-      playerItemPane.setPadding(new Insets(5,0,15,0));
-      List<Node> playerItemsList = playerItemPane.getChildren();
-      player.getDice().forEach(x -> {
-        try { playerItemsList.add(getIcon(x)); } catch (Exception e) { e.printStackTrace(); }
-      });
-      playerItems.put(player, playerItemPane);
-
+      // Putting the name and score in a GridPane.
       GridPane playerInfo = new GridPane();
       playerInfo.setVgap(100);
       playerInfo.addColumn(0, playerNames.get(player));
       playerInfo.addColumn(1, playerScores.get(player));
       playerScores.get(player).setText("" + player.getScore());
-      playerInfo.getColumnConstraints().addAll(new ColumnConstraints(330), new ColumnConstraints(90));
-      playerPaneBox
-          .getChildren()
-          .addAll(
-              playerInfo,
-              playerItems.get(player)
-          );
+      playerInfo.getColumnConstraints().addAll(new ColumnConstraints(330), new ColumnConstraints(140));
+
+      // Adding the pane with the user's items.
+      // The HashMap is used when adding new items to the player's list
+      FlowPane playerItemPane = new FlowPane();
+      playerItemPane.setHgap(5);
+      playerItemPane.setPadding(new Insets(5,0,15,0));
+      playerItems.put(player, playerItemPane);
+
+      List<Node> playerItemsList = playerItemPane.getChildren();
+      player.getDice().forEach(x -> {
+        try {
+          playerItemsList.add(getIcon(x));
+        } catch (Exception e) {
+          e.printStackTrace();
+        }
+      });
+
+      // Adding everything to the scrollpane in the playwindow
+      playerPaneBox.getChildren().addAll(playerInfo, playerItemPane);
     }
     setActiveStylePlayer(this.players.get(0));
     applyButtonEffects();

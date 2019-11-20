@@ -70,7 +70,7 @@ Button:pressed {
 }
 
 #playerPaneBox{
-	-fx-padding: 15, 15, 15, 15;
+	-fx-padding: 15, 15, 30, 15;
 }
 
 .playerInfo {

@@ -15,7 +15,7 @@
   <Label id="gameTurns" fx:id="gameTurns"/>
 
   <HBox styleClass="gameWindow">
-    <ScrollPane hbarPolicy="NEVER" styleClass="scrollPane">
+    <ScrollPane hbarPolicy="NEVER" vbarPolicy="ALWAYS" styleClass="scrollPane">
       <VBox id="playerPaneBox" fx:id="playerPaneBox"/>
     </ScrollPane>
 
