@@ -88,10 +88,10 @@ public class HelperMethods {
    * @param oldController The old controller from which we can inherit gameEngine and clip
    * @throws IOException If the FXML can't be loaded.
    */
-  public static void replaceScene(String fxmlPath,
-                                  String windowTitle,
-                                  MouseEvent mouseEvent,
-                                  GenericController oldController) throws IOException {
+  static void replaceScene(String fxmlPath,
+                           String windowTitle,
+                           MouseEvent mouseEvent,
+                           GenericController oldController) throws IOException {
     Stage stage = (Stage) ((Node) mouseEvent.getSource())
         .getScene()
         .getWindow();
@@ -101,32 +101,6 @@ public class HelperMethods {
     Scene scene = new Scene(root);
     GenericController controller = loader.getController();
     controller.inheritSettings(oldController, scene);
-    controller.postInitialization();
-    stage.setScene(scene);
-  }
-
-  public static void replaceScene(String fxmlPath,
-                                  String windowTitle,
-                                  MouseEvent mouseEvent,
-                                  GameEngine gameEngine) throws IOException {
-    Stage stage = (Stage) ((Node) mouseEvent.getSource())
-        .getScene()
-        .getWindow();
-    stage.setTitle(windowTitle);
-    FXMLLoader loader = getLoader(fxmlPath);
-    System.out.println("loader location");
-    System.out.println(loader.getLocation());
-    Parent root = null;
-    try {
-      root = loader.load();
-    } catch (Exception e) {
-      System.out.println(e.toString());
-      System.out.println("printing stack track");
-      e.printStackTrace();
-    }
-    Scene scene = new Scene(root);
-    GenericController controller = loader.getController();
-    controller.setGameEngine(gameEngine);
     controller.postInitialization();
     stage.setScene(scene);
   }

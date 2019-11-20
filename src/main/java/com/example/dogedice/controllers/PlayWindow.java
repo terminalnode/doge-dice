@@ -52,7 +52,7 @@ public class PlayWindow extends GenericController {
         HelperMethods.namePlayersWindowFXML,
         HelperMethods.namePlayersWindowTitle,
         mouseEvent,
-        gameEngine
+        this
     );
   }
 
@@ -94,11 +94,12 @@ public class PlayWindow extends GenericController {
   }
 
   private void getWinner(MouseEvent mouseEvent) throws IOException {
+    gameEngine.updateHighScore();
     HelperMethods.replaceScene(
         HelperMethods.winnerWindowFXML,
         HelperMethods.winnerWindowTitle,
         mouseEvent,
-        gameEngine);
+        this);
   }
 
   @Override
@@ -175,7 +176,7 @@ public class PlayWindow extends GenericController {
       playerInfo.setVgap(100);
       playerInfo.addColumn(0, playerNames.get(player));
       playerInfo.addColumn(1, playerScores.get(player));
-      playerScores.get(player).setText("" +player.getScore());
+      playerScores.get(player).setText("" + player.getScore());
       playerInfo.getColumnConstraints().addAll(new ColumnConstraints(330), new ColumnConstraints(90));
       playerPaneBox
           .getChildren()
