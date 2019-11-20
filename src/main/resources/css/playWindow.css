@@ -132,6 +132,17 @@ Button:pressed {
 	-fx-translate-y: -58px;
 }
 
+#smallPlusOneLabel {
+	-fx-text-fill:   white;
+	-fx-font:        bold 15px arial;
+}
+
+#smallModifierBox {
+	-fx-alignment:    center;
+	-fx-max-width:    35px;
+	-fx-max-height:   35px;
+}
+
 .itemVBoxes {
 	-fx-alignment:   center;
 	-fx-translate-y: -110px;

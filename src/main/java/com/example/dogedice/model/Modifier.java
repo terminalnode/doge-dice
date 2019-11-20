@@ -7,7 +7,7 @@ public class Modifier {
     this.value = value;
   }
 
-  int getValue() {
+  public int getValue() {
     return this.value;
   }
 }
