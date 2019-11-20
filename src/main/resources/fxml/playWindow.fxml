@@ -19,7 +19,7 @@
       <VBox id="playerPaneBox" fx:id="playerPaneBox"/>
     </ScrollPane>
 
-    <VBox id="diceBox" fx:id="diceBox" styleClass="modifiers">
+    <VBox id="diceBox" fx:id="diceBox">
       <Label id="resultHeader" text="SCORE"/>
       <Label id="resultLabel" fx:id="roll" />
     </VBox>

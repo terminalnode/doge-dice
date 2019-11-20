@@ -6,6 +6,7 @@ import com.example.dogedice.model.Modifier;
 import com.example.dogedice.model.Player;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.control.*;
@@ -104,55 +105,61 @@ public class PlayWindow extends GenericController {
 
   @Override
   public void postInitialization(){
-    Label dieSixPrice = new Label(gameEngine.getD6PriceAsString());
-    Label dieTwentyPrice = new Label(gameEngine.getD20PriceAsString());
-    Label modifierPrice = new Label(gameEngine.getModifierPriceAsString());
-
-    dieSixPrice.setId("d6p");
-    dieTwentyPrice.getStyleClass().add("modifierLabels");
-    modifierPrice.getStyleClass().add("modifierLabels");
-
-    Group priceGroup = new Group(dieSixPrice, dieTwentyPrice, modifierPrice);
-    priceGroup.getStylesheets().add("css/playWindow.css");
-    priceGroup.setId("prices");
-    diceBox.getChildren().add(priceGroup);
-
-    VBox dieSix = new VBox();
-    VBox dieTwenty = new VBox();
-    VBox mods = new VBox();
-    Label plusOne = new Label("+1");
-
     gameTurns.setText("Rounds Left: " + gameEngine.getRoundsLeftAsString());
+
+    // Creating the images to be put in the boxes.
+    SVGPath d6SVG = null;
+    SVGPath d20SVG = null;
+    SVGPath modifierSVG = null;
     try {
-      SVGPath die6 = getSVGIcon("svgpaths/d6");
-      resizeSVG(die6, 60, 60 );
-      Group d6G = new Group(die6);
-      dieSix.getChildren().addAll(d6G, dieSixPrice);
-      dieSix.setId("dieSix");
-      dieSix.getStyleClass().add("itemVBox");
+      d6SVG = getSVGIcon("svgpaths/d6");
+      resizeSVG(d6SVG, 60, 60 );
 
-      SVGPath die20 = getSVGIcon("svgpaths/d20");
-      resizeSVG(die20, 60, 65);
-      Group d20G = new Group(die20);
-      dieTwenty.getChildren().addAll(d20G, dieTwentyPrice);
-      dieTwenty.getStyleClass().add("itemVBox");
+      d20SVG = getSVGIcon("svgpaths/d20");
+      resizeSVG(d20SVG, 60, 65);
 
-      SVGPath modifier = getSVGIcon("svgpaths/modifier");
-      resizeSVG(modifier, 60, 60);
-      plusOne.setId("plusOneLabel");
-      Group modG = new Group(modifier, plusOne);
-      mods.getChildren().addAll(modG, modifierPrice, plusOne);
-      mods.getStyleClass().add("itemVBox");
-
-      diceBox.getChildren().addAll(dieSix, dieTwenty, mods);
+      modifierSVG = getSVGIcon("svgpaths/modifier");
+      resizeSVG(modifierSVG, 60, 60);
     } catch (Exception e) {
       e.printStackTrace();
     }
 
-    dieSix.setOnMousePressed(this::buyD6);
-    dieTwenty.setOnMousePressed(this::buyD20);
-    mods.setOnMousePressed(this::buyModifier);
+    // Putting the SVGs in a box makes sure the white space left from scaling them is cropped away.
+    Group d6SVGGroup = new Group(d6SVG);
+    Group d20SVGGroup = new Group(d20SVG);
+    Group modifierSVGGroup = new Group(modifierSVG);
+    Label modifierPlusOne = new Label("+1");
+    modifierPlusOne.setId("plusOneLabel");
 
+    // Creating labels for each of the upgrades price.
+    Label d6Price = new Label(gameEngine.getD6PriceAsString());
+    Label d20Price = new Label(gameEngine.getD20PriceAsString());
+    Label modifierPrice = new Label(gameEngine.getModifierPriceAsString());
+    modifierPrice.setTranslateY(-50);
+    d6Price.getStyleClass().add("modifierLabels");
+    d20Price.getStyleClass().add("modifierLabels");
+    modifierPrice.getStyleClass().add("modifierLabels");
+
+    //Adding the SVGs and prices to VBoxes
+    VBox d6Box = new VBox(d6SVGGroup, d6Price);
+    VBox d20Box = new VBox(d20SVGGroup, d20Price);
+    VBox modifierBox = new VBox(modifierSVGGroup, modifierPlusOne, modifierPrice);
+    d6Box.getStyleClass().add("itemVBoxes");
+    d20Box.getStyleClass().add("itemVBoxes");
+    modifierBox.getStyleClass().add("itemVBoxes");
+
+    // Setting onMousePressed action for items
+    d6Box.setOnMousePressed(this::buyD6);
+    d20Box.setOnMousePressed(this::buyD20);
+    modifierBox.setOnMousePressed(this::buyModifier);
+
+    // Adding everything to the diceBox
+    diceBox.autosize();
+    diceBox.getChildren().addAll(d6Box, d20Box, modifierBox);
+
+
+
+    // Adding entries for all the players
     this.players = gameEngine.getPlayers();
     for (Player player : players) {
       Label playerNameLabel = new Label(player.getName());

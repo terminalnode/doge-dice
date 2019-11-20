@@ -20,8 +20,8 @@
 }
 
 .scrollPane{
-	-fx-translate-x:      -5;
-	-fx-translate-y:      3;
+	-fx-translate-x:      -30;
+	-fx-translate-y:      0;
 	-fx-border-color:     black;
 	-fx-min-height:       425;
 	-fx-max-height:       425;
@@ -31,13 +31,13 @@
 }
 
 #diceBox {
-	-fx-min-height:   280;
-	-fx-max-height:   280;
-	-fx-min-width:    120;
-	-fx-max-width:    120;
+	-fx-min-height:   300;
+	-fx-max-height:   300;
+	-fx-min-width:    100;
+	-fx-max-width:    100;
 	-fx-spacing:      15;
-	-fx-translate-x:  25;
-	-fx-translate-y:  -105;
+	-fx-translate-x:  -20;
+	-fx-translate-y:  0;
 }
 
 #bot {
@@ -94,8 +94,9 @@ Button:pressed {
 #resultHeader {
 	-fx-font:        bold 18px "Arial";
 	-fx-text-fill:   #2196F3;
-	-fx-translate-x: -9;
-	-fx-translate-y: 445;
+	-fx-translate-y: 335;
+	-fx-translate-x: 15;
+	-fx-alignment:   center;
 }
 
 #resultLabel {
@@ -103,39 +104,36 @@ Button:pressed {
 	-fx-min-height:     62px;
 	-fx-max-width:      70px;
 	-fx-max-height:     62px;
-	-fx-font:           bold 15px "Arial";
+	-fx-font:           bold 18px "Arial";
 	-fx-text-fill:      red;
-	-fx-text-alignment: center;
-	-fx-padding:        0 0 0 20;
 	-fx-border-style:   dashed;
-	-fx-translate-x:    -11;
-	-fx-translate-y:    435;
+	-fx-translate-y:    325;
+	-fx-translate-x:    15;
+	-fx-alignment:      center;
 }
 
 #gameTurns {
-	-fx-font:      bold 12px arial;
-	-fx-text-fill: #2196F3;
-}
-
-#d6p {
-	-fx-font:        bold 15px arial;
+	-fx-font:        bold 12px arial;
 	-fx-text-fill:   #2196F3;
-	-fx-translate-x: 4;
 }
 
 .itemVBox {
-	-fx-spacing:      10;
-	-fx-translate-x:  -10;
+	-fx-spacing:     10;
 }
 
 .modifierLabels {
-	-fx-font: bold 15px arial;
-	-fx-text-fill: #2196F3;
+	-fx-font:        bold 15px arial;
+	-fx-text-fill:   #2196F3;
 }
 
 #plusOneLabel {
-	-fx-translate-y: -90;
-	-fx-translate-x: 10;
-	-fx-text-fill: white;
-	-fx-font-size: 30px;
+	-fx-text-fill:   white;
+	-fx-font-size:   28px;
+	-fx-translate-y: -58px;
+}
+
+.itemVBoxes {
+	-fx-alignment:   center;
+	-fx-translate-y: -110px;
+	-fx-spacing:     10px;
 }
