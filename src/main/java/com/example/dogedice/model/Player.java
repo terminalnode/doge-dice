@@ -105,5 +105,6 @@ public abstract class Player implements Comparable<Player> {
 
   public void resetScore() {
     this.score = 0;
+    this.dice = new ArrayList<>();
   }
 }
