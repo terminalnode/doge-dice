@@ -34,7 +34,7 @@ public class HelperMethods {
   public static final String highscoreWindowFXML = "fxml/highScoreWindow.fxml";
   public static final String namePlayersWindowFXML = "fxml/namePlayersWindow.fxml";
   public static final String playWindowFXML = "fxml/playWindow.fxml";
-  public static final String winnerWindowFXML = "fxml/winnerWIndow.fxml";
+  public static final String winnerWindowFXML = "fxml/winnerWindow.fxml";
 
   /**
    * SpinningDoge image is used on most (if not all) screens, and has some fairly complex click actions.
@@ -114,7 +114,16 @@ public class HelperMethods {
         .getWindow();
     stage.setTitle(windowTitle);
     FXMLLoader loader = getLoader(fxmlPath);
-    Parent root = loader.load();
+    System.out.println("loader location");
+    System.out.println(loader.getLocation());
+    Parent root = null;
+    try {
+      root = loader.load();
+    } catch (Exception e) {
+      System.out.println(e.toString());
+      System.out.println("printing stack track");
+      e.printStackTrace();
+    }
     Scene scene = new Scene(root);
     GenericController controller = loader.getController();
     controller.setGameEngine(gameEngine);
