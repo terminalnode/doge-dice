@@ -24,9 +24,9 @@ public class CpuPlayer extends Player {
     long turnsUntilModifier = getTurnsUntil(gameEngine.getModifierPrice(), pointsPerTurn);
 
     // Expected earnings from any given purchase.
-    double d6Gain = (3.5 + numModifiers) * (roundsLeft - turnsUntilD6) - gameEngine.getD6Price();
-    double d20Gain = (10.5 + numModifiers) * (roundsLeft - turnsUntilD20) - gameEngine.getD20Price();
-    double modifierGain = numDice * (roundsLeft - turnsUntilModifier) - gameEngine.getModifierPrice();
+    double d6Gain = (3.5 + numModifiers) * (roundsLeft - turnsUntilD6) / gameEngine.getD6Price() - gameEngine.getD6Price();
+    double d20Gain = (10.5 + numModifiers) * (roundsLeft - turnsUntilD20) / gameEngine.getD20Price() - gameEngine.getD20Price();
+    double modifierGain = numDice * (roundsLeft - turnsUntilModifier) / gameEngine.getModifierPrice() - gameEngine.getModifierPrice();
 
     if (d6Gain > d20Gain && d6Gain > modifierGain && d6Gain > 0) {
       return gameEngine.canBuyD6() ? BotAction.BUYD6 : BotAction.PASS;
