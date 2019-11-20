@@ -31,7 +31,7 @@ class PlayerTest {
     for (int i = 0; i < 100; i++) {
       String str = randomString();
       Player human = new HumanPlayer(str);
-      Player cpu = new CpuPlayer(str);
+      Player cpu = new CpuPlayer(str, null);
       assertEquals(str, human.getName());
       assertEquals(str, cpu.getName());
     }
@@ -41,7 +41,7 @@ class PlayerTest {
   void rollDice() {
     logger.info("Creating a human player and a cpu player");
     Player human = new HumanPlayer("Human");
-    Player cpu = new CpuPlayer("CPU");
+    Player cpu = new CpuPlayer("CPU", null);
 
     logger.info("Testing that dice are added properly.");
     for (int i = 1; i <= 100; i++) {
@@ -58,7 +58,7 @@ class PlayerTest {
   void removePoints() {
     logger.info("Setting up a human and a cpu player with a one-sided die.");
     Player human = new HumanPlayer("Human");
-    Player cpu = new CpuPlayer("CPU");
+    Player cpu = new CpuPlayer("CPU", null);
     Die die = new Die(1);
     human.addDie(die);
     cpu.addDie(die);
@@ -104,14 +104,14 @@ class PlayerTest {
   void isBot() {
     logger.info("Testing that HumanPlayer isn't a bot and that CpuPlayer is a bot.");
     assertFalse(new HumanPlayer("").isBot());
-    assertTrue(new CpuPlayer("").isBot());
+    assertTrue(new CpuPlayer("", null).isBot());
   }
 
   @Test
   void getPoints() {
     logger.info("Testing that points are added and summed up correctly.");
     Player human = new HumanPlayer("");
-    Player cpu = new CpuPlayer("");
+    Player cpu = new CpuPlayer("", null);
     for (int i = 0; i < 10; i++) {
       Die die = new Die(6);
       human.addDie(die);
@@ -140,7 +140,7 @@ class PlayerTest {
   void addModifiers() {
     logger.info("Creating human and cpu player.");
     Player human = new HumanPlayer("");
-    Player cpu = new CpuPlayer("");
+    Player cpu = new CpuPlayer("", null);
 
     logger.info("Adding a single die to each player.");
     Die exampleDie = new Die(6);
