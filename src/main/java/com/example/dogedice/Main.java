@@ -19,7 +19,7 @@ public class Main extends Application {
 
   @Override
   public void start(Stage mainWindow) throws IOException {
-    GameEngine gameEngine = new GameEngine(30, 5, 10, 15, new int[]{6,6}, new int[]{});
+    GameEngine gameEngine = new GameEngine(30, 10, 15, 20, new int[]{6,6}, new int[]{});
 
     // First window must be loaded manually, other windows will use replaceWindow from HelperMethods.
     FXMLLoader loader = HelperMethods.getLoader(HelperMethods.mainWindowFXML);
