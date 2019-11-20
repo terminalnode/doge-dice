@@ -94,21 +94,21 @@ Button:pressed {
 #resultHeader {
 	-fx-font:        bold 18px "Arial";
 	-fx-text-fill:   #2196F3;
-	-fx-translate-x: -12;
+	-fx-translate-x: -9;
 	-fx-translate-y: 445;
 }
 
 #resultLabel {
-	-fx-min-width:      60px;
-	-fx-min-height:     60px;
-	-fx-max-width:      60px;
-	-fx-max-height:     60px;
-	-fx-font:           bold 30px "Arial";
+	-fx-min-width:      70px;
+	-fx-min-height:     62px;
+	-fx-max-width:      70px;
+	-fx-max-height:     62px;
+	-fx-font:           bold 15px "Arial";
 	-fx-text-fill:      red;
 	-fx-text-alignment: center;
 	-fx-padding:        0 0 0 20;
 	-fx-border-style:   dashed;
-	-fx-translate-x:    -10;
+	-fx-translate-x:    -11;
 	-fx-translate-y:    435;
 }
 
@@ -131,4 +131,11 @@ Button:pressed {
 .modifierLabels {
 	-fx-font: bold 15px arial;
 	-fx-text-fill: #2196F3;
+}
+
+#plusOneLabel {
+	-fx-translate-y: -90;
+	-fx-translate-x: 10;
+	-fx-text-fill: white;
+	-fx-font-size: 30px;
 }

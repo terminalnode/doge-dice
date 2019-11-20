@@ -119,6 +119,7 @@ public class PlayWindow extends GenericController {
     VBox dieSix = new VBox();
     VBox dieTwenty = new VBox();
     VBox mods = new VBox();
+    Label plusOne = new Label("+1");
 
     gameTurns.setText("Rounds Left: " + gameEngine.getRoundsLeftAsString());
     try {
@@ -137,8 +138,9 @@ public class PlayWindow extends GenericController {
 
       SVGPath modifier = getSVGIcon("svgpaths/modifier");
       resizeSVG(modifier, 60, 60);
-      Group modG = new Group(modifier);
-      mods.getChildren().addAll(modG, modifierPrice);
+      plusOne.setId("plusOneLabel");
+      Group modG = new Group(modifier, plusOne);
+      mods.getChildren().addAll(modG, modifierPrice, plusOne);
       mods.getStyleClass().add("itemVBox");
 
       diceBox.getChildren().addAll(dieSix, dieTwenty, mods);
