@@ -56,17 +56,18 @@ public class GameEngine {
   public void addHumanPlayer(String name) {
     Player player = new HumanPlayer(name);
     initializePlayer(player);
+    this.players.add(player);
   }
 
   public void addCpuPlayer(String name) {
-    Player player = new CpuPlayer(name, this);
+    Player player = new CpuPlayer(name, this, 30);
     initializePlayer(player);
+    this.players.add(player);
   }
 
   private void initializePlayer(Player player) {
     startingDice.forEach(player::addDie);
     startingModifiers.forEach(player::addModifier);
-    this.players.add(player);
   }
 
   public int getD6Price() {
@@ -155,6 +156,7 @@ public class GameEngine {
 
   public void resetScores() {
     players.forEach(Player::resetScore);
+    players.forEach(this::initializePlayer);
   }
 
   public Die buyD6() {
