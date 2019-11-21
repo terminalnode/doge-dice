@@ -1,11 +1,17 @@
 package com.example.dogedice.model;
 
+import java.util.Random;
+
 public class CpuPlayer extends Player {
   private final GameEngine gameEngine;
+  private final int stupidity;
+  private final Random r;
 
-  public CpuPlayer(String name, GameEngine gameEngine) {
+  public CpuPlayer(String name, GameEngine gameEngine, int stupidity) {
     super(name);
     this.gameEngine = gameEngine;
+    this.stupidity = stupidity;
+    this.r = new Random();
   }
 
   @Override
@@ -17,6 +23,21 @@ public class CpuPlayer extends Player {
     int roundsLeft = gameEngine.getRoundsLeft() - 1;
     int numDice = numD6 + numD20;
     double pointsPerTurn = (3.5 * numD6) + (10.5 * numD20) + (numModifiers * numDice);
+
+    // Chance of the bot taking a random action
+    // The bot is very good at this game, having it take a random action is a sort of handicap.
+    if (r.nextInt(101) < stupidity) {
+      float chance = r.nextFloat();
+      if (chance < 0.2) {
+        return BotAction.BUYMODIFIER;
+      } else if (chance < 0.5) {
+        return BotAction.BUYD20;
+      } else if (chance < 0.9) {
+        return BotAction.BUYD6;
+      } else {
+        return BotAction.PASS;
+      }
+    }
 
     // How many rounds until we can purchase any given item
     long turnsUntilD6 = getTurnsUntil(gameEngine.getD6Price(), pointsPerTurn);

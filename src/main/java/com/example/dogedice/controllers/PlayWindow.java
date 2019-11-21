@@ -6,7 +6,6 @@ import com.example.dogedice.model.Modifier;
 import com.example.dogedice.model.Player;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.control.*;
@@ -22,6 +21,8 @@ import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static javafx.scene.paint.Color.*;
 
 public class PlayWindow extends GenericController {
   private List<Player> players;
@@ -292,9 +293,11 @@ public class PlayWindow extends GenericController {
     SVGPath icon = null;
     if (die.getNumOfSides() == 6) {
       icon = getSVGIcon("svgpaths/d6");
+      icon.setFill(DARKBLUE);
       resizeSVG(icon, 35, 35);
     } else if (die.getNumOfSides() == 20) {
       icon = getSVGIcon("svgpaths/d20");
+      icon.setFill(DARKRED);
       resizeSVG(icon, 35, 35);
     }
     Group group = new Group();
@@ -306,6 +309,7 @@ public class PlayWindow extends GenericController {
   // TODO modifier icon is currently all black. Should display value as well.
   private StackPane getIcon(Modifier mod) throws IOException {
     SVGPath icon = getSVGIcon("svgpaths/modifier");
+    icon.setFill(PURPLE);
     resizeSVG(icon, 35, 35);
     Group group = new Group();
     group.getChildren().add(icon);
